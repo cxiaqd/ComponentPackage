@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div style="width:100%;height: 56px; background: #7fffd4">top</div>
-    <div style="display: flex;">
-      <div style="width:260px; background: #7fffd4">left</div>
+    <div style="width: 100%; height: 56px; background: #7fffd4">top</div>
+    <div style="display: flex">
+      <div style="width: 260px; background: #7fffd4">left</div>
       <div>
         <div>right-top</div>
         <div>right-filter</div>
@@ -18,5 +18,4 @@ export default {};
 </script>
 
 <style>
-
 </style>
