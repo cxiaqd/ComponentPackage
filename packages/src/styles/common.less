@@ -2,3 +2,67 @@
   display: flex;
   justify-content: center;
 }
+.com-v2-table {
+  .el-table th {
+    font-weight: 700;
+
+    color: rgba(0, 0, 0, 0.7);
+    background-color: #f2f3f5 !important;
+    &:not(.is-leaf) {
+      text-align: center;
+    }
+    &.is-left {
+      text-align: left !important;
+    }
+  }
+  .el-table .cell .label {
+    letter-spacing: -0.5px;
+  }
+  tr:hover > td,
+  tr.hover-row > td,
+  tr.current-row > td {
+    background-color: #ebf4ff !important;
+  }
+  .el-table__body td button {
+    max-width: none;
+  }
+}
+.com-v2-table-nowrap {
+  .el-table .cell {
+    max-height: 24px;
+    white-space: nowrap;
+  }
+}
+
+.com-v2-table-simple {
+  table {
+    border-collapse: collapse;
+  }
+  td {
+    padding: 8px 12px;
+    border: 1px solid #dcdcdc;
+    font-size: 16px;
+    line-height: 20px;
+    color: #4c4c4c;
+  }
+}
+.m-content {
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+
+  flex: 1;
+  &.row {
+    flex-direction: row;
+  }
+}
+.com-v2-pagination {
+	display: flex;
+
+	height: 56px;
+
+	align-items: center;
+	.el-pagination {
+		width: 100%;
+	}
+}
