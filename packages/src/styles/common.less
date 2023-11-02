@@ -57,12 +57,48 @@
   }
 }
 .com-v2-pagination {
-	display: flex;
+  display: flex;
 
-	height: 56px;
+  height: 56px;
 
-	align-items: center;
-	.el-pagination {
-		width: 100%;
-	}
+  align-items: center;
+  .el-pagination {
+    width: 100%;
+  }
+}
+
+/* 设置滚动条的样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 2px solid #fff;
+  border-radius: 8px;
+  background: #ededed;
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: #ededed;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+.el-table th:not(:first-child) > .cell::after {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 0;
+  width: 1px;
+  height: 16px;
+  margin-top: -8px;
+  background-color: #cccccc;
+  content: "";
 }

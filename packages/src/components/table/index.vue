@@ -9,27 +9,39 @@
         <div class="right-table m-content com-v2-table com-v2-table-nowrap">
           <el-table
             :data="tableData"
-            border
             force-scroll="horizontal"
             highlight-current-row
             height="100%"
           >
-            <el-table-column prop="date" label="日期" width="180">
+            <el-table-column prop="date" :show-overflow-tooltip="true" label="日期" width="120" draggable="true"></el-table-column>
+            <el-table-column prop="name" :show-overflow-tooltip="true" label="姓名" width="80"></el-table-column>
+            <el-table-column prop="address" :show-overflow-tooltip="true" label="地址" min-width="120"></el-table-column>
+            <el-table-column prop="things" :show-overflow-tooltip="true" label="事件" min-width="120"></el-table-column>
+            <el-table-column prop="cause" :show-overflow-tooltip="true" label="原因" min-width="120"></el-table-column>
+            <el-table-column prop="result" :show-overflow-tooltip="true" label="结果" min-width="120"></el-table-column>
+            <el-table-column prop="callBack" :show-overflow-tooltip="true" label="反馈" min-width="120"></el-table-column>
+            <el-table-column prop="process" :show-overflow-tooltip="true" label="处理进度" min-width="120"></el-table-column>
+            <el-table-column prop="thingsCode" :show-overflow-tooltip="true" label="事件编号" min-width="120"></el-table-column>
+            <el-table-column prop="peopleNumber" :show-overflow-tooltip="true" label="涉及人员数量" min-width="120">
+              <template slot-scope="{row}">{{formatNumber(row.peopleNumber)}}</template>
             </el-table-column>
-            <el-table-column prop="name" label="姓名" width="180">
-            </el-table-column>
-            <el-table-column prop="address" label="地址"> </el-table-column>
+            <el-table-column prop="man" :show-overflow-tooltip="true" label="男生数量" min-width="120"></el-table-column>
+            <el-table-column prop="woman" :show-overflow-tooltip="true" label="女生数量" min-width="120"></el-table-column>
+            <el-table-column prop="averageHeight" :show-overflow-tooltip="true" label="平均身高（厘米）" min-width="135"></el-table-column>
+            <el-table-column prop="averageWeight" :show-overflow-tooltip="true" label="平均体重（kg）" min-width="130"></el-table-column>
+            <el-table-column prop="localePeople" :show-overflow-tooltip="true" label="本地人" min-width="120"></el-table-column>
+            <el-table-column prop="foreigner" :show-overflow-tooltip="true" label="外来人" min-width="120"></el-table-column>
           </el-table>
         </div>
         <div class="right-bottom com-v2-pagination">
           <el-pagination
             @size-change="handleSizeChange"
             @current-change="handleCurrentChange"
-            :current-page.sync="currentPage2"
-            :page-sizes="[100, 200, 300, 400]"
-            :page-size="100"
-            layout="sizes, prev, pager, next"
-            :total="1000"
+            :page-sizes="[20, 50, 100]"
+            current-page="pagination.pageNo"
+            :page-size="pagination.pageSize"
+            :total="pagination.total"
+            layout="total, sizes, ->, prev, pager, next, jumper"
           >
           </el-pagination>
         </div>
@@ -39,81 +51,14 @@
 </template>
 
 <script>
+import mixin_table from "./table";
+import fake_data from '../../../mock/fake-data'
 export default {
+  mixins: [mixin_table,fake_data],
   data() {
-    return {
-      tableData: [
-        {
-          date: "2016-05-02",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1517 弄",
-        },
-        {
-          date: "2016-05-01",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1519 弄",
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄",
-        },
-        {
-          date: "2016-05-02",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1517 弄",
-        },
-        {
-          date: "2016-05-01",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1519 弄",
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄",
-        },
-        {
-          date: "2016-05-02",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1517 弄",
-        },
-        {
-          date: "2016-05-01",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1519 弄",
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄",
-        },
-      ],
-    };
+    return {};
   },
-  methods: {
-    handleSizeChange(val) {
-      console.log(`每页 ${val} 条`);
-    },
-    handleCurrentChange(val) {
-      console.log(`当前页: ${val}`);
-    },
-  },
+  methods: {},
 };
 </script>
 <style lang="less" scoped>
@@ -130,8 +75,9 @@ export default {
   border: 2px solid rgb(255, 26, 122);
 }
 .right-content {
-  flex: 1;
+  width: calc(100% - 260px);
   height: 100%;
+  padding: 0 8px;
   .right-top {
     height: 160px;
     background: rgb(255, 26, 122);
@@ -141,9 +87,10 @@ export default {
     background: rgb(255, 184, 0);
   }
   .right-table {
-    margin: 0 8px;
     height: calc(100% - 300px);
     overflow: hidden;
+  }
+  .right-bottom{
   }
 }
 </style>
