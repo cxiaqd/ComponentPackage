@@ -2,11 +2,40 @@
   <div style="height: 100%">
     <div class="header">top</div>
     <div class="content">
-      <div class="left-content">left</div>
+      <div class="left-content transition" :style="{ width: state.show_side ? '260px' : 0 }">
+        <el-tree class="com-v2-tree tree-content" :data="treeData" :props="defaultProps" @node-click="handleNodeClick"></el-tree>
+        <i
+          class="com-v2-icon"
+          :class="
+            state.show_side
+              ? 'com-v2-icon-side-collapse'
+              : 'com-v2-icon-side-expand'
+          "
+          @click="state.show_side = !state.show_side"
+        ></i>
+      </div>
       <div class="right-content">
         <div class="right-top">right-top</div>
-        <div class="right-filter">right-filter</div>
-        <div class="right-table m-content com-v2-table com-v2-table-nowrap">
+        <div class="right-filter com-v2-form">
+          <el-form inline class="com-v2-form" :model="formInline">
+            <div class="com-v2-control">
+              <el-form-item label="审批人">
+                <el-input v-model="formInline.user" placeholder="审批人"></el-input>
+              </el-form-item>
+              <el-form-item label="活动区域">
+                <el-select v-model="formInline.region" placeholder="活动区域">
+                  <el-option label="区域一" value="shanghai"></el-option>
+                  <el-option label="区域二" value="beijing"></el-option>
+                </el-select>
+              </el-form-item>
+              <el-form-item>
+                <el-button type="primary" @click="onSubmit">查询</el-button>
+                <el-button type="primary" @click="onSubmit">重置</el-button>
+              </el-form-item>
+            </div>
+          </el-form>
+        </div>
+        <div class="right-table com-v2-table com-v2-table-nowrap">
           <el-table
             :data="tableData"
             force-scroll="horizontal"
@@ -15,13 +44,13 @@
           >
             <el-table-column prop="date" :show-overflow-tooltip="true" label="日期" width="120" draggable="true"></el-table-column>
             <el-table-column prop="name" :show-overflow-tooltip="true" label="姓名" width="80"></el-table-column>
-            <el-table-column prop="address" :show-overflow-tooltip="true" label="地址" min-width="120"></el-table-column>
-            <el-table-column prop="things" :show-overflow-tooltip="true" label="事件" min-width="120"></el-table-column>
-            <el-table-column prop="cause" :show-overflow-tooltip="true" label="原因" min-width="120"></el-table-column>
-            <el-table-column prop="result" :show-overflow-tooltip="true" label="结果" min-width="120"></el-table-column>
-            <el-table-column prop="callBack" :show-overflow-tooltip="true" label="反馈" min-width="120"></el-table-column>
-            <el-table-column prop="process" :show-overflow-tooltip="true" label="处理进度" min-width="120"></el-table-column>
-            <el-table-column prop="thingsCode" :show-overflow-tooltip="true" label="事件编号" min-width="120"></el-table-column>
+            <el-table-column prop="address" :show-overflow-tooltip="true" label="地址" min-width="210"></el-table-column>
+            <el-table-column prop="things" :show-overflow-tooltip="true" label="事件" min-width="160"></el-table-column>
+            <el-table-column prop="cause" :show-overflow-tooltip="true" label="原因" min-width="160"></el-table-column>
+            <el-table-column prop="result" :show-overflow-tooltip="true" label="结果" min-width="160"></el-table-column>
+            <el-table-column prop="callBack" :show-overflow-tooltip="true" label="反馈" min-width="160"></el-table-column>
+            <el-table-column prop="process" :show-overflow-tooltip="true" label="处理进度" min-width="160"></el-table-column>
+            <el-table-column prop="thingsCode" :show-overflow-tooltip="true" label="事件编号" min-width="160"></el-table-column>
             <el-table-column prop="peopleNumber" :show-overflow-tooltip="true" label="涉及人员数量" min-width="120">
               <template slot-scope="{row}">{{formatNumber(row.peopleNumber)}}</template>
             </el-table-column>
@@ -30,7 +59,9 @@
             <el-table-column prop="averageHeight" :show-overflow-tooltip="true" label="平均身高（厘米）" min-width="135"></el-table-column>
             <el-table-column prop="averageWeight" :show-overflow-tooltip="true" label="平均体重（kg）" min-width="130"></el-table-column>
             <el-table-column prop="localePeople" :show-overflow-tooltip="true" label="本地人" min-width="120"></el-table-column>
-            <el-table-column prop="foreigner" :show-overflow-tooltip="true" label="外来人" min-width="120"></el-table-column>
+            <el-table-column prop="foreigner" :show-overflow-tooltip="true" label="外来人" min-width="120">
+              <template slot-scope="{row}">{{formatNumber(row.foreigner)}}</template>
+            </el-table-column>
           </el-table>
         </div>
         <div class="right-bottom com-v2-pagination">
@@ -38,7 +69,7 @@
             @size-change="handleSizeChange"
             @current-change="handleCurrentChange"
             :page-sizes="[20, 50, 100]"
-            current-page="pagination.pageNo"
+            :current-page="pagination.pageNo"
             :page-size="pagination.pageSize"
             :total="pagination.total"
             layout="total, sizes, ->, prev, pager, next, jumper"
@@ -56,15 +87,19 @@ import fake_data from '../../../mock/fake-data'
 export default {
   mixins: [mixin_table,fake_data],
   data() {
-    return {};
+    return {
+      state:{
+        show_side:true
+      }
+    };
   },
   methods: {},
 };
 </script>
 <style lang="less" scoped>
 .header {
-  height: 56px;
-  background: #7fffd4;
+  height: 55px;
+  border-bottom: 1px solid #7fffd4;
 }
 .content {
   display: flex;
@@ -72,19 +107,27 @@ export default {
 }
 .left-content {
   width: 260px;
-  border: 2px solid rgb(255, 26, 122);
+  position: relative;
+  border-right: 1px solid rgb(255, 26, 122);
+}
+.tree-content{
+  position: absolute;
+  left: 16px;
+  top: 16px;
 }
 .right-content {
-  width: calc(100% - 260px);
+  flex: 1;
+  z-index: 1;
+  min-width: calc(100% - 260px);
   height: 100%;
-  padding: 0 8px;
+  padding: 0 16px;
   .right-top {
     height: 160px;
-    background: rgb(255, 26, 122);
+    border-bottom: 1px solid rgb(255, 26, 122);
   }
   .right-filter {
-    height: 80px;
-    background: rgb(255, 184, 0);
+    margin-top: 16px;
+    height: 56px;
   }
   .right-table {
     height: calc(100% - 300px);

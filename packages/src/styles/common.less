@@ -66,6 +66,32 @@
     width: 100%;
   }
 }
+.com-v2-form {
+	.el-form-item__content {
+		width: 260px;
+	}
+	.el-form-item {
+		margin-right: 16px;
+		margin-bottom: 16px;
+	}
+}
+
+.com-v2-control {
+	display: flex;
+
+	margin-top: 24px;
+	.el-form-item:last-child {
+		margin: 0;
+		.el-form-item__content {
+			display: flex;
+
+			justify-content: flex-end;
+		}
+		.el-dropdown .el-button {
+			padding: 0;
+		}
+	}
+}
 
 /* 设置滚动条的样式 */
 ::-webkit-scrollbar {
@@ -101,4 +127,48 @@
   margin-top: -8px;
   background-color: #cccccc;
   content: "";
+}
+
+.com-v2-icon {
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.com-v2-icon-side-expand,
+.com-v2-icon-side-collapse {
+	position: absolute;
+	z-index: 2;
+	top: 50%;
+  right: -10px;
+
+	width: 10px;
+	height: 43px;
+
+	cursor: pointer;
+	transform: translateY(-50%);
+}
+.com-v2-icon-side-expand {
+	background-image: url(./images/side-expand.svg);
+	&:hover {
+		background-image: url(./images/side-expand-hover.svg);
+	}
+}
+.com-v2-icon-side-collapse {
+	background-image: url(./images/side-collapse.svg);
+	&:hover {
+		background-image: url(./images/side-collapse-hover.svg);
+	}
+}
+
+.com-v2-tree {
+	.el-tree-node__expand-icon,
+	.el-tree-node__icon,
+	.el-tree-node__label {
+		color: rgba(0,0,0,.7)!important;
+	}
+	.el-tree-node.is-current > .el-tree-node__content {
+		background-color: rgba(32,128,247,.16)!important;
+	}
+}
+.transition {
+	transition: all .8s cubic-bezier(0.22, 0.61, 0.36, 1);
 }

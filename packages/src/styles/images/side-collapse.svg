@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="43px" viewBox="0 0 10 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>收起-默认</title>
+    <defs>
+        <path d="M6.85406333,17.7858292 L3.04531557,21.501192 L6.79753749,25.2141708 C6.97701226,25.3791768 6.99317815,25.663425 6.83364503,25.8490568 C6.67411191,26.0346886 6.39929172,26.0514091 6.21981695,25.8864031 L2.175124,21.9045314 C2.15261063,21.8830016 2.15261063,21.8830016 2.13179496,21.8597159 C1.94035522,21.6369577 1.95975429,21.2958599 2.175124,21.0978526 L6.27634279,17.1135969 C6.45581755,16.9485909 6.73063774,16.9653114 6.89017086,17.1509432 C7.04970399,17.336575 7.03353809,17.6208232 6.85406333,17.7858292 Z" id="path-1"></path>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="切图" transform="translate(-499.000000, -164.000000)">
+            <g id="收起-默认" transform="translate(499.000000, 164.000000)">
+                <g id="编组-7" transform="translate(0.000000, 0.000000)">
+                    <path d="M0,0 L7.11206416,2.63727061 C8.82269618,3.13237243 10,4.69873728 10,6.47957634 L10,35.5877477 C10,37.2975467 8.91324244,38.8182943 7.29561935,39.3721064 L0,42.5545702" id="路径" fill="#EDEDED"></path>
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="color" stroke="#FFFFFF" stroke-width="0.54" fill="#FFFFFF" fill-rule="nonzero" xlink:href="#path-1"></use>
+                </g>
+                <g id="Common/Angle/Left-SM" transform="translate(2.000000, 16.000000)"></g>
+            </g>
+        </g>
+    </g>
+</svg>

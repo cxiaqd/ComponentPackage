@@ -6,6 +6,10 @@ export default {
         pageNo: 1,
         pageSize: 20,
       },
+      formInline: {
+        user: '',
+        region: ''
+      }
     };
   },
   methods: {
@@ -15,5 +19,11 @@ export default {
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
     },
+    handleNodeClick(data) {
+      console.log(data);
+    },
+    onSubmit() {
+        console.log('submit!');
+      }
   },
 };
