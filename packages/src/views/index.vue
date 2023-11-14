@@ -4,73 +4,44 @@
       <p>组件</p>
       <ol>
         <li @click="open('/upload')">上传</li>
-        <li @click="open('/download')">下载</li>
         <li @click="open('/table')">表格</li>
       </ol>
     </div>
     <div class="li-box box2">
       <p>工具集合</p>
       <ol>
-        <li @click="jump('https://tools.fun/index.html')">ToolsFun</li>
-        <li @click="jump('https://www.qianbo.com.cn/Tool/Rgba/')">
-          RGB查询转换
-        </li>
-        <li
-          @click="jump('http://api.map.baidu.com/lbsapi/getpoint/index.html')"
-        >
-          百度地图坐标拾取
-        </li>
-        <li @click="jump('https://icones.js.org/')">icons</li>
-        <li @click="jump('https://www.iconfont.cn/home/index')">iconfont</li>
+        <li @click="jump('tools.fun/index.html')">ToolsFun</li>
+        <li @click="jump('www.qianbo.com.cn/Tool/Rgba/')">RGB查询转换</li>
+        <li @click="jump('api.map.baidu.com/lbsapi/getpoint/index.html')">百度地图坐标拾取</li>
+        <li @click="jump('icones.js.org/')">icons</li>
+        <li @click="jump('www.iconfont.cn/home/index')">iconfont</li>
       </ol>
     </div>
     <div class="li-box box3">
       <p>收藏链接</p>
       <ol>
-        <li @click="jump('https://www.ruanyifeng.com/blog/')">阮一峰Blog</li>
-        <li @click="jump('https://es6.ruanyifeng.com/')">阮一峰Es6</li>
-        <li
-          @click="
-            jump('https://www.ruanyifeng.com/blog/2015/07/flex-grammar.html')
-          "
-        >
-          阮一峰Flex布局
-        </li>
-        <li @click="jump('https://www.programmercarl.com/')">代码随想录</li>
-        <li @click="jump('https://vue3js.cn/interview/')">Web前端面试</li>
-        <li @click="jump('https://fe.ecool.fun/')">前端刷题面试</li>
-        <li @click="jump('https://wangdoc.com/')">互联网开发文档</li>
-        <li @click="jump('https://markdown.com.cn/basic-syntax/')">
-          Markdown基本语法
-        </li>
-        <li
-          @click="
-            jump(
-              'https://www.liaoxuefeng.com/wiki/896043488029600/900005860592480'
-            )
-          "
-        >
-          廖雪峰分支管理策略
-        </li>
-        <li @click="jump('https://sspai.com/')">少数派</li>
-        <li @click="jump('https://color.oulu.me/')">渐变颜色</li>
-        <li
-          @click="
-            jump(
-              'https://www.webhek.com/post/css3-animation-sniplet-collection/#/'
-            )
-          "
-        >
-          css动画
-        </li>
-        <li @click="jump('https://unsplash.com/explore')">free-wallPapers</li>
-        <li
-          @click="
-            jump('https://blog.csdn.net/CBGCampus/article/details/124997628')
-          "
-        >
-          Odoo OWL
-        </li>
+        <li @click="jump('www.ruanyifeng.com/blog/')">阮一峰Blog</li>
+        <li @click="jump('es6.ruanyifeng.com/')">阮一峰Es6</li>
+        <li @click="jump('www.ruanyifeng.com/blog/2015/07/flex-grammar.html')">阮一峰Flex布局</li>
+        <li @click="jump('www.programmercarl.com/')">代码随想录</li>
+        <li @click="jump('vue3js.cn/interview/')">Web前端面试</li>
+        <li @click="jump('fe.ecool.fun/')">前端刷题面试</li>
+        <li @click="jump('wangdoc.com/')">互联网开发文档</li>
+        <li @click="jump('markdown.com.cn/basic-syntax/')">Markdown基本语法</li>
+        <li @click="jump('www.liaoxuefeng.com/wiki/896043488029600/900005860592480')">廖雪峰分支管理策略</li>
+        <li @click="jump('sspai.com/')">少数派</li>
+        <li @click="jump('color.oulu.me/')">渐变颜色</li>
+        <li @click="jump('www.webhek.com/post/css3-animation-sniplet-collection/#/')">css动画</li>
+        <li @click="jump('unsplash.com/explore')">free-wallPapers</li>
+        <li @click="jump('nlrx-wjc.github.io/Learn-Vue-Source-Code/start/')">Vue源码</li>
+        <li @click="jump('github.com/Jackpopc/CS-Books-Store')">GitHub电子书</li>
+        <li @click="jump('blog.csdn.net/CBGCampus/article/details/124997628')">Odoo OWL</li>
+      </ol>
+    </div>
+    <div class="li-box box3">
+      <p>收藏链接<span style="font-size:8px">（公司内无法访问）</span></p>
+      <ol>
+        <li @click="jump('juejin.cn/post/7289339080838627382')">前端好用网站</li>
       </ol>
     </div>
   </div>
@@ -79,9 +50,14 @@
 export default {
   methods: {
     jump(url) {
-      window.open(url, "_blank");
+      window.open(`https://${url}`, "_blank");
     },
     open(url) {
+      /**
+       * $router.resolve,用于根据给定的位置解析出一个完整的路由对象。
+       * 该方法接受一个位置参数和一个当前路由对象参数（可选）。位置参数可以是一个字符串路径或者一个包含路径信息的对象。
+       * 如果提供了当前路由对象参数，则解析将基于该路由对象的上下文。
+       */
       let routeUrl = this.$router.resolve({
         path: url,
       });
@@ -98,7 +74,7 @@ export default {
 a,
 li {
   text-decoration: none;
-  padding: 2px 0;
+  padding: 5px 0;
 }
 li:hover {
   color: #fff;

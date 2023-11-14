@@ -17,20 +17,23 @@
       <div class="right-content">
         <div class="right-top">right-top</div>
         <div class="right-filter com-v2-form">
-          <el-form inline class="com-v2-form" :model="formInline">
+          <el-form inline class="com-v2-form" :model="filter" ref="filterForm">
             <div class="com-v2-control">
               <el-form-item label="审批人">
-                <el-input v-model="formInline.user" placeholder="审批人"></el-input>
+                <el-input v-model="filter.user" placeholder="审批人"></el-input>
               </el-form-item>
               <el-form-item label="活动区域">
-                <el-select v-model="formInline.region" placeholder="活动区域">
+                <el-select v-model="filter.region" placeholder="活动区域">
                   <el-option label="区域一" value="shanghai"></el-option>
                   <el-option label="区域二" value="beijing"></el-option>
                 </el-select>
               </el-form-item>
               <el-form-item>
                 <el-button type="primary" @click="onSubmit">查询</el-button>
-                <el-button type="primary" @click="onSubmit">重置</el-button>
+                <el-button type="primary" @click="resetFilter('filterForm')">重置</el-button>
+              </el-form-item>
+              <el-form-item style="margin-left:auto">
+                <el-button type="primary" @click="exportTable">数据导出</el-button>
               </el-form-item>
             </div>
           </el-form>
