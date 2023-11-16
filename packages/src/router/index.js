@@ -25,6 +25,11 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "upload" */ "@/components/table"),
   },
+  {
+    path: "/button",
+    component: () =>
+      import(/* webpackChunkName: "upload" */ "@/components/more-kind-button"),
+  },
 ];
 
 const router = new VueRouter({

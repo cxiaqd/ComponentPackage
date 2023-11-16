@@ -5,6 +5,7 @@
       <ol>
         <li @click="open('/upload')">上传</li>
         <li @click="open('/table')">表格</li>
+        <li @click="open('/button')">按钮</li>
       </ol>
     </div>
     <div class="li-box box2">
@@ -35,6 +36,8 @@
         <li @click="jump('unsplash.com/explore')">free-wallPapers</li>
         <li @click="jump('nlrx-wjc.github.io/Learn-Vue-Source-Code/start/')">Vue源码</li>
         <li @click="jump('github.com/Jackpopc/CS-Books-Store')">GitHub电子书</li>
+        <li @click="jump('www.cnblogs.com/coco1s/')">CSS奇技淫巧</li>
+        <li @click="jump('css-tricks.com/css-ing-candy-ghost-buttons/')">css-ghost-buttons</li>
         <li @click="jump('blog.csdn.net/CBGCampus/article/details/124997628')">Odoo OWL</li>
       </ol>
     </div>
