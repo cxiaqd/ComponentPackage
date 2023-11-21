@@ -1,5 +1,12 @@
 <template>
   <div class="center-horizontally">
+    <div class="li-box box0">
+      <p>知识点</p>
+      <ol>
+        <li @click="open('/interview')">suggestion</li>
+        <li @click="open('/test')">测试</li>
+      </ol>
+    </div>
     <div class="li-box box1">
       <p>组件</p>
       <ol>
@@ -41,7 +48,7 @@
         <li @click="jump('blog.csdn.net/CBGCampus/article/details/124997628')">Odoo OWL</li>
       </ol>
     </div>
-    <div class="li-box box3">
+    <div class="li-box box4">
       <p>收藏链接<span style="font-size:8px">（公司内无法访问）</span></p>
       <ol>
         <li @click="jump('juejin.cn/post/7289339080838627382')">前端好用网站</li>
@@ -96,6 +103,9 @@ p {
   cursor: pointer;
   color: #551a8b;
 }
+.box0 {
+  background: rgb(0,191,255);
+}
 .box1 {
   background: rgb(77, 194, 160);
 }
@@ -104,5 +114,8 @@ p {
 }
 .box3 {
   background: rgb(255, 184, 0, 0.7);
+}
+.box4 {
+  background: rgb(220,220,220);
 }
 </style>
