@@ -40,6 +40,16 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "upload" */ "@/components/test"),
   },
+  {
+    path: "/graillayout",
+    component: () =>
+      import(/* webpackChunkName: "upload" */ "@/components/Layout/grail-layout"),
+  },
+  {
+    path: "/Inputlayout",
+    component: () =>
+      import(/* webpackChunkName: "upload" */ "@/components/Layout/input-layout"),
+  },
 ];
 
 const router = new VueRouter({

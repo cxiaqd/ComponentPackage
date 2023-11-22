@@ -5,6 +5,8 @@
       <ol>
         <li @click="open('/interview')">suggestion</li>
         <li @click="open('/test')">测试</li>
+        <li @click="open('/graillayout')">圣杯布局</li>
+        <li @click="open('/Inputlayout')">输入框的布局</li>
       </ol>
     </div>
     <div class="li-box box1">
@@ -28,13 +30,13 @@
     <div class="li-box box3">
       <p>收藏链接</p>
       <ol>
+        <li @click="jump('wangdoc.com/')">网道-互联网开发文档</li>
         <li @click="jump('www.ruanyifeng.com/blog/')">阮一峰Blog</li>
         <li @click="jump('es6.ruanyifeng.com/')">阮一峰Es6</li>
         <li @click="jump('www.ruanyifeng.com/blog/2015/07/flex-grammar.html')">阮一峰Flex布局</li>
         <li @click="jump('www.programmercarl.com/')">代码随想录</li>
         <li @click="jump('vue3js.cn/interview/')">Web前端面试</li>
         <li @click="jump('fe.ecool.fun/')">前端刷题面试</li>
-        <li @click="jump('wangdoc.com/')">互联网开发文档</li>
         <li @click="jump('markdown.com.cn/basic-syntax/')">Markdown基本语法</li>
         <li @click="jump('www.liaoxuefeng.com/wiki/896043488029600/900005860592480')">廖雪峰分支管理策略</li>
         <li @click="jump('sspai.com/')">少数派</li>

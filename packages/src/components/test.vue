@@ -1,10 +1,11 @@
 <template>
   <div class="test">
-    <el-button type="primary" @click="getResult">防抖测试</el-button>
+    <el-button type="primary" @click="getDebounceResult">防抖测试</el-button>
+    <el-button type="primary" @click="getThrottleResult">节流测试</el-button>
   </div>
 </template>
 <script>
-import { debounce } from "./mixin-test";
+import { debounce,throttle } from "./JS/debounce-throttle";
 
 export default {
   name: "vue",
@@ -17,11 +18,11 @@ export default {
   created() {},
   mounted() {},
   methods: {
-    testdebounce() {
-      console.log("testdebounce");
-    },
-    getResult: debounce(() => {
-      console.log("123");
+    getDebounceResult: debounce(() => {
+      console.log("debounce：多次触发，只执行最后一次");
+    }, 1000),
+    getThrottleResult: throttle(() => {
+      console.log("throttle：多次触发，固定时间间隔执行一次");
     }, 1000),
   },
   beforeCreate() {},
