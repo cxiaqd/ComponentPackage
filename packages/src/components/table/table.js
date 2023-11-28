@@ -1,3 +1,4 @@
+
 export default {
   data() {
     return {
@@ -6,10 +7,10 @@ export default {
         pageNo: 1,
         pageSize: 20,
       },
-      formInline: {
-        user: '',
-        region: ''
-      }
+      filter: {
+        user: "",
+        region: "",
+      },
     };
   },
   methods: {
@@ -23,7 +24,42 @@ export default {
       console.log(data);
     },
     onSubmit() {
-        console.log('submit!');
-      }
+      console.log("submit!");
+    },
+    resetFilter(formName) {
+      this.$refs[formName].resetFields();
+    },
+    exportTable() {
+      let hide = http.loading();
+
+      axios({
+        method: "get",
+        url: url,
+        params: {},
+        responseType: "arraybuffer",
+      })
+        .then((response) => {
+          if (response.data) {
+            let blob = new Blob([response.data], {
+              type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            });
+
+            let url = window.URL.createObjectURL(blob);
+
+            let ele = document.createElement("a");
+            ele.style.display = "none";
+
+            ele.href = url;
+            ele.download = "文件名称***";
+
+            document.querySelectorAll("body")[0].appendChild(ele);
+            ele.click();
+
+            ele.remove();
+          }
+        })
+        .catch((e) => http.showError(e))
+        .then(hide);
+    },
   },
 };

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import loading from 'hrc-loading';
 
-import storage from './storage';
+// import storage from './storage';
 import _Error, { showError } from '@/lib/error';
 
 var config = require('__dirname/config')
@@ -104,7 +104,7 @@ http.ajaxSubmit = (form, options) => new Promise((resolve, reject) => {
 		)
 	})
 
-http.storage = storage;
+// http.storage = storage;
 http.loading = loading;
 http.showError = showError;
 
