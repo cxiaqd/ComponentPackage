@@ -9,6 +9,7 @@
           <li @click="open('/interview')">suggestion</li>
           <li @click="open('/test')">测试</li>
           <li @click="open('/graillayout')">圣杯布局</li>
+          <li @click="open('/MainLayout')">主题布局</li>
           <li @click="open('/Inputlayout')">输入框的布局</li>
         </ol>
       </div>

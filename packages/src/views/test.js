@@ -15,33 +15,23 @@ function exponential(n) {
 }
 // exponential(5)
 
-// 判断两个数组内容是否相等
-function areArraysContentEqual3(arr1 = [], arr2 = []) {
+
+
+let result = areArraysContentEqual3(array1,array2)
+// console.log(result);
+
+const arr1 =  ["apple", "banana", 1]
+const arr2 =  ["apple", 1, "banana"]
+
+function fn(arr1, arr2) {
+  // Arrary.some: 有一项不满足 返回false
+  // Arrary.indexOf: 查到返回下标，查不到返回 -1
   if (arr1.length !== arr2.length) {
     return false;
   }
-
-  const countMap = new Map();
-
-  // 计数第一个数组的元素
-  for (const item of arr1) {
-    countMap.set(item, (countMap.get(item) || 0) + 1);
-  }
-
-  // 比较第二个数组与计数
-  for (const item of arr2) {
-    const val = countMap.get(item);
-    if (val === undefined || val <= 0) {
-      return false;
-    }
-    countMap.set(item, val - 1);
-  }
-
-  return true;
+  return !arr1.some(item => arr2.indexOf(item)===-1)
 }
 
-const array1 = ["apple", "banana", "cherry", "banana", 1, '1', '11', 11];
-const array2 = ["banana", "apple", "banana", "cherr3y", '1', 1, '11', 11];
+let result2 = fn(arr1,arr2) // true
+console.log(result2);
 
-let result = areArraysContentEqual3(array1,array2)
-console.log(result);
