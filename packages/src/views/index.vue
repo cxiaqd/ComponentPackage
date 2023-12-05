@@ -5,7 +5,11 @@
       <div class="li-box box0">
         <p>知识点</p>
         <ol>
-          <li @click="jump('www.ruanyifeng.com/blog/2015/09/career-advice.html')">七个最重要的职业建议</li>
+          <li
+            @click="jump('www.ruanyifeng.com/blog/2015/09/career-advice.html')"
+          >
+            七个最重要的职业建议
+          </li>
           <li @click="open('/interview')">suggestion</li>
           <li @click="open('/test')">测试</li>
           <li @click="open('/graillayout')">圣杯布局</li>
@@ -81,6 +85,12 @@
             @click="jump('blog.csdn.net/CBGCampus/article/details/124997628')"
           >
             Odoo OWL
+          </li>
+          <li @click="jump('yuque.com/chencheng/mdh-weekly/es1lm1nc2c6evft8')">
+            MDH前端周刊
+          </li>
+          <li @click="jump('juejin.cn/post/7304932252827287604')">
+            前端资源合集
           </li>
         </ol>
       </div>
