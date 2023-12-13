@@ -50,6 +50,11 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "upload" */ "@/components/Layout/input-layout"),
   },
+  {
+    path: "/MainLayout",
+    component: () =>
+      import(/* webpackChunkName: "upload" */ "@/components/Layout/主题布局"),
+  },
 ];
 
 const router = new VueRouter({

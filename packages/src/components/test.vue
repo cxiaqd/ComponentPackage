@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-import { debounce,throttle } from "./JS/debounce-throttle";
+import { debounce,throttle } from "./JS/节流&防抖";
 
 export default {
   name: "vue",
