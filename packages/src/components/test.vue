@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-import { debounce,throttle } from "./JS/节流&防抖";
+import { debounce,throttle,throttle2,throttle3,throttle4 } from "./JS/节流&防抖";
 
 export default {
   name: "vue",
@@ -21,7 +21,7 @@ export default {
     getDebounceResult: debounce(() => {
       console.log("debounce：多次触发，只执行最后一次");
     }, 1000),
-    getThrottleResult: throttle(() => {
+    getThrottleResult: throttle4(() => {
       console.log("throttle：多次触发，固定时间间隔执行一次");
     }, 1000),
   },

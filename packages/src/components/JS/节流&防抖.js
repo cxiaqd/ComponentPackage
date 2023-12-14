@@ -64,14 +64,76 @@ export function debounce(fn, wait, immediate = false) {
   应用场景：
 
  */
-export function throttle(fn, delay = 500) {
-  let last = 0;
-  return function(...args) {
-    let now = new Date().getTime();
-    if (now - last > delay) {
-      last = now;
-      fn.apply(this, args);
+export function throttle(fun, interval) {
+  let lastTimestap = 0; //初始时间
+  return function (...args) {
+    let currentTimestap = new Date(); //当前时间
+    if (currentTimestap - lastTimestap > interval) {
+      fun.apply(this, args);
+      lastTimestap = currentTimestap;
     }
   };
 }
 
+// 定时器版本
+export function throttle2(fn, interval) {
+  let lock = false;
+  return function (...args) {
+    if (!lock) {
+      lock = true;
+      setTimeout(() => {
+        lock = false;
+        fn.apply(this, args);
+      }, interval);
+    }
+  };
+}
+// 配置延迟执行
+export function throttle3(fn, interval, options = { trailing: true }) {
+  let lastTimestap = 0,
+    timer = null;
+  return function (...args) {
+    let currentTimestap = new Date();
+    // 清空上一轮的计时器
+    clearTimeout(timer);
+    if (currentTimestap - lastTimestap >= interval) {
+      fn.apply(this, args);
+      lastTimestap = currentTimestap;
+    } else if (options.trailing) {
+      // 使用计时器把最近的回调延时触发
+      const remaining = interval - (currentTimestap - lastTimestap);
+      timer = setTimeout(() => {
+        fn.apply(this, args);
+        lastTimestap = new Date();
+      }, remaining);
+    }
+  };
+}
+
+// 添加配置立即执行
+export function throttle4(
+  fn,
+  interval,
+  options = { leading: false, trailing: true }
+) {
+  let lastTimestap = 0,
+    timer = null;
+  return function (...args) {
+    let currentTimestap = new Date();
+    clearTimeout(timer);
+    // 让lastTimestap初始值变为currentTimestap进入定时器逻辑
+    if (!options.leading && !lastTimestap) lastTimestap = currentTimestap;
+    // options.leading处理leading和trailing同时为false的情况
+    if (options.leading && currentTimestap - lastTimestap >= interval) {
+      fn.apply(this, args);
+      lastTimestap = currentTimestap;
+    } else if (options.trailing) {
+      const remaining = interval - (currentTimestap - lastTimestap);
+      timer = setTimeout(() => {
+        fn.apply(this, args);
+        // 定时器结束后重置lastTimestap为0
+        lastTimestap = options.leading ? new Date() : 0;
+      }, remaining);
+    }
+  };
+}
