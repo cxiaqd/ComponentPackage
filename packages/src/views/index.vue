@@ -89,9 +89,10 @@
           <li @click="jump('yuque.com/chencheng/mdh-weekly/es1lm1nc2c6evft8')">
             MDH前端周刊
           </li>
-          <li @click="jump('juejin.cn/post/7304932252827287604')">
-            前端资源合集
-          </li>
+          <li @click="jump('juejin.cn/post/7304932252827287604')">前端资源合集</li>
+          <li @click="jump('juejin.cn/post/7017074528752762911')">Grid布局</li>
+          <li @click="jump('juejin.cn/post/6844903936378273799')">函数式编程</li>
+          <li @click="jump('ramda.cn/')">Ramda-JS函数式编程库</li>
         </ol>
       </div>
       <div class="li-box box4">
