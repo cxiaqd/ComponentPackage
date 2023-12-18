@@ -93,6 +93,10 @@
           <li @click="jump('juejin.cn/post/7017074528752762911')">Grid布局</li>
           <li @click="jump('juejin.cn/post/6844903936378273799')">函数式编程</li>
           <li @click="jump('ramda.cn/')">Ramda-JS函数式编程库</li>
+          <li @click="jump('ajietextd.github.io/')">在线白板画图</li>
+          <li @click="jump('emojixd.com/')">emoji库</li>
+          <li @click="jump('carbon.now.sh/')">代码生成图片</li>
+          <li @click="jump('juejin.cn/post/7311907901046882354')">好用网站集合</li>
         </ol>
       </div>
       <div class="li-box box4">
