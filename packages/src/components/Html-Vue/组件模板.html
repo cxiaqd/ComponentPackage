@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Html-V</title>
+    <link rel="shortcut icon" href="../../assets/logo.png">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="htmlV">
+        <button @click="jumNav">点击跳转</button>
+        <child></child>
+    </div>
+</body>
+<script>
+    Vue.component('child', {
+        template: `
+        <div>
+            <p>组件模板</p>
+            <p>{{name}}</p>
+            <button @click="itemClick">组件中的按键</button>
+        </div>
+        `,
+        data: function () {
+            return {
+                name: "组件模板中的数据"
+            }
+        },
+        methods: {
+            itemClick() {
+                console.log("组件模板中的方法");
+            }
+        },
+    })
+    new Vue({
+        el: '#htmlV',
+        data: function () {
+            return {}
+        },
+        methods: {
+            jumNav() {
+                console.log("123");
+            }
+        }
+    })
+</script>
+
+</html>

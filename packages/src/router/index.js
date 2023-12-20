@@ -18,42 +18,57 @@ const routes = [
   {
     path: "/download",
     component: () =>
-      import(/* webpackChunkName: "upload" */ "@/components/axios-download"),
+      import(/* webpackChunkName: "download" */ "@/components/axios-download"),
   },
   {
     path: "/table",
     component: () =>
-      import(/* webpackChunkName: "upload" */ "@/components/table"),
+      import(/* webpackChunkName: "table" */ "@/components/table"),
   },
   {
     path: "/button",
     component: () =>
-      import(/* webpackChunkName: "upload" */ "@/components/more-kind-button"),
+      import(/* webpackChunkName: "button" */ "@/components/more-kind-button"),
   },
   {
     path: "/interview",
     component: () =>
-      import(/* webpackChunkName: "upload" */ "@/components/interview-study"),
+      import(/* webpackChunkName: "interview" */ "@/components/interview-study"),
   },
   {
     path: "/test",
     component: () =>
-      import(/* webpackChunkName: "upload" */ "@/components/test"),
+      import(/* webpackChunkName: "test" */ "@/components/test"),
   },
   {
     path: "/graillayout",
     component: () =>
-      import(/* webpackChunkName: "upload" */ "@/components/Layout/grail-layout"),
+      import(/* webpackChunkName: "graillayout" */ "@/components/Layout/grail-layout"),
   },
   {
     path: "/Inputlayout",
     component: () =>
-      import(/* webpackChunkName: "upload" */ "@/components/Layout/input-layout"),
+      import(/* webpackChunkName: "Inputlayout" */ "@/components/Layout/input-layout"),
   },
   {
     path: "/MainLayout",
     component: () =>
-      import(/* webpackChunkName: "upload" */ "@/components/Layout/主题布局"),
+      import(/* webpackChunkName: "MainLayout" */ "@/components/Layout/主题布局"),
+  },
+  {
+    path: "/IsComponent",
+    component: () =>
+      import(/* webpackChunkName: "IsComponent" */ "@/components/IsComponent"),
+  },
+  {
+    path: "/IsSlot",
+    component: () =>
+      import(/* webpackChunkName: "IsSlot" */ "@/components/IsSlot"),
+  },
+  {
+    path: "/Attrs",
+    component: () =>
+      import(/* webpackChunkName: "IsSlot" */ "@/components/Attrs"),
   },
 ];
 

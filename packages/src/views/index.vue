@@ -5,16 +5,15 @@
       <div class="li-box box0">
         <p>知识点</p>
         <ol>
-          <li
-            @click="jump('www.ruanyifeng.com/blog/2015/09/career-advice.html')"
-          >
-            七个最重要的职业建议
-          </li>
+          <li @click="jump('www.ruanyifeng.com/blog/2015/09/career-advice.html')">七个最重要的职业建议</li>
           <li @click="open('/interview')">suggestion</li>
           <li @click="open('/test')">测试</li>
           <li @click="open('/graillayout')">圣杯布局</li>
           <li @click="open('/MainLayout')">主题布局</li>
           <li @click="open('/Inputlayout')">输入框的布局</li>
+          <li @click="open('/IsComponent')">动态组件</li>
+          <li @click="open('/IsSlot')">插槽组件</li>
+          <li @click="open('/Attrs')">attrs-属性透传</li>
         </ol>
       </div>
       <div class="li-box box1">
@@ -30,9 +29,7 @@
         <ol>
           <li @click="jump('tools.fun/index.html')">ToolsFun</li>
           <li @click="jump('www.qianbo.com.cn/Tool/Rgba/')">RGB查询转换</li>
-          <li @click="jump('api.map.baidu.com/lbsapi/getpoint/index.html')">
-            百度地图坐标拾取
-          </li>
+          <li @click="jump('api.map.baidu.com/lbsapi/getpoint/index.html')">百度地图坐标拾取</li>
           <li @click="jump('icones.js.org/')">icons</li>
           <li @click="jump('www.iconfont.cn/home/index')">iconfont</li>
         </ol>
@@ -40,55 +37,26 @@
       <div class="li-box box3">
         <p>收藏链接</p>
         <ol>
+          <li @click="jump('juejin.cn/post/6865451649817640968')">***learn-Attrs***</li>
           <li @click="jump('wangdoc.com/')">网道-互联网开发文档</li>
           <li @click="jump('www.ruanyifeng.com/blog/')">阮一峰Blog</li>
           <li @click="jump('es6.ruanyifeng.com/')">阮一峰Es6</li>
-          <li
-            @click="jump('www.ruanyifeng.com/blog/2015/07/flex-grammar.html')"
-          >
-            阮一峰Flex布局
-          </li>
+          <li @click="jump('www.ruanyifeng.com/blog/2015/07/flex-grammar.html')">阮一峰Flex布局</li>
           <li @click="jump('www.programmercarl.com/')">代码随想录</li>
           <li @click="jump('vue3js.cn/interview/')">Web前端面试</li>
           <li @click="jump('fe.ecool.fun/')">前端刷题面试</li>
-          <li @click="jump('markdown.com.cn/basic-syntax/')">
-            Markdown基本语法
-          </li>
-          <li
-            @click="
-              jump('www.liaoxuefeng.com/wiki/896043488029600/900005860592480')
-            "
-          >
-            廖雪峰分支管理策略
-          </li>
+          <li @click="jump('markdown.com.cn/basic-syntax/')">Markdown基本语法</li>
+          <li @click="jump('www.liaoxuefeng.com/wiki/896043488029600')">廖雪峰分支管理策略</li>
           <li @click="jump('sspai.com/')">少数派</li>
           <li @click="jump('color.oulu.me/')">渐变颜色</li>
-          <li
-            @click="
-              jump('www.webhek.com/post/css3-animation-sniplet-collection/#/')
-            "
-          >
-            css动画
-          </li>
+          <li @click="jump('www.webhek.com/post/css3-animation-sniplet-collection/#/')">css动画</li>
           <li @click="jump('unsplash.com/explore')">free-wallPapers</li>
-          <li @click="jump('nlrx-wjc.github.io/Learn-Vue-Source-Code/start/')">
-            Vue源码
-          </li>
-          <li @click="jump('github.com/Jackpopc/CS-Books-Store')">
-            GitHub电子书
-          </li>
+          <li @click="jump('nlrx-wjc.github.io/Learn-Vue-Source-Code/start/')">Vue源码</li>
+          <li @click="jump('github.com/Jackpopc/CS-Books-Store')">GitHub电子书</li>
           <li @click="jump('www.cnblogs.com/coco1s/')">CSS奇技淫巧</li>
-          <li @click="jump('css-tricks.com/css-ing-candy-ghost-buttons/')">
-            css-ghost-buttons
-          </li>
-          <li
-            @click="jump('blog.csdn.net/CBGCampus/article/details/124997628')"
-          >
-            Odoo OWL
-          </li>
-          <li @click="jump('yuque.com/chencheng/mdh-weekly/es1lm1nc2c6evft8')">
-            MDH前端周刊
-          </li>
+          <li @click="jump('css-tricks.com/css-ing-candy-ghost-buttons/')">css-ghost-buttons</li>
+          <li @click="jump('blog.csdn.net/CBGCampus/article/details/124997628')">Odoo OWL</li>
+          <li @click="jump('yuque.com/chencheng/mdh-weekly/es1lm1nc2c6evft8')">MDH前端周刊</li>
           <li @click="jump('juejin.cn/post/7304932252827287604')">前端资源合集</li>
           <li @click="jump('juejin.cn/post/7017074528752762911')">Grid布局</li>
           <li @click="jump('juejin.cn/post/6844903936378273799')">函数式编程</li>
@@ -97,6 +65,8 @@
           <li @click="jump('emojixd.com/')">emoji库</li>
           <li @click="jump('carbon.now.sh/')">代码生成图片</li>
           <li @click="jump('juejin.cn/post/7311907901046882354')">好用网站集合</li>
+          <li @click="jump('segmentfault.com/a/1190000015597029')">跨域问题</li>
+          <li @click="jump('segmentfault.com/a/1190000040941132')">git分支合并</li>
         </ol>
       </div>
       <div class="li-box box4">

@@ -62,4 +62,41 @@ var removeDuplicates = function(nums) {
   return nums;
 };
 const dupArr = [0,1,1,2,2,2,3,4,4,5,5,6,8,9,9]
-removeDuplicates(dupArr)
+// removeDuplicates(dupArr)
+
+
+const result3 = [[2, 4], [3, 6], [4, 8]].flat()
+const result4 = [[2,5],[3],[4]].flatMap((item) => [
+  item,item * 2
+])
+// console.log(result3);
+// console.log(result4);
+// console.log(dupArr.at(-3));
+let [a,b,c] = [1,2,dupArr]
+console.log(c);
+
+
+let aObj = { foo: 'aaa', bar: 'bbb' };
+// let { foo: baz } = aObj;
+let { foo: baz } = { foo: 'aaa', bar: 'bbb' };
+console.log(baz);
+let obj = { first: 'hello', last: 'world' };
+let { first: f, last: l } = obj;
+console.log(f);
+
+let redColor = '#c0edc6'
+
+const dateTest = new Date(...[2015, 2, 18]);
+// console.log(dateTest);
+
+let obja = {'x':1,'y':2,'z':3}
+let x=10, y=5;
+let objb = {...obja,x,y}
+// console.log(objb);
+
+let equalityObject = Object.is(NaN,NaN)
+console.log(equalityObject);
+
+const obj2 = { 0: 'a', 2: 'b', 7: 'c' };
+const logObj2 = Object.values(obj2)
+console.log(logObj2);

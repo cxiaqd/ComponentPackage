@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Html-V</title>
+    <link rel="shortcut icon" href="../../assets/logo.png">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <style>
+        #htmlV{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="htmlV">
+        <div>
+            <textarea v-model="basicText" rows="3"></textarea>
+            <button class="h-icon-copy hand font-20" @click="copy()">复制</button>
+        </div>
+        <div>
+            <input ref="copyInput" style="color: #132132;" value="复制input中内容"></input>
+            <button type="button" @click="copyInput()">复制</button>
+        </div>
+        <div>
+            <textarea ref="copyText" style="color: #132132;"></textarea>
+            <button type="button" @click="copyText()">复制</button>
+        </div>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#htmlV',
+        data: function () {
+            return {
+                basicText: '动态添加html元素'
+            }
+        },
+        methods: {
+            copyText() {
+                this.$refs.copyText.select(); // 选择对象
+                document.execCommand("Copy"); // 执行浏览器复制命令
+            },
+            copyInput() {
+                this.$refs.copyInput.select();
+                document.execCommand("Copy");
+            },
+            copy() {
+                let textarea = document.createElement('textarea')
+                document.body.appendChild(textarea)
+                textarea.value = this.basicText
+                textarea.select()
+                document.execCommand('copy')
+                document.body.removeChild(textarea)
+            },
+        }
+    })
+</script>
+
+</html>
