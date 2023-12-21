@@ -1,5 +1,5 @@
 <template>
-  <div class="test">
+  <div class="test flex-center">
     <el-button type="primary" @click="getDebounceResult">防抖测试</el-button>
     <el-button type="primary" @click="getThrottleResult">节流测试</el-button>
   </div>
@@ -37,8 +37,5 @@ export default {
 <style scoped>
 .test {
   padding: 16px;
-  display: flex;
-  align-items: center; /*垂直方向居中*/
-  justify-content: center; /*水平方向居中*/
 }
 </style>

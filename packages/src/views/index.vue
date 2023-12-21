@@ -5,12 +5,11 @@
       <div class="li-box box0">
         <p>知识点</p>
         <ol>
+          <li @click="open('/test')">测试</li>
           <li @click="jump('www.ruanyifeng.com/blog/2015/09/career-advice.html')">七个最重要的职业建议</li>
           <li @click="open('/interview')">suggestion</li>
-          <li @click="open('/test')">测试</li>
           <li @click="open('/graillayout')">圣杯布局</li>
           <li @click="open('/MainLayout')">主题布局</li>
-          <li @click="open('/Inputlayout')">输入框的布局</li>
           <li @click="open('/IsComponent')">动态组件</li>
           <li @click="open('/IsSlot')">插槽组件</li>
           <li @click="open('/Attrs')">attrs-属性透传</li>
@@ -19,7 +18,7 @@
       <div class="li-box box1">
         <p>组件</p>
         <ol>
-          <li @click="open('/upload')">上传</li>
+          <li @click="open('/function-components')">复制&上传&导出</li>
           <li @click="open('/table')">表格</li>
           <li @click="open('/button')">按钮</li>
         </ol>

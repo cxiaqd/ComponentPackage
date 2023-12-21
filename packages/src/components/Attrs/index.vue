@@ -1,8 +1,6 @@
 <template>
-  <div id="only">
-    <div class="father">
-      <attrs-father :v1="value1" :v2="value2" :v3="value3"></attrs-father>
-    </div>
+  <div class="flex-center">
+    <attrs-father :v1="value1" :v2="value2" :v3="value3"></attrs-father>
   </div>
 </template>
 <script>
@@ -26,9 +24,3 @@ export default {
   },
 };
 </script>
-<style>
-.father {
-  margin-left: 50%;
-  transform: translateX(-50%);
-}
-</style>
