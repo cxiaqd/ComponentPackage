@@ -11,14 +11,9 @@ const routes = [
     component: Index,
   },
   {
-    path: "/upload",
+    path: "/function-components",
     component: () =>
-      import(/* webpackChunkName: "upload" */ "@/components/el-form-upload"),
-  },
-  {
-    path: "/download",
-    component: () =>
-      import(/* webpackChunkName: "download" */ "@/components/axios-download"),
+      import(/* webpackChunkName: "upload" */ "@/components/FunctionComponents/multiple-functions"),
   },
   {
     path: "/table",
@@ -28,7 +23,7 @@ const routes = [
   {
     path: "/button",
     component: () =>
-      import(/* webpackChunkName: "button" */ "@/components/more-kind-button"),
+      import(/* webpackChunkName: "button" */ "@/components/FunctionComponents/more-kind-button"),
   },
   {
     path: "/interview",
@@ -44,11 +39,6 @@ const routes = [
     path: "/graillayout",
     component: () =>
       import(/* webpackChunkName: "graillayout" */ "@/components/Layout/grail-layout"),
-  },
-  {
-    path: "/Inputlayout",
-    component: () =>
-      import(/* webpackChunkName: "Inputlayout" */ "@/components/Layout/input-layout"),
   },
   {
     path: "/MainLayout",

@@ -5,12 +5,11 @@
       <div class="li-box box0">
         <p>知识点</p>
         <ol>
+          <li @click="open('/test')">测试</li>
           <li @click="jump('www.ruanyifeng.com/blog/2015/09/career-advice.html')">七个最重要的职业建议</li>
           <li @click="open('/interview')">suggestion</li>
-          <li @click="open('/test')">测试</li>
           <li @click="open('/graillayout')">圣杯布局</li>
           <li @click="open('/MainLayout')">主题布局</li>
-          <li @click="open('/Inputlayout')">输入框的布局</li>
           <li @click="open('/IsComponent')">动态组件</li>
           <li @click="open('/IsSlot')">插槽组件</li>
           <li @click="open('/Attrs')">attrs-属性透传</li>
@@ -19,7 +18,7 @@
       <div class="li-box box1">
         <p>组件</p>
         <ol>
-          <li @click="open('/upload')">上传</li>
+          <li @click="open('/function-components')">复制&上传&导出</li>
           <li @click="open('/table')">表格</li>
           <li @click="open('/button')">按钮</li>
         </ol>
@@ -61,12 +60,14 @@
           <li @click="jump('juejin.cn/post/7017074528752762911')">Grid布局</li>
           <li @click="jump('juejin.cn/post/6844903936378273799')">函数式编程</li>
           <li @click="jump('ramda.cn/')">Ramda-JS函数式编程库</li>
+          <li @click="jump('lodashjs.com/')">lodash-JS函数库</li>
           <li @click="jump('ajietextd.github.io/')">在线白板画图</li>
           <li @click="jump('emojixd.com/')">emoji库</li>
           <li @click="jump('carbon.now.sh/')">代码生成图片</li>
           <li @click="jump('juejin.cn/post/7311907901046882354')">好用网站集合</li>
           <li @click="jump('segmentfault.com/a/1190000015597029')">跨域问题</li>
           <li @click="jump('segmentfault.com/a/1190000040941132')">git分支合并</li>
+          <li @click="jump('https://juejin.cn/post/6844903683411410951')">前端工具汇总</li>
         </ol>
       </div>
       <div class="li-box box4">

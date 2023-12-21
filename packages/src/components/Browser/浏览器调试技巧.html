@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浏览器调试技巧</title>
+    <style>
+        #browser{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .text2em{
+            text-indent:2em
+        }
+        .text4em{
+            text-indent:4em
+        }
+    </style>
+</head>
+<body>
+    <div id="browser">
+        <ol>
+            <li>
+                <h1>一键重新发起请求</h1>
+                <p class="text2em">01、在控制台选中Network</p>
+                <p class="text2em">02、选择要重新发送的请求</p>
+                <p class="text2em">03、右键选择Replay XHR</p>
+            </li>
+            <li>
+                <h1>在控制台修改参数并发起请求</h1>
+                <p class="text2em">01、在控制台选中Network</p>
+                <p class="text2em">02、选择Copy->Copy as fetch</p>
+                <p class="text2em">03、控制台粘贴代码</p>
+                <p class="text2em">04、修改参数，按下回车键</p>
+            </li>
+            <li>
+                <h1>获取DOM</h1>
+                <h2 class="text2em">控制台获取Elements面板选中的元素</h2>
+                <p class="text4em">01、通过Elements选择要调试的元素</p>
+                <p class="text4em">02、控制台直接用$0访问</p>
+                <h2 class="text2em">获取hover时才显示的元素</h2>
+                <p class="text4em">01、选中父元素，将Styles中的 :hover 状态勾选上</p>
+                <p class="text4em">02、通过Elements选择要调试的DOM元素</p>
+                <p class="text4em">03、控制台直接用$0访问</p>
+                <h2 class="text2em">使用$和$$选择器获取元素</h2>
+            </li>
+            <li>
+                <h1>截图</h1>
+                <h2 class="text2em">滚动截屏（超出一屏的内容也截图下来）</h2>
+                <p class="text4em">01、F12打开控制台</p>
+                <p class="text4em">02、windows使用ctrl+shift+p，mac使用cmd+shift+p，打开Chrome浏览器指令选单</p>
+                <p class="text4em">03、输入 Capture full size screenshot 按下回车</p>
+                <h2 class="text2em">部分截屏</h2>
+                <p class="text4em">01、F12打开控制台</p>
+                <p class="text4em">02、windows使用ctrl+shift+p，mac使用cmd+shift+p，打开Chrome浏览器指令选单</p>
+                <p class="text4em">03、输入 Capture node screenshot 按下回车</p>
+            </li>
+        </ol>
+    </div>
+</body>
+</html>

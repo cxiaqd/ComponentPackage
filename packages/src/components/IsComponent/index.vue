@@ -1,5 +1,5 @@
 <template>
-  <div class="demo">
+  <div class="demo flex-center">
     <div class="header">
       <button
         v-for="(item, index) in tabs"
@@ -51,9 +51,6 @@ export default {
 </script>
   <style>
 .demo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
 }
 .tab-button {

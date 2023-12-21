@@ -99,4 +99,12 @@ console.log(equalityObject);
 
 const obj2 = { 0: 'a', 2: 'b', 7: 'c' };
 const logObj2 = Object.values(obj2)
-console.log(logObj2);
+// console.log(logObj2);
+
+const set = new Set([
+  ['foo', 1],
+  ['bar', 2]
+]);
+const m1 = new Map(set);
+console.log(set);
+console.log(m1);
