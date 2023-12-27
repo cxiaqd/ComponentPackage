@@ -70,6 +70,10 @@
           <li @click="jump('juejin.cn/post/6844903683411410951')">前端工具汇总</li>
           <li @click="jump('juejin.cn/post/6844903854882947080')">JS变量和类型</li>
           <li @click="jump('segmentfault.com/a/1190000020255831')">深度拷贝</li>
+          <li @click="jump('juejin.cn/post/7083104567402954765')">优秀前端GitHub开源项目推荐</li>
+          <li @click="jump('github.com/webpack-china/awesome-webpack-cn')">webpack相关文章工具</li>
+          <li @click="jump('hcysunyang.github.io/vue-design/zh/')">Vue Design</li>
+          <li @click="jump('juejin.cn/post/6942492146725290020')">Vue源码</li>
         </ol>
       </div>
       <div class="li-box box4">
