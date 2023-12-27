@@ -106,5 +106,45 @@ const set = new Set([
   ['bar', 2]
 ]);
 const m1 = new Map(set);
-console.log(set);
-console.log(m1);
+// console.log(set);
+// console.log(m1);
+
+function getJSON(url){
+  return url
+};
+const promises = [2, 3, 5, 7, 11, 13].map(function (id) {
+  return getJSON('/post/' + id + ".json");
+});
+// console.log(promises);
+
+var name1 = 'ConardLi';
+var name2 = name1;
+name2 = 'code秘密花园';
+// console.log(name2); // ConardLi;
+
+let obj1 = {};
+function changeValue(obj1){
+  obj1.name = 'ConardLi';
+  obj1 = {name:'code秘密花园'};
+}
+changeValue(obj1);
+// console.log(obj1);
+// console.log(obj1.name); // ConardLi
+
+const aValueof = {
+  value:[3,2,1],
+  valueOf: function () {return this.value.pop(); },
+} 
+// console.log(aValueof == 1 && aValueof == 2 && aValueof ==3);
+
+function detactDataType(data){
+  return Object.prototype.toString.call(data)
+}
+const arrayToString = [1,2,3]
+console.log(arrayToString.toString());
+console.log(Object.prototype.toString.call(arrayToString));
+console.log(detactDataType(arrayToString));
+
+
+
+

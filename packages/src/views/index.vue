@@ -67,15 +67,15 @@
           <li @click="jump('juejin.cn/post/7311907901046882354')">好用网站集合</li>
           <li @click="jump('segmentfault.com/a/1190000015597029')">跨域问题</li>
           <li @click="jump('segmentfault.com/a/1190000040941132')">git分支合并</li>
-          <li @click="jump('https://juejin.cn/post/6844903683411410951')">前端工具汇总</li>
+          <li @click="jump('juejin.cn/post/6844903683411410951')">前端工具汇总</li>
+          <li @click="jump('juejin.cn/post/6844903854882947080')">JS变量和类型</li>
+          <li @click="jump('segmentfault.com/a/1190000020255831')">深度拷贝</li>
         </ol>
       </div>
       <div class="li-box box4">
         <p>收藏链接<span style="font-size: 8px">（公司内无法访问）</span></p>
         <ol>
-          <li @click="jump('juejin.cn/post/7289339080838627382')">
-            前端好用网站
-          </li>
+          <li @click="jump('juejin.cn/post/7289339080838627382')">前端好用网站</li>
         </ol>
       </div>
     </div>
