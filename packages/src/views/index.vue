@@ -13,6 +13,7 @@
           <li @click="open('/IsComponent')">动态组件</li>
           <li @click="open('/IsSlot')">插槽组件</li>
           <li @click="open('/Attrs')">attrs-属性透传</li>
+          <li @click="open('/poetry')">诗词</li>
         </ol>
       </div>
       <div class="li-box box1">
