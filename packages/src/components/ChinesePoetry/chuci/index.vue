@@ -1,8 +1,11 @@
 <template>
     <div class="poetry read-back-color">
-      <div v-for="item in poetry" :key="item.title" style="width: 30%;">
+      <div v-for="(item,index) in poetry" :key="index" style="width: 30%;">
+        <div style="display: flex;align-items: baseline;">
           <h1>{{ item.title }}</h1>
-          <p v-for="(paragraph,index) in item.paragraphs" :key="index">{{ paragraph }}</p>
+          <h2>（{{ item.author || '--' }}）</h2>
+        </div>
+          <p v-for="(paragraph,index) in item.content" :key="index">{{ paragraph }}</p>
       </div>
     </div>
   </template>
