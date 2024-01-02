@@ -14,8 +14,6 @@
           <li @click="open('/IsSlot')">插槽组件</li>
           <li @click="open('/Attrs')">attrs-属性透传</li>
           <li @click="open('/poetry')">诗集</li>
-          <li @click="open('/poetry-caocao')">曹操诗集</li>
-          <li @click="open('/poetry-chuci')">楚辞</li>
         </ol>
       </div>
       <div class="li-box box1">

@@ -65,16 +65,6 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "IsSlot" */ "@/components/ChinesePoetry"),
   },
-  {
-    path: "/poetry-caocao",
-    component: () =>
-      import(/* webpackChunkName: "IsSlot" */ "@/components/ChinesePoetry/caocao"),
-  },
-  {
-    path: "/poetry-chuci",
-    component: () =>
-      import(/* webpackChunkName: "IsSlot" */ "@/components/ChinesePoetry/chuci"),
-  },
 ];
 
 const router = new VueRouter({

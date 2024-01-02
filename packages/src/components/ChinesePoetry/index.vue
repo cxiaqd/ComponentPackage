@@ -4,89 +4,53 @@
       <header class="route-header header">导航栏</header>
       <main>
         <div class="content">
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
+          <el-button @click="selectPoetry('CaoCao')">曹操诗集</el-button>
+          <el-button @click="selectPoetry('ChuCi')">楚辞</el-button>
+          <el-button @click="selectPoetry('LunYu')">论语</el-button>
         </div>
       </main>
     </div>
     <div class="right-content flex-column2">
-      <header class="right-header header">内容</header>
+      <header class="right-header header">{{ headerDic[poetryType] }}</header>
       <main>
         <div class="content">
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
-          <el-button>1</el-button>
+          <component :is="poetryType" :key="poetryType"></component>
         </div>
       </main>
     </div>
   </div>
 </template>
 <script>
+import CaoCao from './caocao'
+import ChuCi from './chuci'
+import LunYu from './lunyu'
 export default {
   name: "vue",
   data() {
-    return {};
+    return {
+      poetryType:'CaoCao',
+      headerDic:{
+        'CaoCao':'曹操诗集',
+        'ChuCi':'楚辞',
+        'LunYu':'论语',
+      }
+    };
   },
-  components: {},
-  computed: {},
+  components: {
+    CaoCao,
+    ChuCi,
+    LunYu
+  },
+  computed: {
+  },
   watch: {},
+  methods: {
+    selectPoetry(type){
+      this.poetryType = type
+    }
+  },
   created() {},
   mounted() {},
-  methods: {},
-  beforeCreate() {},
-  beforeMount() {},
-  beforeUpdate() {},
-  updated() {},
-  beforeDestroy() {},
-  destroyed() {},
-  activated() {},
 };
 </script>
 <style scoped lang="scss">
@@ -101,6 +65,8 @@ export default {
   text-align: center;
   margin: 0;
   padding: 10px 0;
+  font-weight: 700;
+  background-color: #E5E9F2;
 }
 .flex-column2 {
   display: flex;
