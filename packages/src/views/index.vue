@@ -67,7 +67,7 @@
           <li @click="jump('juejin.cn/post/7311907901046882354')">好用网站集合</li>
           <li @click="jump('segmentfault.com/a/1190000015597029')">跨域问题</li>
           <li @click="jump('segmentfault.com/a/1190000040941132')">git分支合并</li>
-          <li @click="jump('https://juejin.cn/post/6844903683411410951')">前端工具汇总</li>
+          <li @click="jump('juejin.cn/post/6844903683411410951')">前端工具汇总</li>
         </ol>
       </div>
       <div class="li-box box4">
