@@ -14,7 +14,8 @@
       <header class="right-header header">{{ headerDic[poetryType] }}</header>
       <main>
         <div class="content">
-          <component :is="poetryType" :key="poetryType"></component>
+          <el-input placeholder="请输入" style="position: fixed;" v-model="searchTitle">请输入</el-input>
+          <component :searchTitle="searchTitle" :is="poetryType" :key="poetryType"></component>
         </div>
       </main>
     </div>
@@ -33,7 +34,8 @@ export default {
         'CaoCao':'曹操诗集',
         'ChuCi':'楚辞',
         'LunYu':'论语',
-      }
+      },
+      searchTitle:''
     };
   },
   components: {

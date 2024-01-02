@@ -141,10 +141,66 @@ function detactDataType(data){
   return Object.prototype.toString.call(data)
 }
 const arrayToString = [1,2,3]
-console.log(arrayToString.toString());
-console.log(Object.prototype.toString.call(arrayToString));
-console.log(detactDataType(arrayToString));
+// console.log(arrayToString.toString());
+// console.log(Object.prototype.toString.call(arrayToString));
+// console.log(detactDataType(arrayToString));
 
+
+// try {
+//   setTimeout(() => {
+//     throw new Error('err')
+//   }, 200);
+// } catch (err) {
+//   console.log(err);
+// }
+
+// new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     try {
+//       throw new Error('err');
+//     } catch (err) {
+//       reject(err);
+//     }
+//   }, 200);
+// })
+//   .then(() => {
+//     // 正常执行时的处理逻辑
+//   })
+//   .catch((err) => {
+//     console.log(err); // 这里会捕捉到错误
+//   });
+
+
+
+// try {
+//   Promise.resolve().then(() => {
+//     throw new Error('err')
+//   })
+// } catch (err) {
+//   console.log(err);
+// }
+
+// 方法一
+Promise.resolve()
+  .then(() => {
+    throw new Error('err');
+  })
+  .catch((err) => {
+    console.log(err); // 这里会捕捉到错误
+  });
+
+// 方法二
+async function handleError() {
+  try {
+    await Promise.resolve().then(() => {
+      throw new Error('err');
+    });
+  } catch (err) {
+    console.log(err); // 这里会捕捉到错误
+  }
+}
+
+handleError();
 
 
 
