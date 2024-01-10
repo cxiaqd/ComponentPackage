@@ -70,6 +70,11 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "utilExtend" */ "@/components/ExtendUtil"),
   },
+  {
+    path: "/dragg",
+    component: () =>
+      import(/* webpackChunkName: "utilExtend" */ "@/components/DragElement"),
+  },
 ];
 
 const router = new VueRouter({
