@@ -77,6 +77,8 @@
           <li @click="jump('github.com/webpack-china/awesome-webpack-cn')">webpack相关文章工具</li>
           <li @click="jump('hcysunyang.github.io/vue-design/zh/')">Vue Design</li>
           <li @click="jump('juejin.cn/post/6942492146725290020')">Vue源码</li>
+          <li @click="jump('www.itxst.com/vue-draggable/jirneq6b.html')">vuedraggable</li>
+          <li @click="jump('news.miracleplus.com/feeds?tab=hot#')">齐思-科技前沿社区</li>
         </ol>
       </div>
       <div class="li-box box4">

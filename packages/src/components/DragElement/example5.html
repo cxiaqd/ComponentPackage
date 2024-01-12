@@ -87,6 +87,7 @@
           e.dataTransfer.setData("text/plain", "demo1-src");
         },
         onDragEnter: function (e) {
+            console.log(e);
           if (e.target.classList.contains("panel-item")) {
             e.target.classList.add("over");
           }
