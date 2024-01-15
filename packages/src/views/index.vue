@@ -13,6 +13,7 @@
           <li @click="open('/IsComponent')">动态组件</li>
           <li @click="open('/IsSlot')">插槽组件</li>
           <li @click="open('/Attrs')">attrs-属性透传</li>
+          <li @click="open('/poetry')">诗集</li>
         </ol>
       </div>
       <div class="li-box box1">
@@ -68,14 +69,18 @@
           <li @click="jump('segmentfault.com/a/1190000015597029')">跨域问题</li>
           <li @click="jump('segmentfault.com/a/1190000040941132')">git分支合并</li>
           <li @click="jump('juejin.cn/post/6844903683411410951')">前端工具汇总</li>
+          <li @click="jump('juejin.cn/post/6844903854882947080')">JS变量和类型</li>
+          <li @click="jump('segmentfault.com/a/1190000020255831')">深度拷贝</li>
+          <li @click="jump('juejin.cn/post/7083104567402954765')">优秀前端GitHub开源项目推荐</li>
+          <li @click="jump('github.com/webpack-china/awesome-webpack-cn')">webpack相关文章工具</li>
+          <li @click="jump('hcysunyang.github.io/vue-design/zh/')">Vue Design</li>
+          <li @click="jump('juejin.cn/post/6942492146725290020')">Vue源码</li>
         </ol>
       </div>
       <div class="li-box box4">
         <p>收藏链接<span style="font-size: 8px">（公司内无法访问）</span></p>
         <ol>
-          <li @click="jump('juejin.cn/post/7289339080838627382')">
-            前端好用网站
-          </li>
+          <li @click="jump('juejin.cn/post/7289339080838627382')">前端好用网站</li>
         </ol>
       </div>
     </div>

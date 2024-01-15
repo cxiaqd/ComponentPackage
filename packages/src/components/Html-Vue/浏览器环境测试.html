@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <a href="javascript:console.log('Hello');console.log('Hello123');">
+        点击（ URL 的位置写入代码，使用这个URL的时候就会执行 JavaScript代码）
+      </a>
+      <a href="javascript: new Date().toLocaleTimeString();console.log('void 0');void 0">
+        点击（如果JavaScript代码返回一个字符串，浏览器就会新建一个文档，展示这个字符串的内容，原有文档的内容都会消失）
+      </a>
+      <a href="javascript: console.log(new Date().toLocaleTimeString())">
+        点击（如果返回的不是字符串，那么浏览器不会新建文档，也不会跳转）
+      </a>
+    </div>
+    <script>
+        
+    </script>
+  </body>
+</html>

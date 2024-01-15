@@ -56,7 +56,7 @@
                 </el-form-item>
             </el-form>
         </div>
-        <div class="flex-center flex1">
+        <div class="flex-center flex1 download-function">
             <el-button type="primary">数据导出</el-button>
         </div>
         <div class="flex1"></div>
@@ -185,7 +185,9 @@ export default {
   padding: 16px;
 }
 
-.copy-function {
-  flex: 1;
+.copy-function,
+.upload-function,
+.download-function {
+  border: 1px solid #dcdfe6;
 }
 </style>

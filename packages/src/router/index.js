@@ -60,6 +60,11 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "IsSlot" */ "@/components/Attrs"),
   },
+  {
+    path: "/poetry",
+    component: () =>
+      import(/* webpackChunkName: "IsSlot" */ "@/components/ChinesePoetry"),
+  },
 ];
 
 const router = new VueRouter({
