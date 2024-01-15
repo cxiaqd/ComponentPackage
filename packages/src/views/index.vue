@@ -78,13 +78,15 @@
           <li @click="jump('hcysunyang.github.io/vue-design/zh/')">Vue Design</li>
           <li @click="jump('juejin.cn/post/6942492146725290020')">Vue源码</li>
           <li @click="jump('www.itxst.com/vue-draggable/jirneq6b.html')">vuedraggable</li>
-          <li @click="jump('news.miracleplus.com/feeds?tab=hot#')">齐思-科技前沿社区</li>
+          <li @click="jump('segmentfault.com/a/1190000007535316')">async-await</li>
+          <li @click="jump('segmentfault.com/a/1190000002810962')">html-drag</li>
         </ol>
       </div>
       <div class="li-box box4">
         <p>收藏链接<span style="font-size: 8px">（公司内无法访问）</span></p>
         <ol>
           <li @click="jump('juejin.cn/post/7289339080838627382')">前端好用网站</li>
+          <li @click="jump('news.miracleplus.com/feeds?tab=hot#')">齐思-科技前沿社区</li>
         </ol>
       </div>
     </div>
