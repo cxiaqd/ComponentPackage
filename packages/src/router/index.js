@@ -58,12 +58,22 @@ const routes = [
   {
     path: "/Attrs",
     component: () =>
-      import(/* webpackChunkName: "IsSlot" */ "@/components/Attrs"),
+      import(/* webpackChunkName: "Attrs" */ "@/components/Attrs"),
   },
   {
     path: "/poetry",
     component: () =>
-      import(/* webpackChunkName: "IsSlot" */ "@/components/ChinesePoetry"),
+      import(/* webpackChunkName: "poetry" */ "@/components/ChinesePoetry"),
+  },
+  {
+    path: "/utilExtend",
+    component: () =>
+      import(/* webpackChunkName: "utilExtend" */ "@/components/ExtendUtil"),
+  },
+  {
+    path: "/dragg",
+    component: () =>
+      import(/* webpackChunkName: "utilExtend" */ "@/components/DragElement"),
   },
 ];
 

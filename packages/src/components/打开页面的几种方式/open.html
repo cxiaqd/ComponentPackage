@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window-open</title>
+    <link rel="stylesheet" href="../../styles/html.css">
+</head>
+<body>
+    <div class="display-center">
+        <h1>window.open()方法用于打开一个新的浏览器窗口</h1>
+        <button id="btn">打开新的窗口</button>
+    </div>
+</body>
+<script>
+    let btn = document.getElementById('btn')
+  btn.onclick = () => {
+    window.open('https://juejin.cn/user/1742092272150910/collections', 'jueJin', `status`)
+  }
+</script>
+</html>

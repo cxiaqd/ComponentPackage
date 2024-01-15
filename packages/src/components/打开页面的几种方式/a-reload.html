@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="button" value="刷新" onclick="aa()" />
+  </body>
+  <script>
+    console.log("789");
+    function aa() {
+    //   window.location.href = window.location.href;
+      window.location.reload();
+      //   parent.location.replace(parent.location.href);//服务器端重新创建页面
+      //   parent.document.location.reload(); //相当于F5
+      //window.location.href(parent.location.href);//iframe内容重定向
+    }
+  </script>
+</html>

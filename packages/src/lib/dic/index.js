@@ -1,29 +1,8 @@
-//空白数据的占位符
-const PLACEHOLDER = '--';
-//时期格式
-const FORMAT_DATETIME = 'YYYY-MM-DD HH:mm:ss';
-const FORMAT_DATETIMECLOSE = 'YYYYMMDDHHmmss';
-const FORMAT_DATE = 'YYYY-MM-DD';
-const FORMAT_DATE_ZH_CN = 'YYYY年MM月DD日';
-const FORMAT_MONTH = 'YYYY-MM';
-const FORMAT_TIME = 'HH:mm:ss';
-const FORMAT_HHMM = 'HH:mm';
-const FORMAT_DATETIME_GCF = 'yyyy-MM-dd HH:mm:ss';
-const FORMAT_DATE_GCF = 'yyyy-MM-dd';
-const FORMAT_MONTH_GCF = 'yyyy-MM';
-//表单校验规则
-const RULE_REQUIRED = { required: true, message: '此项为必填项' };
-const RULE_MUSTSELECT = { required: true, message: '请选择一项' };
+
 const RULE_REQUIRED_DATERANGE = (rule, value, callback) => { (value && value[0] && value[1]) ? callback() : callback(new Error('此项为必填项'))};
 const RULE_NOTSUPPORTED = { pattern: /^[^`~!@#$%^&*()\-=_+]+$/, message: '不支持的字符:`~!@#$%^&*()-=_+' };
 const RULE_NOTCHINESE = { pattern: /^[^\u4e00-\u9fa5]+$/, message: '不能输入中文' };
 const RULE_LT6LETTERS = { max: 6, message: '最多不超过6个字' };
-const RULE_LT8LETTERS = { max: 8, message: '最多不超过8个字' };
-const RULE_LT10LETTERS = { max: 10, message: '最多不超过10个字' };
-const RULE_LT12LETTERS = { max: 12, message: '最多不超过12个字' };
-const RULE_LT18LETTERS = { max: 18, message: '最多不超过18个字' };
-const RULE_LT32LETTERS = { max: 32, message: '最多不超过32个字' };
-const RULE_LT64LETTERS = { max: 64, message: '最多不超过64个字' };
 const RULE_EQ20LETTERS = { len: 20, message: '请输入20个字' };
 const RULE_URL = { type: 'url', message: '请填写url格式' };
 const RULE_NUMBER = { pattern: /^\d+$/, message: '请填写数字' };
@@ -35,29 +14,10 @@ const RULE_INCORRECTLATITUDE = { message: '请输入-90.0~+90.0的数字,最多�
 
 
 export {
-	PLACEHOLDER,
-	FORMAT_DATETIME,
-	FORMAT_DATETIMECLOSE,
-	FORMAT_DATE,
-	FORMAT_DATE_ZH_CN,
-	FORMAT_TIME,
-	FORMAT_MONTH,
-	FORMAT_HHMM,
-	FORMAT_DATETIME_GCF,
-	FORMAT_DATE_GCF,
-	FORMAT_MONTH_GCF,
-	RULE_REQUIRED,
 	RULE_REQUIRED_DATERANGE,
-	RULE_MUSTSELECT,
 	RULE_NOTSUPPORTED,
 	RULE_NOTCHINESE,
 	RULE_LT6LETTERS,
-	RULE_LT8LETTERS,
-	RULE_LT10LETTERS,
-	RULE_LT12LETTERS,
-	RULE_LT18LETTERS,
-	RULE_LT32LETTERS,
-	RULE_LT64LETTERS,
 	RULE_EQ20LETTERS,
 	RULE_URL,
 	RULE_NUMBER,

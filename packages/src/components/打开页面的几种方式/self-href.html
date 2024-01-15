@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>self</title>
+    <link rel="stylesheet" href="../../styles/html.css">
+  </head>
+  <body>
+    <div class="display-center">
+      <h1>self</h1>
+      <button id="jump-self">jump-self</button>
+      <button id="jump-parent">jump-parent</button>
+      <button id="jump-top">jump-top</button>
+    </div>
+  </body>
+  <script>
+    let jumpCurrent = document.getElementById("jump-self");
+    let jumpParent = document.getElementById("jump-parent");
+    let jumpTop = document.getElementById("jump-top");
+
+    /* 跳转 */
+    // 当前页面
+    jumpCurrent.onclick = () => {
+      location.href = "https://juejin.cn/user/1742092272150910/collections";
+    };
+    // 父级页面
+    jumpParent.onclick = () => {
+      parent.location.href = "https://juejin.cn/user/1742092272150910/collections";
+    };
+    // 顶层页面
+    jumpTop.onclick = () => {
+      top.location.href = "https://juejin.cn/user/1742092272150910/collections";
+    };
+  </script>
+</html>
