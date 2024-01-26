@@ -2,6 +2,13 @@
   <div class="center-horizontally">
     <div class="center_header"></div>
     <div class="center_content">
+      <div class="li-box box0">Vue</div>
+      <div class="li-box box1">Js</div>
+      <div class="li-box box2">Css</div>
+      <div class="li-box box3">www</div>
+      <div class="li-box box4">工具</div>
+      <div class="li-box box5">文章</div>
+      <div class="li-box box6">组件</div>
       <div class="li-box box0">
         <p>知识点</p>
         <ol>
@@ -80,6 +87,7 @@
           <li @click="jump('www.itxst.com/vue-draggable/jirneq6b.html')">vuedraggable</li>
           <li @click="jump('segmentfault.com/a/1190000007535316')">async-await</li>
           <li @click="jump('segmentfault.com/a/1190000002810962')">html-drag</li>
+          <li @click="jump('zhuanlan.zhihu.com/p/663322201')">strict-origin-when-cross-origin</li>
         </ol>
       </div>
       <div class="li-box box4">

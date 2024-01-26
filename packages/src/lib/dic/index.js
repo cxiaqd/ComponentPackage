@@ -1,4 +1,4 @@
-
+const PLACEHOLDER = '--'
 const RULE_REQUIRED_DATERANGE = (rule, value, callback) => { (value && value[0] && value[1]) ? callback() : callback(new Error('此项为必填项'))};
 const RULE_NOTSUPPORTED = { pattern: /^[^`~!@#$%^&*()\-=_+]+$/, message: '不支持的字符:`~!@#$%^&*()-=_+' };
 const RULE_NOTCHINESE = { pattern: /^[^\u4e00-\u9fa5]+$/, message: '不能输入中文' };
@@ -14,6 +14,7 @@ const RULE_INCORRECTLATITUDE = { message: '请输入-90.0~+90.0的数字,最多�
 
 
 export {
+	PLACEHOLDER,
 	RULE_REQUIRED_DATERANGE,
 	RULE_NOTSUPPORTED,
 	RULE_NOTCHINESE,

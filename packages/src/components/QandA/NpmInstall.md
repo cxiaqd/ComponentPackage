@@ -9,3 +9,21 @@
 `--force` 会无视冲突，并强制获取远端`npm`库资源，即使本地有资源也会覆盖掉。
 `--legacy-peer-deps`：安装时忽略所有`peerDependencies`，忽视依赖冲突，采用`npm`版本4到版本6的样式去安装依赖，已有的依赖不会覆盖。
 **建议用--legacy-peer-deps比较保险一点**。
+
+# 删除node_modules文件夹
+- 使用rimraf可以完全删除目标文件夹（包括目录和文件），比普通的rm -rf node_modules/ 更可靠
+```
+npm install -g rimraf
+rimraf node_modules
+```
+
+# 查看项目中的node版本
+    在package-lock.json中搜寻@types/node
+
+# nvm常用命令
+    1、nvm list  查看已安装管理的node版本
+    2、nvm list available  查看哪些node版本是可以安装的
+    3、nvm install latest  安装最新的LTS版本
+    4、nvm install 20.8.8  安装指定版本
+    5、nvm use 20.8.8  切换到指定版本
+    6、nvm uninstall 20.8.8 删除已安装版本
