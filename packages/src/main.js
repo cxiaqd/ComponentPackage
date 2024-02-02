@@ -3,7 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-// import store from "./store";
+import store from "./store";
 
 import '@/styles/common.less'
 import { PLACEHOLDER } from '@/lib/dic';
@@ -22,6 +22,6 @@ Vue.mixin({
 
 new Vue({
   router,
-  // store,
+  store,
   render: (h) => h(App),
 }).$mount("#app");

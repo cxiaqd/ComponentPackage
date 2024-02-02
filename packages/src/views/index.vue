@@ -2,13 +2,12 @@
   <div class="center-horizontally">
     <div class="center_header"></div>
     <div class="center_content">
-      <div class="li-box box0">Vue</div>
+      <!-- <div class="li-box box0">Vue</div>
       <div class="li-box box1">Js</div>
       <div class="li-box box2">Css</div>
       <div class="li-box box3">www</div>
       <div class="li-box box4">工具</div>
-      <div class="li-box box5">文章</div>
-      <div class="li-box box6">组件</div>
+      <div class="li-box box6">组件</div> -->
       <div class="li-box box0">
         <p>知识点</p>
         <ol>
@@ -88,6 +87,7 @@
           <li @click="jump('segmentfault.com/a/1190000007535316')">async-await</li>
           <li @click="jump('segmentfault.com/a/1190000002810962')">html-drag</li>
           <li @click="jump('zhuanlan.zhihu.com/p/663322201')">strict-origin-when-cross-origin</li>
+          <li @click="jump('segmentfault.com/a/1190000040941132')">分支合并请求</li>
         </ol>
       </div>
       <div class="li-box box4">
@@ -135,7 +135,7 @@ export default {
   flex: 1;
   display: flex;
   justify-content: center;
-  background-color: #d6d6d6;
+  background-color: #fff;
   overflow: auto;
 }
 a,
@@ -144,7 +144,7 @@ li {
   padding: 5px 0;
 }
 li:hover {
-  color: #fff;
+  /* color: #fff; */
   font-weight: 600;
 }
 p {
@@ -162,18 +162,23 @@ p {
   overflow: auto;
 }
 .box0 {
-  background: rgb(0, 191, 255);
+  /* background: rgb(0, 191, 255); */
+  box-shadow: 0 0 25px rgba(0, 191, 255,0.5);
 }
 .box1 {
-  background: rgb(77, 194, 160);
+  /* background: rgb(77, 194, 160); */
+  box-shadow: 0 0 25px rgba(77, 194, 160);
 }
 .box2 {
-  background: rgb(255, 26, 122, 0.7);
+  /* background: rgb(255, 26, 122, 0.7); */
+  box-shadow: 0 0 25px rgba(255, 26, 122,0.5);
 }
 .box3 {
-  background: rgb(255, 184, 0, 0.7);
+  /* background: rgb(255, 184, 0, 0.7); */
+  box-shadow: 0 0 25px rgba(255, 184, 0,0.5);
 }
 .box4 {
-  background: #edb779;
+  /* background: #edb779; */
+  box-shadow: 0 0 25px rgba(0, 191, 255,0.5);
 }
 </style>
