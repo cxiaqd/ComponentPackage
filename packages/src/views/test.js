@@ -200,7 +200,49 @@ async function handleError() {
   }
 }
 
-handleError();
+// handleError();
+
+const arr3 = [1,undefined,4,null,5]
+// console.log(arr3.join(','));
+let arr4 = arr3.map((elem, index, arr) => {
+  return elem * index
+})
+// console.log(arr4);
+// console.log(arr3);
+
+// 任意范围的随机整数生成函数如下
+function getRandomInt(min, max) {
+  let int = Math.floor(Math.random() * (max - min + 1)) + min; 
+  console.log(int);
+  return int
+}
+
+getRandomInt(1, 6) // 5
+
+// 任意范围的随机数生成函数如下。
+function getRandomArbitrary(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+getRandomArbitrary(1.5, 6.5)
+
+// 返回随机字符的例子如下。
+function random_str(length) {
+  var ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  ALPHABET += 'abcdefghijklmnopqrstuvwxyz';
+  ALPHABET += '0123456789-_';
+  var str = '';
+  for (var i = 0; i < length; ++i) {
+    var rand = Math.floor(Math.random() * ALPHABET.length);
+    str += ALPHABET.substring(rand, rand + 1);
+  }
+  return str;
+}
+
+let randomRes = random_str(6) // "NdQKOr"
+// console.log(randomRes);
 
 
-
+let arr5 = [10, 2, 4, 15, 9];
+let maxNum = Math.max.apply(null, arr5) // 15
+console.log(maxNum);
