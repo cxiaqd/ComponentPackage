@@ -224,7 +224,7 @@ function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-getRandomArbitrary(1.5, 6.5)
+// getRandomArbitrary(1.5, 6.5)
 
 // 返回随机字符的例子如下。
 function random_str(length) {
@@ -245,4 +245,9 @@ let randomRes = random_str(6) // "NdQKOr"
 
 let arr5 = [10, 2, 4, 15, 9];
 let maxNum = Math.max.apply(null, arr5) // 15
-console.log(maxNum);
+// console.log(maxNum);
+
+
+let testA = '12A';
+let testD = testA.replace('A','D')
+console.log(testD);

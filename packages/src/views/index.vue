@@ -30,6 +30,8 @@
           <li @click="open('/function-components')">复制&上传&导出</li>
           <li @click="open('/table')">表格</li>
           <li @click="open('/button')">按钮</li>
+          <li @click="open('/replaceKey')">替换数组对象key</li>
+          <li @click="open('/vant01')">vant01</li>
         </ol>
       </div>
       <div class="li-box box2">

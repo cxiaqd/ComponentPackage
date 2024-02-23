@@ -75,6 +75,16 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "utilExtend" */ "@/components/DragElement"),
   },
+  {
+    path: "/replaceKey",
+    component: () =>
+      import(/* webpackChunkName: "utilExtend" */ "@/components/replaceKey"),
+  },
+  {
+    path: "/vant01",
+    component: () =>
+      import(/* webpackChunkName: "utilExtend" */ "@/components/Vant/test01"),
+  },
 ];
 
 const router = new VueRouter({
