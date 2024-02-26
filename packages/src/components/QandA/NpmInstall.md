@@ -15,6 +15,10 @@
 ```
 npm install -g rimraf
 rimraf node_modules
+
+清空npm代理
+npm config rm proxy
+npm config rm https-proxy
 ```
 
 # 查看项目中的node版本
