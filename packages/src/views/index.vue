@@ -90,6 +90,9 @@
           <li @click="jump('segmentfault.com/a/1190000002810962')">html-drag</li>
           <li @click="jump('zhuanlan.zhihu.com/p/663322201')">strict-origin-when-cross-origin</li>
           <li @click="jump('segmentfault.com/a/1190000040941132')">分支合并请求</li>
+          <li @click="jump('www.firstui.cn/')">firstui</li>
+          <li @click="jump('docschina.org/')">印记中文</li>
+          <li @click="jump('www.lddgo.net/index')">在线工具软件大全</li>
         </ol>
       </div>
       <div class="li-box box4">

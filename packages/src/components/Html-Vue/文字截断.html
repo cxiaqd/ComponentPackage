@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <p class="complex-line truncate">
+        <span class="truncate">海和天相连成为海岸线</span>
+        <span class="icon">❤️</span>
+      </p>
+      <p class="truncate">鱼和水相濡以沫的世界</p>
+    </div>
+  </body>
+  <style>
+    .truncate {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .container {
+      max-width: 100px;
+    }
+    .complex-line {
+      display: flex;
+    }
+    .complex-line:hover .icon {
+      display: block;
+    }
+    .icon {
+      display: none;
+    }
+  </style>
+</html>

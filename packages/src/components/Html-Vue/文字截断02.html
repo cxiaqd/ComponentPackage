@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <label>标题：</label>
+      <p class="complex-line truncate">
+        <span class="truncate">高质量人才生产总基地</span>
+        <span class="icon">✏️</span>
+      </p>
+      <label>编号：</label>
+      <p class="truncate">No.9781498128959</p>
+    </div>
+  </body>
+  <style>
+    p{
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+      max-width: 160px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+    }
+    .truncate {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .complex-line {
+      display: flex;
+    }
+    .complex-line:hover .icon {
+      display: block;
+    }
+    .icon {
+      display: none;
+    }
+  </style>
+</html>

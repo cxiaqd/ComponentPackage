@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="g-container">
+      <div class="g-content">
+        <div class="g-filter"></div>
+      </div>
+    </div>
+  </body>
+  <style>
+    .g-container {
+      position: relative;
+      width: 300px;
+      height: 100px;
+    }
+    .g-container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 1;
+      background: radial-gradient(
+        circle at 50% -10px,
+        transparent 0,
+        transparent 60px,
+        #000 60px,
+        #000 0
+      );
+    }
+    .g-content {
+      height: 100px;
+      filter: contrast(20);
+      background-color: white;
+      overflow: hidden;
+    }
+    .g-filter {
+      filter: blur(10px);
+      height: 100px;
+      background: radial-gradient(
+        circle at 50% -10px,
+        transparent 0,
+        transparent 29px,
+        #000 40px,
+        #000
+      );
+    }
+  </style>
+</html>

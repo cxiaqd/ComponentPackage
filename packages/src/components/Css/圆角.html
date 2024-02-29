@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        width: 500px;
+        height: 100px;
+      }
+
+      .box {
+        filter: url("#goo"); /* 调节 svg 的 stdDeviation 属性值控制 round 程度 */
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+      }
+
+      .box::before {
+        content: "";
+        display: block;
+        height: 100%;
+        clip-path: polygon(
+          0% 15%,
+          0 0,
+          15% 0%,
+          52% 0,
+          63% 24%,
+          100% 24%,
+          100% 85%,
+          100% 100%,
+          85% 100%,
+          15% 100%,
+          0 100%,
+          0% 85%
+        );
+        background: #57b6c6;
+        border-radius: 16px; /* border-radius 的值大于 stdDeviation 时, 可用于控制部分角的 round 程度 */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="box"></div>
+      <svg
+        style="display: none; position: absolute"
+        width="0"
+        height="0"
+        xmlns="http://www.w3.org/2000/svg"
+        version="1.1"
+      >
+        <defs>
+          <filter id="goo">
+            <feGaussianBlur
+              in="SourceGraphic"
+              stdDeviation="12"
+              result="blur"
+            />
+            <feColorMatrix
+              in="blur"
+              mode="matrix"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+              result="goo"
+            />
+            <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+          </filter>
+        </defs>
+      </svg>
+    </div>
+  </body>
+</html>

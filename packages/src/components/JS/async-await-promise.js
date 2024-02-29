@@ -52,3 +52,44 @@ console.log("9-===END===");
     之后和前面一样 又跳回到test函数继续执行console.log(testFn2)的返回值，打印出“hello async”。
     最后打印“test end...”。
  */
+
+// async/await高级用法
+// 异步过滤函数
+async function asyncFilter(array, predicate) {
+  // const results = array.map(predicate);
+  const results = await Promise.all(array.map(predicate));
+
+  return array.filter((_value, index) => results[index]);
+}
+// 睡眠函数
+function delay(duration) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, duration);
+  });
+}
+
+// 示例
+async function isOddNumber(n) {
+  await delay(1000); // 模拟异步操作
+  return n % 2 !== 0;
+}
+
+async function filterOddNumbers(numbers) {
+  return asyncFilter(numbers, isOddNumber);
+}
+
+filterOddNumbers([1, 2, 3, 4, 5]).then(console.log); // 输出: [1, 3, 5]
+
+// 从URL中获取参数
+const getParamByUrl = (key) => {
+  const url = new URL(location.href);
+  return url.searchParams.get(key);
+};
+
+// 生成随机颜色
+const generateRandomHexColor = () =>
+  `#${Math.floor(Math.random() * 0xffffff).toString(16)}`;
+
+console.log(generateRandomHexColor());
+
+
