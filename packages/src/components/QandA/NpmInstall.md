@@ -19,6 +19,8 @@ rimraf node_modules
 清空npm代理
 npm config rm proxy
 npm config rm https-proxy
+设置淘宝镜像
+npm config set registry http://registry.npm.taobao.org
 ```
 
 # 查看项目中的node版本
