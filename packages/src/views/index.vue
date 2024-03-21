@@ -93,6 +93,7 @@
           <li @click="jump('www.firstui.cn/')">firstui</li>
           <li @click="jump('docschina.org/')">印记中文</li>
           <li @click="jump('www.lddgo.net/index')">在线工具软件大全</li>
+          <li @click="jump('www.bossdesign.cn/peeps/')">Boss设计</li>
         </ol>
       </div>
       <div class="li-box box4">
