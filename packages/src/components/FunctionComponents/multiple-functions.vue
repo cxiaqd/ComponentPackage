@@ -40,6 +40,7 @@
                     ref="newupload"
                     :action="action"
                     accept=".xls,.xlsx"
+                    :before-upload="handleValidate"
                     :on-change="onChange"
                     :on-success="onSuccess"
                     :file-list="form2.fileList"
@@ -91,6 +92,18 @@ export default {
     };
   },
   methods: {
+    handleValidate(file){
+      // return new Promise(async (resolve, reject) =>  {
+      //   let isValidate = await fileValidate.upFile(file)
+      //   console.log({'isValidate':isValidate});
+      //   if (isValidate) {
+      //     resolve()
+      //   }else{
+      //     this.$message.error("图片加载失败");
+      //     reject()
+      //   }
+      // })
+    },
     copyText() {
       this.$refs.copyText.select(); // 选择对象
       document.execCommand("Copy"); // 执行浏览器复制命令

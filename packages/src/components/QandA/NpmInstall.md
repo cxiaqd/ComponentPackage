@@ -20,7 +20,8 @@ rimraf node_modules
 npm config rm proxy
 npm config rm https-proxy
 设置淘宝镜像
-npm config set registry http://registry.npm.taobao.org
+npm config set registry http://registry.npm.taobao.org ————该地址已过期作废
+npm config set registry https://registry.npmmirror.com
 ```
 
 # 查看项目中的node版本
