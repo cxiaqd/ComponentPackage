@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="file" onchange="selectFolder(event)" webkitdirectory/>
+</body>
+<script>
+  function selectFolder(e) {
+    //文件夹里面所有文件        
+    var files = e.target.files;
+    console.log(files);
+    //文件夹名称        
+    var relativePath = files[0].webkitRelativePath;
+    var folderName = relativePath.split("/")[0];
+    //文件信息转换成FormData结构遍历上传        
+    for (var i = 0; i < files.length; i++) {
+      var formData = new FormData();
+      formData.append('file', files[i])
+      //上传            
+      // uploadFiles(formData)
+    }
+  }
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    input[type="button"] {
+      outline: none;
+      line-height: normal;
+    }
+
+    .btn {
+      display: inline-block;
+      height: 31px;
+      padding: 4px 12px;
+      font-size: 14px;
+      box-sizing: border-box;
+      cursor: pointer;
+      text-align: center;
+      font-weight: 400;
+      white-space: nowrap;
+      vertical-align: middle;
+      -moz-padding-start: npx;
+      -moz-padding-end: npx;
+      border: solid 1px #ddd;
+      background-color: #fff;
+      width: auto;
+      *zoom: 1;
+      *overflow: visible;
+      -webkit-transition: background-color .1s linear;
+      -moz-transition: background-color .1s linear;
+      -o-transition: background-color .1s linear;
+      transition: background-color .1s linear;
+    }
+
+    .btn-group,
+    .main {
+      font-size: 0;
+    }
+
+    .btn-group {
+      padding: 0 10px;
+    }
+
+    /* .main {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    } */
+
+    .btn-group .btn {
+      margin-left: -1px;
+    }
+
+    .btn-group>.btn:last-child:not(:first-child),
+    .btn-group>.dropdown-toggle:not(:first-child) {
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+    }
+
+    .btn-group .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+      border-radius: 0;
+    }
+
+    .btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    .btn-primary {
+      color: #fff;
+      background-color: #5a98de;
+      border-color: #5a98de;
+    }
+
+    .radius {
+      border-radius: 4px;
+    }
+
+    .mr-10 {
+      margin-right: 10px;
+    }
+
+    .ml-10 {
+      margin-left: 10px;
+    }
+
+    .btn-success {
+      color: #fff;
+      background-color: #5eb95e;
+      border-color: #5eb95e;
+    }
+
+    .btn-default {
+      background-color: #e6e6e6;
+      border-color: #e6e6e6;
+    }
+
+    .btn:hover {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .btn.disabled {
+      cursor: not-allowed;
+      background-image: none;
+      opacity: .65;
+      filter: alpha(opacity=65);
+      box-shadow: none;
+      pointer-events: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div style="display: flex;">
+    <div>
+      <span>共1000条</span>
+      <el-select v-model="pageSize" placeholder="请选择">
+        <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
+      </el-select>
+    </div>
+    <div class="main"></div>
+  </div>
+</body>
+<script>
+  function Page(container) {
+    // 分页容器
+    this.container = container || document.createElement('div');
+
+    // 初始化
+    Page.prototype.init = function (pages) {
+      this.pages = pages;
+      this.btnGroup = document.createElement('div');
+      this.btnGroup.className = 'btn-group test';
+      this.btnGroup.style.display = 'inline-block';
+      this.container.appendChild(this.btnGroup);
+
+      var that = this;
+      this.btnGroup.onclick = function (evnt) {
+        // 防止意外点击容器
+        if (evnt.target.type === 'button') {
+          that.page(evnt.target.value);
+        }
+      }
+
+      // 页数大于1页的时候建立翻页按钮
+      if (this.pages > 1) {
+        this.container.insertAdjacentHTML('afterbegin', '<input data-name="up" class="btn radius btn-primary mr-10" type="button" value="上一页">');
+        this.container.insertAdjacentHTML('beforeend', '<input data-name="next" class="btn radius btn-primary ml-10" type="button" value="下一页">');
+        this.upBtn = this.container.querySelector('[data-name="up"]');
+        this.nextBtn = this.container.querySelector('[data-name="next"]');
+        this.upBtn.onclick = function () {
+          that.page(that.currentVal - 1);
+        }
+        this.nextBtn.onclick = function () {
+          that.page(that.currentVal + 1);
+        }
+      }
+
+      this.page(1);
+    }
+
+    Page.prototype.currentVal = 0;
+    Page.prototype.pages = 0;
+
+    // 翻页
+    Page.prototype.page = function (num) {
+      this.currentVal = parseInt(num);
+
+      var pageNums = [];
+      var htmlStr = [];
+      // 当前页
+      var currentVal = this.currentVal;
+      // 总页数
+      var pages = this.pages;
+      // 页数不足5页的情况下
+      if (pages < 6) {
+        for (var i = 0; i < pages; i++) {
+          pageNums.push(i + 1);
+        }
+      } else if (currentVal > 3 && (pages - currentVal) > 2) {
+        // 当前页大于 3 并且 总页数-当前页 大于 2 的时候（防止当前页超过总页数）
+        pageNums = [currentVal - 2, currentVal - 1, currentVal, currentVal + 1, currentVal + 2];
+      } else if (currentVal > 3 && (pages - currentVal) < 3) {
+        // 当前页大于 3 并且 总页数-当前页 小于 3 的时候（解决末尾页数不出现的情况）
+        pageNums = [pages - 4, pages - 3, pages - 2, pages - 1, pages];
+      } else if (currentVal < 4) {
+        pageNums = [1, 2, 3, 4, 5];
+      }
+
+      // 防止页数出现不足两页的情况下
+      if (pages > 1) {
+        // 禁用上下翻页按钮
+        if (currentVal == 1) {
+          this.isDisabled(false);
+          this.upBtn.disabled = true;
+          this.upBtn.classList.add('disabled');
+        } else if (currentVal == pages) {
+          this.isDisabled(false);
+          this.nextBtn.disabled = true;
+          this.nextBtn.classList.add('disabled');
+        } else {
+          this.isDisabled(false);
+        }
+      }
+
+      // 渲染页数
+      pageNums.forEach(function (val, index) {
+        if (val == currentVal) {
+          htmlStr.push('<input class="btn radius btn-success" type="button" value="' + val + '">');
+        } else {
+          htmlStr.push('<input class="btn radius btn-default" type="button" value="' + val + '">');
+        }
+      });
+      this.btnGroup.innerHTML = htmlStr.join('');
+    }
+
+    Page.prototype.isDisabled = function (flag) {
+      this.nextBtn.disabled = flag;
+      this.upBtn.disabled = flag;
+      if (flag) {
+        this.nextBtn.classList.add('disabled');
+        this.upBtn.classList.add('disabled');
+      } else {
+        this.nextBtn.classList.remove('disabled');
+        this.upBtn.classList.remove('disabled');
+      }
+    }
+
+  }
+
+  const options = [
+    { label: '选项一', value: '1' },
+    { label: '选项二', value: '2' },
+    { label: '选项三', value: '3' },
+    { label: '选项四', value: '4' },
+  ]
+  const pageSize = 20
+  // 构造一个分页对象 new Page(el)
+  var page = new Page(document.querySelector('.main'));
+
+  // 初始化 page.init(pages)
+  page.init(30);
+
+  // 翻到指定页
+  page.page(1)
+
+        // 上一页
+        // page.page(page.currentVal - 1);
+        // 下一页
+        // page.page(page.currentVal + 1);
+</script>
+
+</html>

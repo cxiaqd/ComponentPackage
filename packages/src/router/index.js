@@ -76,6 +76,11 @@ const routes = [
       import(/* webpackChunkName: "utilExtend" */ "@/components/DragElement"),
   },
   {
+    path: "/dragDrop",
+    component: () =>
+      import(/* webpackChunkName: "utilExtend" */ "@/components/DragElement/dragble"),
+  },
+  {
     path: "/replaceKey",
     component: () =>
       import(/* webpackChunkName: "utilExtend" */ "@/components/replaceKey"),
@@ -84,6 +89,21 @@ const routes = [
     path: "/vant01",
     component: () =>
       import(/* webpackChunkName: "utilExtend" */ "@/components/Vant/test01"),
+  },
+  {
+    path: "/animation",
+    component: () =>
+      import(/* webpackChunkName: "utilExtend" */ "@/components/animation"),
+  },
+  {
+    path: "/webWorker",
+    component: () =>
+      import(/* webpackChunkName: "utilExtend" */ "@/components/webWorker"),
+  },
+  {
+    path: "/lotAxios",
+    component: () =>
+      import(/* webpackChunkName: "utilExtend" */ "@/components/axios/lot-request"),
   },
 ];
 

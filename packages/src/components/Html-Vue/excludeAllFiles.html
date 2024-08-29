@@ -1,0 +1,49 @@
+<style>
+  .wrap {
+    display: flex;
+    height: 20vh;
+  }
+
+  #open-file {
+    width: 100px;
+    height: 50px;
+    margin: auto;
+    border: 1px solid #5B5B5B;
+    border-radius: 5px;
+    background-color: #FCFCFC;
+    cursor: pointer;
+  }
+
+  #open-file:hover {
+    background-color: #F0F0F0;
+  }
+</style>
+
+<body>
+  <div class="wrap">
+    <button id="open-file">选择文件</button>
+  </div>
+  <script>
+    const btn = document.getElementById("open-file");
+    btn.addEventListener("click", async () => {
+      // 单元素数组结构
+      console.log(window);
+      const [fileHandle] = await window?.showOpenFilePicker({
+        types: [
+          {
+            description: "图片类型",
+            accept: { "image/*": ['.png', '.gif', '.jpeg', '.jpg'] }
+          }
+        ],
+        excludeAcceptAllOption: true,
+        multiple: false,
+      });
+      // 获取文件File对象
+      const file = await fileHandle?.getFile();
+      console.group("获取到的文件");
+      console.log(fileHandle);
+      console.log(file);
+      console.groupEnd();
+    });
+  </script>
+</body>

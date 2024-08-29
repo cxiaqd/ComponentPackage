@@ -1,142 +1,204 @@
 <template>
-  <div style="height: 100%">
-    <div class="header">top</div>
+  <div class="table">
+    <div class="menu">
+      <el-button type="primary" @click="setTableType('merge')">表格合并</el-button>
+      <el-button type="primary" @click="setTableType('merge2')">表格合并2</el-button>
+      <el-button type="primary" @click="setTableType('layout')">表格布局</el-button>
+      <el-button type="primary" @click="setTableType('jumper')">跨页选择</el-button>
+      <el-button type="primary" @click="setTableType('jumper2')">跨页选择2</el-button>
+    </div>
     <div class="content">
-      <div class="left-content transition" :style="{ width: state.show_side ? '260px' : 0 }">
-        <el-tree class="com-v2-tree tree-content" :data="treeData" :props="defaultProps" @node-click="handleNodeClick"></el-tree>
-        <i
-          class="com-v2-icon"
-          :class="
-            state.show_side
-              ? 'com-v2-icon-side-collapse'
-              : 'com-v2-icon-side-expand'
-          "
-          @click="state.show_side = !state.show_side"
-        ></i>
-      </div>
-      <div class="right-content">
-        <div class="right-top">right-top</div>
-        <div class="right-filter com-v2-form">
-          <el-form inline class="com-v2-form" :model="filter" ref="filterForm">
-            <div class="com-v2-control">
-              <el-form-item label="审批人">
-                <el-input v-model="filter.user" placeholder="审批人"></el-input>
-              </el-form-item>
-              <el-form-item label="活动区域">
-                <el-select v-model="filter.region" placeholder="活动区域">
-                  <el-option label="区域一" value="shanghai"></el-option>
-                  <el-option label="区域二" value="beijing"></el-option>
-                </el-select>
-              </el-form-item>
-              <el-form-item>
-                <el-button type="primary" @click="onSubmit">查询</el-button>
-                <el-button type="primary" @click="resetFilter('filterForm')">重置</el-button>
-              </el-form-item>
-              <el-form-item style="margin-left:auto">
-                <el-button type="primary" @click="exportTable">数据导出</el-button>
-              </el-form-item>
-            </div>
-          </el-form>
-        </div>
-        <div class="right-table com-v2-table com-v2-table-nowrap">
-          <el-table
-            :data="tableData"
-            force-scroll="horizontal"
-            highlight-current-row
-            height="100%"
-          >
-            <el-table-column prop="date" :show-overflow-tooltip="true" label="日期" width="120" draggable="true"></el-table-column>
-            <el-table-column prop="name" :show-overflow-tooltip="true" label="姓名" width="80"></el-table-column>
-            <el-table-column prop="address" :show-overflow-tooltip="true" label="地址" min-width="210"></el-table-column>
-            <el-table-column prop="things" :show-overflow-tooltip="true" label="事件" min-width="160"></el-table-column>
-            <el-table-column prop="cause" :show-overflow-tooltip="true" label="原因" min-width="160"></el-table-column>
-            <el-table-column prop="result" :show-overflow-tooltip="true" label="结果" min-width="160"></el-table-column>
-            <el-table-column prop="callBack" :show-overflow-tooltip="true" label="反馈" min-width="160"></el-table-column>
-            <el-table-column prop="process" :show-overflow-tooltip="true" label="处理进度" min-width="160"></el-table-column>
-            <el-table-column prop="thingsCode" :show-overflow-tooltip="true" label="事件编号" min-width="160"></el-table-column>
-            <el-table-column prop="peopleNumber" :show-overflow-tooltip="true" label="涉及人员数量" min-width="120">
-              <template slot-scope="{row}">{{formatNumber(row.peopleNumber)}}</template>
-            </el-table-column>
-            <el-table-column prop="man" :show-overflow-tooltip="true" label="男生数量" min-width="120"></el-table-column>
-            <el-table-column prop="woman" :show-overflow-tooltip="true" label="女生数量" min-width="120"></el-table-column>
-            <el-table-column prop="averageHeight" :show-overflow-tooltip="true" label="平均身高（厘米）" min-width="135"></el-table-column>
-            <el-table-column prop="averageWeight" :show-overflow-tooltip="true" label="平均体重（kg）" min-width="130"></el-table-column>
-            <el-table-column prop="localePeople" :show-overflow-tooltip="true" label="本地人" min-width="120"></el-table-column>
-            <el-table-column prop="foreigner" :show-overflow-tooltip="true" label="外来人" min-width="120">
-              <template slot-scope="{row}">{{formatNumber(row.foreigner)}}</template>
-            </el-table-column>
-          </el-table>
-        </div>
-        <div class="right-bottom com-v2-pagination">
-          <el-pagination
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-            :page-sizes="[20, 50, 100]"
-            :current-page="pagination.pageNo"
-            :page-size="pagination.pageSize"
-            :total="pagination.total"
-            layout="total, sizes, ->, prev, pager, next, jumper"
-          >
-          </el-pagination>
-        </div>
-      </div>
+      <template v-if="tabletype === 'merge'">
+        <TableMerge :tableData="tableData" :columns="columns"></TableMerge>
+      </template>
+      <template v-if="tabletype === 'merge2'">
+        <TableMerge2 :tableData="tableData2" :columns="columns2" :mergeTable="true"></TableMerge2>
+      </template>
+      <template v-if="tabletype === 'layout'">
+        <Layout></Layout>
+      </template>
+      <template v-if="tabletype === 'jumper'">
+        <JumperSelect></JumperSelect>
+      </template>
+      <template v-if="tabletype === 'jumper2'">
+        <JumperSelect2></JumperSelect2>
+      </template>
     </div>
   </div>
 </template>
-
 <script>
-import mixin_table from "./table";
-import fake_data from '../../../mock/fake-data'
+import TableMerge from './merge.vue';
+import TableMerge2 from './merge2.vue';
+import Layout from './layout.vue';
+import JumperSelect from './jumperSelect.vue';
+import JumperSelect2 from './jumperSelect2.vue';
 export default {
-  mixins: [mixin_table,fake_data],
+  name: 'vue',
   data() {
     return {
-      state:{
-        show_side:true
-      }
+      tabletype: 'merge',
+      tableData: [
+        {
+          date: "2016-05-02",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1518 弄",
+          age: '18'
+        },
+        {
+          date: "2016-05-02",
+          name: "王小虎1",
+          address: "上海市普陀区金沙江路 1517 弄",
+          age: '18'
+
+        },
+        {
+          date: "2016-05-02",
+          name: "王小虎1",
+          address: "上海市普陀区金沙江路 1517 弄",
+          age: '19'
+
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄",
+          age: '18'
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎1",
+          address: "上海市普陀区金沙江路 1512弄",
+          age: '18'
+        }, {
+          date: "2016-05-03",
+          name: "王小虎1",
+          address: "上海市普陀区金沙江路 1518弄",
+          age: '19'
+        },
+      ],
+      columns: [
+        {
+          prop: 'date',
+          label: '日期',
+          width: '200'
+        },
+        {
+          prop: 'name',
+          label: '姓名',
+          width: '140'
+        },
+        {
+          prop: 'address',
+          label: '地址',
+          width: '240'
+        },
+        {
+          prop: 'age',
+          label: '年龄',
+          width: '200'
+        }
+      ],
+      tableData2: [
+        {
+          date: "2016-05-02",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1518 弄",
+          age:'18'
+        },
+        {
+          date: "2016-05-02",
+          name: "王小虎1",
+          address: "上海市普陀区金沙江路 1517 弄",
+          age:'18'
+
+        },
+        {
+          date: "2016-05-02",
+          name: "王小虎1",
+          address: "上海市普陀区金沙江路 1517 弄",
+          age:'19'
+
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄",
+          age:'18'
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎1",
+          address: "上海市普陀区金沙江路 1512弄",
+          age:'18'
+        },        {
+          date: "2016-05-03",
+          name: "王小虎1",
+          address: "上海市普陀区金沙江路 1518弄",
+          age:'19'
+        },
+      ],
+      columns2:[
+        {
+          prop:'date',
+          label:'日期',
+          width:'200',
+          isMerge:true
+        },
+        {
+          prop:'name',
+          label:'姓名',
+          width:'140',
+          isMerge:true
+        },
+        {
+          prop:'address',
+          label:'地址',
+          width:'240',
+          isMerge:false
+
+        },
+        {
+          prop:'age',
+          label:'年龄',
+          width:'200',
+          isMerge:false
+        }
+      ]
     };
   },
-  methods: {},
-};
+  components: {
+    TableMerge,
+    TableMerge2,
+    Layout,
+    JumperSelect,
+    JumperSelect2,
+  },
+  computed: {},
+  watch: {},
+  created() { },
+  mounted() { },
+  methods: {
+    setTableType(type) {
+      this.tabletype = type
+    }
+  },
+  beforeCreate() { },
+  beforeMount() { },
+  beforeUpdate() { },
+  updated() { },
+  beforeDestroy() { },
+  destroyed() { },
+  activated() { },
+}
 </script>
-<style lang="less" scoped>
-.header {
-  height: 55px;
-  border-bottom: 1px solid #7fffd4;
-}
-.content {
+<style>
+.table{
   display: flex;
-  height: calc(100% - 56px);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.left-content {
-  width: 260px;
-  position: relative;
-  border-right: 1px solid rgb(255, 26, 122);
-}
-.tree-content{
-  position: absolute;
-  left: 16px;
-  top: 16px;
-}
-.right-content {
-  flex: 1;
-  z-index: 1;
-  min-width: calc(100% - 260px);
-  height: 100%;
-  padding: 0 16px;
-  .right-top {
-    height: 160px;
-    border-bottom: 1px solid rgb(255, 26, 122);
-  }
-  .right-filter {
-    margin-top: 16px;
-    height: 56px;
-  }
-  .right-table {
-    height: calc(100% - 300px);
-    overflow: hidden;
-  }
-  .right-bottom{
-  }
+.content{
+  max-width: 100%;
 }
 </style>

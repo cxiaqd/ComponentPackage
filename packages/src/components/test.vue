@@ -18,6 +18,7 @@ import {
   throttle2,
   throttle3,
   throttle4,
+  throttle5,
 } from "./JS/节流&防抖";
 
 export default {
@@ -62,9 +63,13 @@ export default {
     getDebounceResult: debounce(() => {
       console.log("debounce：多次触发，只执行最后一次");
     }, 1000),
-    getThrottleResult: throttle4(() => {
-      console.log("throttle：多次触发，固定时间间隔执行一次");
-    }, 1000),
+    getThrottleResult(){
+      return function(){
+        throttle5(() => {
+        console.log("throttle：多次触发，固定时间间隔执行一次");
+      }, 1000)
+      } 
+    }
   },
   beforeCreate() {},
   beforeMount() {},

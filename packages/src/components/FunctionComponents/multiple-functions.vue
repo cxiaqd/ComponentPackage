@@ -1,67 +1,58 @@
 <template>
-    <div class="function-components flex-center">
-        <div class="flex-center flex-column flex1 copy-function">
-            <div>
-                <textarea v-model="basicText" rows="3"></textarea>
-                <button class="h-icon-copy hand font-20" @click="copy()">复制</button>
-            </div>
-            <div>
-                <input ref="copyInput" style="color: #132132;" value="复制input中内容">
-                <button type="button" @click="copyInput()">复制</button>
-            </div>
-            <div>
-                <textarea ref="copyText" style="color: #132132;"></textarea>
-                <button type="button" @click="copyText()">复制</button>
-            </div>
-        </div>
-        <div class="flex-center flex-column flex1 upload-function">
-            <el-form
-                :inline="false"
-                ref="form2"
-                :rules="rules2"
-                :model="form2"
-                label-width="100px"
-                >
-                <el-form-item label="导入方式" prop="importType">
-                    <el-select v-model="form2.importType" placeholder="请选择导入方式">
-                    <el-option
-                        v-for="item in importTypeData"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value"
-                    >
-                    </el-option>
-                    </el-select>
-                </el-form-item>
-                <el-form-item label="选取文件" prop="fileList">
-                    <el-upload
-                    class="upload-demo"
-                    drag
-                    ref="newupload"
-                    :action="action"
-                    accept=".xls,.xlsx"
-                    :before-upload="handleValidate"
-                    :on-change="onChange"
-                    :on-success="onSuccess"
-                    :file-list="form2.fileList"
-                    :auto-upload="false"
-                    :data="form2"
-                    >
-                    <i class="el-icon-upload"></i>
-                    <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
-                    </el-upload>
-                </el-form-item>
-                <el-form-item label="">
-                    <el-button type="primary" @click="importFilepost">导入</el-button>
-                    <el-button type="primary" @click="onCancel">取消</el-button>
-                </el-form-item>
-            </el-form>
-        </div>
-        <div class="flex-center flex1 download-function">
-            <el-button type="primary">数据导出</el-button>
-        </div>
-        <div class="flex1"></div>
+  <div class="function-components flex-center">
+    <div class="flex-center flex-column flex1 copy-function">
+      <div>
+        <textarea v-model="basicText" rows="3"></textarea>
+        <button class="h-icon-copy hand font-20" @click="copy()">复制</button>
+      </div>
+      <div>
+        <input ref="copyInput" style="color: #132132" value="复制input中内容" />
+        <button type="button" @click="copyInput()">复制</button>
+      </div>
+      <div>
+        <textarea ref="copyText" style="color: #132132"></textarea>
+        <button type="button" @click="copyText()">复制</button>
+      </div>
     </div>
+    <div class="flex-center flex-column flex1 upload-function">
+      <el-form :inline="false" ref="form2" :rules="rules2" :model="form2" label-width="100px">
+        <el-form-item label="导入方式" prop="importType">
+          <el-select v-model="form2.importType" placeholder="请选择导入方式">
+            <el-option v-for="item in importTypeData" :key="item.value" :label="item.label" :value="item.value"> </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="选取文件" prop="fileList">
+          <!-- <div v-html="uploadBtn" @click="uploadClick"></div> -->
+          <input id="inputFile" type="file" :multiple="false" accept=".png" @change="handleFileSelect">
+          <!-- <iframe src="../../../public/upload.html" frameborder="0"></iframe> -->
+          <!-- <el-upload
+            class="upload-demo"
+            drag
+            ref="newupload"
+            :action="action"
+            accept=".xls,.xlsx"
+            :before-upload="handleValidate"
+            :on-change="onChange"
+            :on-success="onSuccess"
+            :file-list="form2.fileList"
+            :auto-upload="false"
+            :data="form2"
+          >
+            <i class="el-icon-upload"></i>
+            <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+          </el-upload> -->
+        </el-form-item>
+        <el-form-item label="">
+          <el-button type="primary" @click="importFilepost">导入</el-button>
+          <el-button type="primary" @click="onCancel">取消</el-button>
+        </el-form-item>
+      </el-form>
+    </div>
+    <div class="flex-center flex1 download-function">
+      <el-button type="primary">数据导出</el-button>
+    </div>
+    <div class="flex1"></div>
+  </div>
 </template>
 <script>
 export default {
@@ -84,15 +75,48 @@ export default {
         },
       ],
       rules2: {
-        fileList: [
-          { required: true, message: "请选择文件", trigger: "change" },
-        ],
+        fileList: [{ required: true, message: "请选择文件", trigger: "change" }],
       },
       action: "/investPlanCheck/importSHCQProject",
+      uploadBtn:`<button id="open-file">选择文件</button>`
     };
   },
   methods: {
-    handleValidate(file){
+    async handleFileSelect(){
+      console.log('handleFileSelect');
+      const [fileHandle] = await window.showOpenFilePicker({
+        types: [
+          {
+            description: "图片类型",
+            accept: { "image/*": ['.png', '.gif', '.jpeg', '.jpg'] }
+          }
+        ],
+        excludeAcceptAllOption: true,
+        multiple: false,
+      });
+    },
+    async uploadClick(){
+      console.log('uploadClick');
+      // 单元素数组结构
+      console.log(window);
+      const [fileHandle] = await window.showOpenFilePicker({
+        types: [
+          {
+            description: "图片类型",
+            accept: { "image/*": ['.png', '.gif', '.jpeg', '.jpg'] }
+          }
+        ],
+        excludeAcceptAllOption: true,
+        multiple: false,
+      });
+      // 获取文件File对象
+      const file = await fileHandle?.getFile();
+      console.group("获取到的文件");
+      console.log(fileHandle);
+      console.log(file);
+      console.groupEnd();
+    },
+    handleValidate(file) {
       // return new Promise(async (resolve, reject) =>  {
       //   let isValidate = await fileValidate.upFile(file)
       //   console.log({'isValidate':isValidate});

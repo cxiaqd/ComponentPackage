@@ -265,8 +265,8 @@ const arr12 = [{ name: 'name1', id: 1 }, { name: 'name2', id: 2 }, { name: 'name
 // 方法1：
 const arr2Ids = arr11.map(item => item.id);
 const arr2names = arr11.map(item => item.name);
-arr12.forEach((item,index) => {
-  if(arr2Ids.includes(item.id) && arr2names.includes(item.name)){
+arr12.forEach((item, index) => {
+  if (arr2Ids.includes(item.id) && arr2names.includes(item.name)) {
     console.log(index);
   }
 });
@@ -322,7 +322,7 @@ const codeArr = [
     "bikeCode": "2",
     "clueCount": 1,
   },
-]
+];
 
 
 const labelArrs = codeArr.map(item => item.bikeLabel);
@@ -330,25 +330,25 @@ const codeArrs = codeArr.map(item => item.bikeCode);
 
 // console.log(labelArrs);
 // console.log(codeArrs);
-resData.forEach((item,index) => {
-  if(labelArrs.includes(item.bikeLabel) && codeArrs.includes(item.bikeCode)){
+resData.forEach((item, index) => {
+  if (labelArrs.includes(item.bikeLabel) && codeArrs.includes(item.bikeCode)) {
     // console.log({'index':index});
   }
 });
 
-let inserctArr = []
-let arrminus = []
-let newresData = []
+let inserctArr = [];
+let arrminus = [];
+let newresData = [];
 codeArr.forEach((codeItem) => {
-  resData.forEach((resItem,index) => {
+  resData.forEach((resItem, index) => {
     if (codeItem.bikeLabel === resItem.bikeLabel && codeItem.bikeCode === resItem.bikeCode) {
       console.log(index);
     }
-  })
-})
+  });
+});
 // console.log(newresData);
 
-let arrNum = Array.from(new Array(10).keys()) // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+let arrNum = Array.from(new Array(10).keys()); // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 // console.log(arrNum);
 
 
@@ -356,24 +356,24 @@ function process(arr) {
   // 缓存用于记录
   const cache = [];
   for (const t of arr) {
-      // 检查缓存中是否已经存在
-      if (codeArr.find(c => c.bikeLabel === t.bikeLabel && c.bikeCode === t.bikeCode)) {
-          // 已经存在说明以前记录过，现在这个就是多余的，直接忽略
-          continue;
-      }else{
-        t.sameFlag = 'false'
+    // 检查缓存中是否已经存在
+    if (codeArr.find(c => c.bikeLabel === t.bikeLabel && c.bikeCode === t.bikeCode)) {
+      // 已经存在说明以前记录过，现在这个就是多余的，直接忽略
+      continue;
+    } else {
+      t.sameFlag = 'false';
 
-        // 不存在就说明以前没遇到过，把它记录下来
-        cache.push(t);
-      }
+      // 不存在就说明以前没遇到过，把它记录下来
+      cache.push(t);
+    }
   }
 
   // 记录结果就是过滤后的结果
   return cache;
 }
-let processData = process(resData)
-console.log(processData);
-console.log(resData);
+let processData = process(resData);
+// console.log(processData);
+// console.log(resData);
 
 function process2(arr) {
   // 需要一个字典，可以用 Set/WeakSet 或者就简单的 JS 对象
@@ -381,18 +381,18 @@ function process2(arr) {
 
   // 过滤的过程中完善 dict
   return arr.filter(t => {
-      // 根据 max 和 min 来生成唯一识别的关键字
-      // 这里采用的办法是使用一个不会出现在两个数据中的字符 `|` 来连接
-      const key = [t.bikeLabel, t.bikeCode].join("|");
+    // 根据 max 和 min 来生成唯一识别的关键字
+    // 这里采用的办法是使用一个不会出现在两个数据中的字符 `|` 来连接
+    const key = [t.bikeLabel, t.bikeCode].join("|");
 
-      // 检查如果字典中已经存在，那这个数据就过滤掉，不需要了
-      if (dict[key]) {
-          return false;
-      }
+    // 检查如果字典中已经存在，那这个数据就过滤掉，不需要了
+    if (dict[key]) {
+      return false;
+    }
 
-      // 如果字典不不存在，加入字典，同时把数据保留下来（返回 true）
-      dict[key] = true;
-      return true;
+    // 如果字典不不存在，加入字典，同时把数据保留下来（返回 true）
+    dict[key] = true;
+    return true;
   });
 }
 
@@ -400,3 +400,41 @@ function process2(arr) {
 // console.log(processData2);
 // console.log(resData);
 
+
+const object001 = {
+  name: 'object',
+  age: 23
+};
+
+const object002 = {
+  sex: 'man',
+  home: '浙江省'
+};
+
+// let mergeObject = merge(object001,object002)
+// console.log(mergeObject);
+
+
+// 异步过滤函数
+async function asyncFilter(array, predicate) {
+  const results = await Promise.all(array.map(predicate));
+
+  return array.filter((_value, index) => results[index]);
+}
+
+// 示例
+async function isOddNumber(n) {
+  await delay(100); // 模拟异步操作
+  return n % 2 !== 0;
+}
+
+async function filterOddNumbers(numbers) {
+  return asyncFilter(numbers, isOddNumber);
+}
+
+filterOddNumbers([1, 2, 3, 4, 5]).then(console.log); // 输出: [1, 3, 5]
+
+
+const arr123 = [{ "name1": "a" }, { "name2": "b" }, { "name3": "c" }];//定义
+localStorage.setItem("search", JSON.stringify(arr));
+const arr145 = JSON.parse(localStorage.getItem("search"));

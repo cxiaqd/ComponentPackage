@@ -22,6 +22,9 @@
           <li @click="open('/poetry')">诗集</li>
           <li @click="open('/utilExtend')">Vue extend</li>
           <li @click="open('/dragg')">拖拽</li>
+          <li @click="open('/dragDrop')">拖拽2</li>
+          <li @click="open('/animation')">animation</li>
+          <li @click="open('www.cnblogs.com/FraserYu/p/11192840.html')">git merge和git rebase的区别</li>
         </ol>
       </div>
       <div class="li-box box1">
@@ -32,6 +35,7 @@
           <li @click="open('/button')">按钮</li>
           <li @click="open('/replaceKey')">替换数组对象key</li>
           <li @click="open('/vant01')">vant01</li>
+          <li @click="open('/webWorker')">webWorker</li>
         </ol>
       </div>
       <div class="li-box box2">

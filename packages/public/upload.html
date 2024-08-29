@@ -1,0 +1,59 @@
+<style>
+  .wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+  }
+
+  #open-file {
+    width: 100px;
+    height: 50px;
+    border: 1px solid #5B5B5B;
+    border-radius: 5px;
+    background-color: #FCFCFC;
+    cursor: pointer;
+  }
+
+  #open-file:hover {
+    background-color: #F0F0F0;
+  }
+  .brother2{
+    display: none;
+  }
+  .brother1:hover+.brother2{
+    display: block;
+  }
+</style>
+
+<body>
+  <div class="wrap">
+    <button id="open-file">选择文件</button>
+    <div class="brother1" style="width: 180px;height:180px;background-color: aqua;">brother1</div>
+    <div class="brother2" style="width: 120px;height:120px;background-color: antiquewhite;position: absolute;">brother2</div>
+  </div>
+  <script>
+    const btn = document.getElementById("open-file");
+    btn.addEventListener("click", async () => {
+      // 单元素数组结构
+      console.log(window);
+      const [fileHandle] = await window?.showOpenFilePicker({
+        types: [
+          {
+            description: "图片类型",
+            accept: { "image/*": ['.png', '.gif', '.jpeg', '.jpg'] }
+          }
+        ],
+        excludeAcceptAllOption: true,
+        multiple: false,
+      });
+      // 获取文件File对象
+      const file = await fileHandle?.getFile();
+      console.group("获取到的文件");
+      console.log(fileHandle);
+      console.log(file);
+      console.groupEnd();
+    });
+  </script>
+</body>

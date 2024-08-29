@@ -14,6 +14,7 @@ import { formatNumber, float2Percent } from '@/lib/tool';
 Vue.use(ElementUI);
 Vue.use(Vant);
 Vue.config.productionTip = false;
+Vue.prototype.$window = window;
 
 Vue.mixin({
 	created() {
