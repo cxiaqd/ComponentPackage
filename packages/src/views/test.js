@@ -432,9 +432,216 @@ async function filterOddNumbers(numbers) {
   return asyncFilter(numbers, isOddNumber);
 }
 
-filterOddNumbers([1, 2, 3, 4, 5]).then(console.log); // 输出: [1, 3, 5]
+// filterOddNumbers([1, 2, 3, 4, 5]).then(console.log); // 输出: [1, 3, 5]
 
 
-const arr123 = [{ "name1": "a" }, { "name2": "b" }, { "name3": "c" }];//定义
-localStorage.setItem("search", JSON.stringify(arr));
-const arr145 = JSON.parse(localStorage.getItem("search"));
+// const arr123 = [{ "name1": "a" }, { "name2": "b" }, { "name3": "c" }];//定义
+// localStorage.setItem("search", JSON.stringify(arr));
+// const arr145 = JSON.parse(localStorage.getItem("search"));
+
+
+const snapList = [
+  {
+    "id": 2000003,
+    "cameraIndexCode": "4b47a5ba6ce34283b16414352f66b1c1",
+    "cameraName": "区政府西南门出入口",
+    "certificateNumber": "371521199305065859",
+    "latitude": 30.21047,
+    "longitude": 120.20609,
+    "personId": null,
+    "personName": "林琳",
+    "snapTime": "2024-09-11 16:09:27",
+    "bkgPicUrl": "/spctr-web/demoPic/3/3_linlin_bkg_2.jpg",
+    "snapPicUrl": "/spctr-web/demoPic/3/3_linlin_snap_2.jpg",
+    "similarity": null
+  },
+  {
+    "id": 2000004,
+    "cameraIndexCode": "4b47a5ba6ce34283b16414352f66b1c1",
+    "cameraName": "区政府西南门出入口",
+    "certificateNumber": "360925199507076186",
+    "latitude": 30.21047,
+    "longitude": 120.20609,
+    "personId": null,
+    "personName": "石慧",
+    "snapTime": "2024-09-11 15:35:49",
+    "bkgPicUrl": "/spctr-web/demoPic/3/3_shihui_bkg_1.jpg",
+    "snapPicUrl": "/spctr-web/demoPic/3/3_shihui_snap_1.jpg",
+    "similarity": null
+  },
+  {
+    "id": 2000000,
+    "cameraIndexCode": "4b47a5ba6ce34283b16414352f66b1c0",
+    "cameraName": "区政府新月路东侧",
+    "certificateNumber": "330102199508124510",
+    "latitude": 30.21126,
+    "longitude": 120.20866,
+    "personId": null,
+    "personName": "卢霄杰",
+    "snapTime": "2024-09-11 15:27:35",
+    "bkgPicUrl": "/spctr-web/demoPic/3/3_luxiaojie_bkg_1.jpg",
+    "snapPicUrl": "/spctr-web/demoPic/3/3_luxiaojie_snap_1.jpg",
+    "similarity": null
+  },
+  {
+    "id": 2000009,
+    "cameraIndexCode": "4b47a5ba6ce34283b16414352f66b1c3",
+    "cameraName": "区政府丹凤路南侧人脸",
+    "certificateNumber": "140427199704020637",
+    "latitude": 30.21248,
+    "longitude": 120.20776,
+    "personId": null,
+    "personName": "鲍兰",
+    "snapTime": "2024-09-11 15:21:54",
+    "bkgPicUrl": "/spctr-web/demoPic/3/3_baolan_bkg_2.jpg",
+    "snapPicUrl": "/spctr-web/demoPic/3/3_baolan_snap_2.jpg",
+    "similarity": null
+  },
+  {
+    "id": 2000001,
+    "cameraIndexCode": "4b47a5ba6ce34283b16414352f66b1c0",
+    "cameraName": "区政府新月路东侧",
+    "certificateNumber": "330102199508124510",
+    "latitude": 30.21126,
+    "longitude": 120.20866,
+    "personId": null,
+    "personName": "卢霄杰",
+    "snapTime": "2024-09-11 15:13:34",
+    "bkgPicUrl": "/spctr-web/demoPic/3/3_luxiaojie_bkg_2.jpg",
+    "snapPicUrl": "/spctr-web/demoPic/3/3_luxiaojie_snap_2.jpg",
+    "similarity": null
+  },
+  {
+    "id": 2000008,
+    "cameraIndexCode": "4b47a5ba6ce34283b16414352f66b1c3",
+    "cameraName": "区政府丹凤路南侧人脸",
+    "certificateNumber": "140427199704020637",
+    "latitude": 30.21248,
+    "longitude": 120.20776,
+    "personId": null,
+    "personName": "鲍兰",
+    "snapTime": "2024-09-11 15:09:15",
+    "bkgPicUrl": "/spctr-web/demoPic/3/3_baolan_bkg_1.jpg",
+    "snapPicUrl": "/spctr-web/demoPic/3/3_baolan_snap_1.jpg",
+    "similarity": null
+  },
+  {
+    "id": 2000002,
+    "cameraIndexCode": "4b47a5ba6ce34283b16414352f66b1c1",
+    "cameraName": "区政府西南门出入口",
+    "certificateNumber": "371521199305065859",
+    "latitude": 30.21047,
+    "longitude": 120.20609,
+    "personId": null,
+    "personName": "林琳",
+    "snapTime": "2024-09-11 15:09:11",
+    "bkgPicUrl": "/spctr-web/demoPic/3/3_linlin_bkg_1.jpg",
+    "snapPicUrl": "/spctr-web/demoPic/3/3_linlin_snap_1.jpg",
+    "similarity": null
+  },
+  {
+    "id": 2000007,
+    "cameraIndexCode": "4b47a5ba6ce34283b16414352f66b1c2",
+    "cameraName": "区政府泰安路人脸球机",
+    "certificateNumber": "530824193708308329",
+    "latitude": 30.21109,
+    "longitude": 120.20551,
+    "personId": null,
+    "personName": "衡佳媛",
+    "snapTime": "2024-09-11 15:07:10",
+    "bkgPicUrl": "/spctr-web/demoPic/3/3_hengjiayuan_bkg_2.jpg",
+    "snapPicUrl": "/spctr-web/demoPic/3/3_hengjiayuan_snap_2.jpg",
+    "similarity": null
+  },
+  {
+    "id": 2000006,
+    "cameraIndexCode": "4b47a5ba6ce34283b16414352f66b1c2",
+    "cameraName": "区政府泰安路人脸球机",
+    "certificateNumber": "530824193708308329",
+    "latitude": 30.21109,
+    "longitude": 120.20551,
+    "personId": null,
+    "personName": "衡佳媛",
+    "snapTime": "2024-09-11 15:06:17",
+    "bkgPicUrl": "/spctr-web/demoPic/3/3_hengjiayuan_bkg_1.jpg",
+    "snapPicUrl": "/spctr-web/demoPic/3/3_hengjiayuan_snap_1.jpg",
+    "similarity": null
+  },
+  {
+    "id": 2000005,
+    "cameraIndexCode": "4b47a5ba6ce34283b16414352f66b1c2",
+    "cameraName": "区政府泰安路人脸球机",
+    "certificateNumber": "360925199507076186",
+    "latitude": 30.21109,
+    "longitude": 120.20551,
+    "personId": null,
+    "personName": "石慧",
+    "snapTime": "2024-09-11 14:51:41",
+    "bkgPicUrl": "/spctr-web/demoPic/3/3_shihui_bkg_2.jpg",
+    "snapPicUrl": "/spctr-web/demoPic/3/3_shihui_snap_2.jpg",
+    "similarity": null
+  }
+]
+
+//先根据所有的title组合成一个数组
+let titleList = snapList.map(item => {
+  return item.cameraIndexCode
+})
+//用reduce时：
+//reduce:计算数组元素相加后的总和
+//reduce方法接受两个参数，第一个是函数，第二个是初始值
+function getRepeatNum(){ 
+  return titleList.reduce(function(prev,next){ 
+      prev[next] = (prev[next] + 1) || 1; 
+      return prev; 
+  },{}); 
+} 
+let repeatKey = getRepeatNum()
+// console.log(getRepeatNum())
+let result = []
+let mapArr = {}
+snapList.forEach((item) => {
+  if (!mapArr[item.cameraIndexCode]) {
+    mapArr[item.cameraIndexCode] = true
+    let obj = {
+      ...item,
+      num:repeatKey[item.cameraIndexCode]
+    }
+    result.push(obj)
+  }
+})
+// console.log(result);
+// let pointList = snapList.map((el) => {
+//   return {
+//     alarmType: '000',
+//     resType: 'camera',
+//     name: el.cameraName || '',
+//     cameraIndexCode: el.cameraIndexCode || '',
+//     num: repeatKey[el.cameraIndexCode], // 聚合数量(聚合点位、一杆多点)
+//     longitude: Number(el.longitude),
+//     latitude: Number(el.latitude),
+//   }
+// })
+
+// console.log(pointList);
+
+let lonTest = '120.202775'
+let lonTest2 = '120.212412857978'
+// console.log(lonTest.length);
+// console.log(lonTest2.length);
+
+
+let bbox = '120.19444860730285,30.184267911131684,120.19486843087239,30.184583933989124'
+let bboxArr = bbox.split(',')
+//  console.log(bboxArr);
+//  console.log(bboxArr.toString());
+
+let acbde = 1
+let test = () => {
+    console.log('acbde',this.acbde)
+}
+let obj0 = {
+    acbde: 2,
+    test: test()
+}
+obj0.test()

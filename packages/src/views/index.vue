@@ -24,7 +24,6 @@
           <li @click="open('/dragg')">拖拽</li>
           <li @click="open('/dragDrop')">拖拽2</li>
           <li @click="open('/animation')">animation</li>
-          <li @click="open('www.cnblogs.com/FraserYu/p/11192840.html')">git merge和git rebase的区别</li>
         </ol>
       </div>
       <div class="li-box box1">
@@ -98,6 +97,7 @@
           <li @click="jump('docschina.org/')">印记中文</li>
           <li @click="jump('www.lddgo.net/index')">在线工具软件大全</li>
           <li @click="jump('www.bossdesign.cn/peeps/')">Boss设计</li>
+          <li @click="jump('www.cnblogs.com/FraserYu/p/11192840.html')">git merge和git rebase的区别</li>
         </ol>
       </div>
       <div class="li-box box4">

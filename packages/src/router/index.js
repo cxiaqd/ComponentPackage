@@ -105,6 +105,16 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "utilExtend" */ "@/components/axios/lot-request"),
   },
+  {
+    path: "/infinite",
+    component: () =>
+      import(/* webpackChunkName: "utilExtend" */ "@/components/infiniteScroll/test.vue"),
+  },
+  {
+    path: "/vueInfinite",
+    component: () =>
+      import(/* webpackChunkName: "utilExtend" */ "@/components/vueInfiniteScroll"),
+  },
 ];
 
 const router = new VueRouter({

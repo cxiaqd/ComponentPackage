@@ -10,7 +10,10 @@ import store from "./store";
 import '@/styles/common.less'
 import { PLACEHOLDER } from '@/lib/dic';
 import { formatNumber, float2Percent } from '@/lib/tool';
+import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
+import VueVirtualScroller from 'vue-virtual-scroller'
 
+Vue.use(VueVirtualScroller)
 Vue.use(ElementUI);
 Vue.use(Vant);
 Vue.config.productionTip = false;

@@ -34,18 +34,3 @@ npm config set registry https://registry.npmmirror.com
     4、nvm install 20.8.8  安装指定版本
     5、nvm use 20.8.8  切换到指定版本
     6、nvm uninstall 20.8.8 删除已安装版本
-
-# git提交规范
-
-    feat: 新功能（feature）
-    fix: 修补bug
-    docs: 文档（documentation）
-    style: 格式（不影响代码运行的变动）
-    refactor: 重构（即不是新增功能，也不是修改bug的代码变动）
-    chore: 构建过程或辅助工具的变动
-    revert: 撤销，版本回退
-    perf: 性能优化
-    test：测试
-    improvement: 改进
-    build: 打包
-    ci: 持续集成

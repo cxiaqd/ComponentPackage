@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box{
+      width: 800px;
+      display: flex;
+      flex-wrap: wrap;
+      /* justify-content: space-between; */
+    }
+    .box-demo{
+      width: 50px;
+      height: 50px;
+      border: 2px solid darkslategrey;
+      box-sizing: border-box;
+      --n: 10; /* 一行几个 */
+      --space: calc(100% - var(--n) * 50px); /* 一行减去item的宽度后剩下的间距 */
+      --leftRight: calc(var(--space) / var(--n) / 2); /* 每个item左右的间距 */
+      margin: 10px var(--leftRight);
+    }
+
+    .box2 {
+      background-color: gainsboro;
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+    }
+
+    .box-demo2 {
+      width: 50px;
+      height: 50px;
+      border: 2px solid darkslategrey;
+      box-sizing: border-box;
+      margin: 10px auto;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+    <div class="box-demo"></div>
+  </div>
+  <div class="box2">
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+    <div class="box-demo2"></div>
+  </div>
+</body>
+</html>
