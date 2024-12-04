@@ -1,3 +1,4 @@
+
 const resData = [
   {
     "bikeLabel": "1",
@@ -238,6 +239,26 @@ function same_obj_test2(arr) {
   return cache;
 }
 
+function same_obj_test3() {
+  // 数组对象
+  const arr11 = [{ name: 'name1', id: 1 }, { name: 'name22', id: 2 }, { name: 'name3', id: 3 }, { name: 'name5', id: 5 }];
+  const arr12 = [{ name: 'name1', id: 1 }, { name: 'name2', id: 2 }, { name: 'name3', id: 3 }, { name: 'name4', id: 4 }, { name: 'name5', id: 5 }];
+  const newArr = arr11.concat(arr12)
+  let newMap = new Map()
+  let sameRes = []
+
+  newArr.forEach((item) => {
+    if (newMap.has(item.id)) {
+    }else{
+      sameRes.push(item);
+      // newMap.set(item.id,item.name)
+    }
+  })
+  console.log(newMap);
+
+  return sameRes
+}
+
 // 统计数组对象中某一个属性重复出现的次数
 //用reduce时：
 //reduce:计算数组元素相加后的总和
@@ -248,7 +269,6 @@ function getRepeatNum_test3() {
     return item.cameraIndexCode
   })
   return titleList.reduce(function (prev, next) {
-    console.log(prev, next);
     prev[next] = (prev[next] + 1) || 1;
     return prev;
   }, {});
@@ -269,4 +289,5 @@ function maxNum_test3() {
 // const res1 = same_obj_test1();
 // const res2 = same_obj_test2(resData);
 // console.log(getRepeatNum_test3());
-console.log(maxNum_test3());
+// console.log(maxNum_test3());
+console.log(same_obj_test3());
