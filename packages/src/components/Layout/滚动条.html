@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .test {
+      width: 50px;
+      height: 200px;
+      overflow: auto;
+      float: left;
+      margin: 5px;
+      border: none;
+    }
+
+    .scrollbar {
+      width: 30px;
+      height: 300px;
+      margin: 0 auto;
+    }
+
+    /*滚动条整体样式*/
+    .test-1::-webkit-scrollbar {
+      /*高宽分别对应横竖滚动条的尺寸*/
+      width: 10px;
+      height: 1px;
+    }
+
+    /*滚动条里面小方块*/
+    .test-1::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+      background: #535353;
+    }
+
+    /*滚动条里面轨道*/
+    .test-1::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      background: #EDEDED;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="test test-1">
+    <div class="scrollbar">
+      <p>123456789</p>
+      <p>123456789</p>
+      <p>123456789</p>
+      <p>123456789</p>
+      <p>123456789</p>
+      <p>123456789</p>
+      <p>123456789</p>
+      <p>123456789</p>
+      <p>123456789</p>
+      <p>123456789</p>
+      <p>123456789</p>
+      <p>123456789</p>
+      <p>123456789</p>
+      <p>123456789</p>
+      <p>123456789</p>
+      <p>123456789</p>
+      <p>123456789</p>
+      <p>123456789</p>
+    </div>
+  </div>
+</body>
+
+</html>
