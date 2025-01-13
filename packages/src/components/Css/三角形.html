@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  .margin16{
+    margin: 16px;
+  }
+  .triangle {
+    width: 0;
+    height: 0;
+    border: 50px solid;
+    border-color: orangered skyblue gold yellowgreen;
+  }
+  .triangle-down{
+    width: 0;
+    height: 0;
+    border-top: 50px solid orangered;
+    border-right: 50px solid transparent;
+    border-left: 50px solid transparent;
+  }
+  .triangle-right {
+    width: 0;
+    height: 0;
+    border-left: 50px solid yellowgreen;
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+  }
+  .triangle-right2 {
+    border-style: solid;
+    border-color: transparent;
+    border-width: 50px 0 50px 50px;
+    border-left-color: yellowgreen;
+  }
+  .triangle-left {
+    border-style: solid;
+    border-color: transparent;
+    border-width: 50px 50px 50px 0;
+    border-right-color: skyblue;
+  }
+  .triangle-up {
+    width: 0;
+    height: 0;
+    border-bottom: 50px solid gold;
+    border-right: 50px solid transparent;
+    border-left: 50px solid transparent;
+  }
+  .triangle2 {
+    width: 0;
+    height: 0;
+    border-top: 100px solid skyblue;
+    border-right: 100px solid transparent;
+  }
+  .triangle2-right {
+    width: 0;
+    height: 0;
+    border-right: 100px solid skyblue;
+    border-top: 100px solid transparent;
+  }
+  .triangle2-bottom {
+    width: 0;
+    height: 0;
+    border-bottom: 100px solid skyblue;
+    border-right: 100px solid transparent;
+  }
+  .triangle2-left {
+    width: 0;
+    height: 0;
+    border-top: 100px solid skyblue;
+    border-left: 100px solid transparent;
+  }
+  .triangle3 {
+		width: 0;
+		height: 0;
+		border-left: 69px solid transparent;  
+		border-right: 69px solid transparent;  
+		border-bottom: 120px solid skyblue; 
+  }
+  </style>
+</head>
+<body>
+  <div style="display: flex;">
+    <div class="margin16 triangle"></div>
+    <div class="margin16 triangle-down"></div>
+    <div class="margin16 triangle-left"></div>
+    <div class="margin16 triangle-up"></div>
+    <div class="margin16 triangle-right"></div>
+    <div class="margin16 triangle-right2"></div>
+    <div class="margin16 triangle2"></div>
+    <div class="margin16 triangle2-right"></div>
+    <div class="margin16 triangle2-bottom"></div>
+    <div class="margin16 triangle2-left"></div>
+    <!-- <div class="margin16 triangle3"></div> -->
+  </div>
+</body>
+</html>

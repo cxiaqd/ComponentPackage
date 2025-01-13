@@ -45,3 +45,118 @@ filter 属性是CSS3开始提供的，用于对页面元素设置各种滤镜效
 transform 属性用于对元素进行变换，例如旋转、缩放、平移等。其中，缩放 scale 就可以用来隐藏元素使用，只需要将 scale 的值设置为 0，该元素就会被缩放到不可见的状态，达到隐藏效果：`.elem {transform: scale(0)}`
 需要注意的是，transform:scale(0) 达成的隐藏效果，无法作用于行内元素，这是由于 transform 属性本身对行内元素不起作用。
 并且，这种隐藏方式也会占用页面空间(元素的原始大小区域)，但元素实际上宽高都为0，同样无法响应事件和交互。
+
+# CSS选择器有哪些
+## 1、通配符选择器
+## 2、标签选择器
+## 3、类选择器
+## 4、id选择器
+## 5、属性选择器
+```
+/* 存在 title 属性的 <a> 元素 */
+a[title] {
+  color: purple;
+}
+
+/* 存在 href 属性并且属性值匹配"https://example.org"的 <a> 元素 */
+a[href="https://example.org"]
+{
+  color: green;
+}
+
+/* 存在 href 属性并且属性值包含"example"的 <a> 元素 */
+a[href*="example"] {
+  font-size: 2em;
+}
+
+/* 存在 href 属性并且属性值结尾是".org"的 <a> 元素 */
+a[href$=".org"] {
+  font-style: italic;
+}
+
+/* 存在 class 属性并且属性值包含单词"logo"的<a>元素 */
+a[class~="logo"] {
+  padding: 2px;
+}
+```
+## 6、交集选择器
+class值不用任何东西隔开，表示“且”--同时满足多个选择器筛选条件的才能被选中
+筛选class值同时具有red和fontsize50的标签:`.red.fontsize{color:red}`
+筛选class值为blue的P标签：`p.blue{color:blue}`
+## 7、并集选择器
+class值用“,”隔开，表示或--只要满足其中一个筛选条件就能够被选中
+筛选class值为red或orange的标签：`.red,.orange{font-size:30px}`
+## 8、后代选择器
+（通常用单个空格（" "）字符表示）组合了两个选择器，如果第二个选择器匹配的元素具有与第一个选择器匹配的祖先（父母，父母的父母，父母的父母的父母等）元素，则它们将被选择。利用后代组合器的选择器称为后代选择器。`ul.my-things li {margin: 2em;}`
+## 9、子选择器
+（>）被放在两个 CSS 选择器之间。它只匹配那些被第二个选择器匹配的元素，这些元素是被第一个选择器匹配的元素的直接子元素。
+```
+/* 选择属于“my-things”类的无序列表（ul）的直接子列表元素（li） */
+ul.my-things > li {
+  margin: 2em;
+}
+```
+## 10、兄弟选择器
+### （1）、接续兄弟选择器
+（+）介于两个选择器之间，当第二个元素紧跟在第一个元素之后，并且两个元素都是属于同一个父元素的子元素，则第二个元素将被选中。
+```
+/* 图片后面紧跟着的段落将被选中 */
+img + p {
+  font-weight: bold;
+}
+```
+### (2)、后续兄弟选择器
+（~）将两个选择器分开，并匹配第二个选择器的所有迭代元素，位置无须紧邻于第一个元素，只须有相同的父级元素。
+```
+<p>Here is a paragraph.</p>
+<code>Here is some code.</code>
+<span>And here is a red span!</span>
+<span>And this is a red span!</span>
+
+p ~ span {
+  color: red;
+}
+```
+## 11、嵌套选择器
+CSS & 嵌套选择器明确指示在使用 CSS 嵌套时，父规则和子规则的关系。它使得内嵌子规则的选择器相对于其父元素。若没有 & 嵌套选择器，则子规则将选择子元素。
+
+```
+.parent-rule {
+  /* 父规则的属性 */
+  :hover {
+    /* 子规则的属性 */
+  }
+}
+```
+## 12、伪选择器
+### （1）、伪类选择器
+| 伪类选择器 | 作用 | 应用对象
+|-----------|-----|---------|
+| :hover| 定义标记在鼠标悬停（划过）时的样式 |所有显示标记
+| :link| 定义标记在超链接状态下的样式|a标签
+| :focus| 定义标记在获取焦点时的样式|a标签（IE浏览器不支持）
+| :visited| 定义标记被访问过后的样子|a标签
+| :active| 定义标记在选定时刻下的样子|a标签
+### （2）、伪对象选择器
+|伪对象选择器|作用|
+|-----------|---|
+|:first-leter|定义文本的第一个字符样式|
+|:first-line|定义文本的首行样式|
+|:before|定义对象之前内容的样式|
+|:after|定义对象之后内容的样式|
+
+# css3新增伪类
+**elem:nth-child(n)**：选中父元素下的第n个子元素，并且这个元素后面的标签名为elem，n可以是具体的数值也可以是函数。
+**elem:nth-last-child(n)**：作用同上，不过是从后开始查找。
+**elem:last-child**：选中最后一个子元素。
+**elem:only-child**：如果elem是父元素下唯一的子元素，则选中之。
+**elem:nth-of-type(n)**：查找第n个elem标签的元素。可以为一个函数。
+**elem:first-of-type**：选中父元素下第一个elem类型的元素。
+**elem:last-of-type**:选中父元素下最后一个elem类型的元素。
+**elem:only-of-type**:如果父元素下的子元素只有一个elem类型的元素，则选中该元素。
+**elem:empty**:选中不包含子元素和内容的elem类型的元素。
+**elem:target**:选中当前活动的elem元素。
+**elem:not(elem)**:选择非elem元素的每一个元素。
+**elem:enabled**:控制表单控件的禁用状态。
+**elem:disabled**:控制表单的禁用状态。
+**elem:checked**:单选框和复选框被选中。

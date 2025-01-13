@@ -1,0 +1,1 @@
+# 判断数据类型的方法--typeof、instanceof 和 Object.prototype.toString
