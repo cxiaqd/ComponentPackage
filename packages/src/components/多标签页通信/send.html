@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>标签页通信-发送端</title>
+  <script src="./channel.js"></script>
+</head>
+
+<body>
+  <h1>标签页通信-发送端</h1>
+  <button id="BroadcastChannel" onclick="BroadcastChannelFn()">点击发送信息（BroadcastChannel）</button>
+  <button id="SharedWorker" onclick="SharedWorkerFn()">点击发送信息（SharedWorker）</button>
+</body>
+<script>
+  let count = 1
+  function BroadcastChannelFn(){
+    count += 1
+    Channel.send(Channel.channelEnum.TEST.name, `hello BroadcastChannel: ${count}`)
+  }
+
+  function SharedWorkerFn(){
+    // 兼容性判断
+    if (!SharedWorker) {
+      throw new Error('当前浏览器不支持SharedWorker')
+    }
+
+    // 创建共享线程
+    const worker = new SharedWorker('SharedWorker.js')
+
+    // 启动线程端口
+    worker.port.start()
+
+    // 向共享线程发送消息
+    worker.port.postMessage('counter++')
+
+    // 线程监听消息
+    worker.port.addEventListener('message', (e) => {
+      console.log('page1页面共享线程counter值：', e.data)
+    })
+  }
+</script>
+
+</html>

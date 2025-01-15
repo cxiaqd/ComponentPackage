@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>标签页通信-接收端</title>
+  <script src="./channel.js"></script>
+</head>
+
+<body>
+  <h1>标签页通信-接收端</h1>
+  <div id="BroadcastChannel"></div>
+  <div id="SharedWorker"></div>
+</body>
+<script>
+  let BroadcastChannelBtn = document.getElementById('BroadcastChannel')
+  let SharedWorkerBtn = document.getElementById('SharedWorker')
+  Channel.listen(Channel.channelEnum.TEST.name, (data) => {
+    BroadcastChannelBtn.innerHTML = `<p>BroadcastChannel：${data}</p>`
+  })
+
+  // 兼容性判断
+  if (!SharedWorker) {
+    throw new Error('当前浏览器不支持SharedWorker')
+  }
+
+  // 创建共享线程
+  const worker = new SharedWorker('SharedWorker.js')
+
+  // 启动线程端口
+  worker.port.start()
+
+  // 向共享线程发送消息
+  worker.port.postMessage('get counter')
+
+  // 线程监听消息
+  worker.port.addEventListener('message', (e) => {
+    SharedWorkerBtn.innerHTML = `<p>SharedWorker${e.data}</p>`
+  })
+</script>
+
+</html>

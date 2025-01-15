@@ -66,3 +66,6 @@ console.log(toString.call(function(){})); //=>"[object Function]"
 1)、只能检测内置类，不能检测自定义类
 2)、只要是自定义类返回的都是‘[Object Object]’
 **注意：此方法是基于JS本身专门进行数据检测的，所以是目前检测数据类型比较好的方法**
+# 回调函数
+https://blog.csdn.net/I_am_shy/article/details/136476455
+回调函数是一种特殊的函数，它作为参数传递给另一个函数，并在被调用函数执行完毕后被调用
