@@ -69,3 +69,4 @@ console.log(toString.call(function(){})); //=>"[object Function]"
 # 回调函数
 https://blog.csdn.net/I_am_shy/article/details/136476455
 回调函数是一种特殊的函数，它作为参数传递给另一个函数，并在被调用函数执行完毕后被调用
+# js有哪些内置的对象
