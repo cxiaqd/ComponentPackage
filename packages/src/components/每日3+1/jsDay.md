@@ -70,5 +70,95 @@ console.log(toString.call(function(){})); //=>"[object Function]"
 https://blog.csdn.net/I_am_shy/article/details/136476455
 回调函数是一种特殊的函数，它作为参数传递给另一个函数，并在被调用函数执行完毕后被调用
 # js有哪些内置的对象
-在这里测试git merge功能
-# 创建新的分支feature1.0
+* **Object**：JavaScript 中的所有对象都是从 Object 对象继承而来的。
+* **Array**：用于创建和操作数组的对象。
+* **String**：用于创建和操作字符串的对象。
+* **Number**：用于创建和操作数字的对象。
+* **Boolean**：用于创建和操作布尔值的对象。
+* **Function**：用于创建函数的对象。
+* **Date**：用于创建和操作日期的对象。
+* **Math**：用于执行数学运算的对象。
+* **RegExp**：用于创建和操作正则表达式的对象。
+* **Error**：用于创建错误对象的对象。
+# js获去URL中参数值的四种方法
+## 1、现代浏览器都支持URL和URLSearchParams对象，可以很方便地从URL中提取参数
+```
+// 假设当前URL为 "https://example.com/?name=John&age=30" 
+const url = new URL(window.location.href); // 或者你可以直接传入一个URL字符串 
+const name = url.searchParams.get('name'); // "John" 
+const age = url.searchParams.get('age'); // "30" 
+```
+## 2、使用正则表达式
+可以使用正则表达式匹配URL参数，这种方法相对较低效且复杂。
+```
+function getQueryParam(name) {
+    const regex = new RegExp('[?&]' + name + '=([^&#]*)', 'i');
+    const results = regex.exec(window.location.href);
+    return results ? decodeURIComponent(results[1]) : null;
+}
+
+// 假设当前URL为 "https://example.com/?name=John&age=30"
+const name = getQueryParam('name'); // "John"
+const age = getQueryParam('age'); // "30"
+```
+## 3、使用split和reduce
+可以通过split方法手动拆分查询参数，并用reduce将其转化为对象
+```
+function getQueryParams() {
+    return window.location.search
+        .substring(1) // 去掉 ?
+        .split('&') // 按 & 拆分
+        .reduce((params, param) => {
+            const [key, value] = param.split('=');
+            params[decodeURIComponent(key)] = decodeURIComponent(value || '');
+            return params;
+        }, {});
+}
+
+// 假设当前URL为 "https://example.com/?name=John&age=30"
+const params = getQueryParams();
+const name = params['name']; // "John"
+const age = params['age']; // "30"
+```
+## 4、使用locasion.search和自定义函数
+```
+function getQueryParameter(name) {
+  const params = new URLSearchParams(location.search);
+  return params.get(name);
+}
+
+// 假设当前URL为 "https://example.com/?name=John&age=30"
+const name = getQueryParameter('name'); // "John"
+const age = getQueryParameter('age'); // "30"
+```
+
+# JavaScript作用域的理解
+https://segmentfault.com/a/1190000018513150
+作用域是指在代码中变量和函数的可访问范围。作用域决定了程序中变量、函数是否可以在当前环境中被访问修改。作用域直接影响代码的执行逻辑和变量的生命周期。在JS中作用域主要分为三种类型：全局作用域、函数作用域、块级作用域。
+## 为什么引入作用域的概念
+主要是为了提升代码的可维护性、安全性和避免冲突，确保变量和函数能够在适当的范围内被访问和使用。
+## 全局作用域
+全局作用域是指在代码的任何地方都可以访问的变量。这些变量在全局对象上定义，并且在整个代码期间都存在。常见的全局对象包括浏览器中的window对象和Node.js中global对象。
+**注意**：滥用全局变量可能导致命名冲突和难以调试的问题，因此应尽量避免不必要的全局变量。
+## 函数作用域
+函数作用域是指变量在函数内部定义，并且只能在该函数内部访问，每调用一次函数都会创建新的作用域。函数执行完毕后，局部变量将被销毁。使用var定义的变量具有函数作用域，存在变量提升问题（变量声明被提升到函数顶部，但赋值不提升）。
+```
+//变量提升问题
+console.log(testParams); //undenfined
+var testParams = '123456789' 
+
+console.log(testParams2); //Cannot access 'testParams2' before initialization
+let testParams2 = '123456789'
+```
+## 块级作用域
+块级作用域是指变量在代码快{}内定义，并且只能在改代码块内访问。使用let和const定义的变量具有块级作用域。
+```
+if (true) {
+  var testParams4 = '44444'
+  let testParams3 = '33333'
+  console.log(testParams3); //33333
+  console.log(testParams4); //44444
+}
+console.log(testParams4); //44444
+console.log(testParams3); //testParams3 is not defined
+```

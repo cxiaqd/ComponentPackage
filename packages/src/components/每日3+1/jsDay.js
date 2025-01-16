@@ -228,6 +228,20 @@ console.log(decodedStr); // 输出：Hello, World!
 
 // 判断数据类型方法 
 
+// 获取URL中参数的方法
+function getQueryParameter(name) {
+  let urlParams = new URL("https://example.com/?name=zhangsan&sex=man&age=30") || location.search
+  const params = new URLSearchParams(urlParams.searchParams);
+  return params.get(name);
+}
+
+// 假设当前URL为 "https://example.com/?name=John&age=30"
+const name1 = getQueryParameter('name'); // "John"
+const sex = getQueryParameter('sex'); // "John"
+const age = getQueryParameter('age'); // "30"
+
+console.log(name1,sex,age);
+
 // console.log(countStr('22abcfh ab cabc', 'abc')) // 2
 // console.log(countStr2('22abcfh ab cabc11', 'abc')) // 2
 // console.log(strAppearNum5('22abcfh ab cabc', 'abc')) // 2
