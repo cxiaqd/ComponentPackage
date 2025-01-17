@@ -240,7 +240,7 @@ const name1 = getQueryParameter('name'); // "John"
 const sex = getQueryParameter('sex'); // "John"
 const age = getQueryParameter('age'); // "30"
 
-console.log(name1,sex,age);
+console.log(name1, sex, age);
 
 // console.log(countStr('22abcfh ab cabc', 'abc')) // 2
 // console.log(countStr2('22abcfh ab cabc11', 'abc')) // 2
