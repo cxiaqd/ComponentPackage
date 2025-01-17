@@ -131,14 +131,14 @@ const age = getQueryParam('age'); // "30"
 
 ```js
 function getQueryParams() {
-    return window.location.search
-        .substring(1) // 去掉 ?
-        .split('&') // 按 & 拆分
-        .reduce((params, param) => {
-            const [key, value] = param.split('=');
-            params[decodeURIComponent(key)] = decodeURIComponent(value || '');
-            return params;
-        }, {});
+  return window.location.search
+    .substring(1) // 去掉 ?
+    .split('&') // 按 & 拆分
+    .reduce((params, param) => {
+      const [key, value] = param.split('=');
+      params[decodeURIComponent(key)] = decodeURIComponent(value || '');
+      return params;
+    }, {});
 }
 
 // 假设当前URL为 "https://example.com/?name=John&age=30"
@@ -207,6 +207,53 @@ console.log(testParams3); //testParams3 is not defined
 闭包，是一个具有封闭功能与包裹功能的一个结构或空间。在js中，函数可以构成闭包。因为函数在当前的作用域中是一个封闭的结构，具有封闭性；同时根据作用域规则，只允许函数内部访问外部的数据，而外部无法访问函数内部的数据，即函数具有封闭的对外不公开的特性，就像把一个东西包裹起来一样，因此函数可以构成闭包。
 有点难理解，简单来说，就是能够读取其他函数内部变量的函数，再简洁一点就是：定义在一个函数内部的函数。
 
+```js
+function outerFunction() {
+  let outerVariable = 'I am outer'; // 外部函数作用域中的变量
+
+  function innerFunction() {
+    console.log(outerVariable); // 内部函数访问外部函数作用域中的变量
+  }
+
+  return innerFunction; // 返回内部函数
+}
+
+const myClosure = outerFunction();
+myClosure(); // 输出：I am outer
+```
+
+```js
+var name = "The Window";
+　　var object = {
+　　　　name : "My Object",
+　　　　getNameFunc : function(){
+　　　　　　return function(){
+　　　　　　　　return this.name;
+　　　　　　};
+　　　　}
+　　};
+alert(object.getNameFunc()()); //The Window
+
+var name = "The Window";
+　　var object = {
+　　　　name : "My Object",
+　　　　getNameFunc : function(){
+　　　　　　var that = this;
+　　　　　　return function(){
+　　　　　　　　return that.name;
+　　　　　　};
+　　　　}
+　　};
+alert(object.getNameFunc()()); //My Object
+
+
+// 第一个alert：返回的函数里面返回this.name，因为后续没有引用，所以getNameFunc直接释放了，因此这里的this存在丢失问题，这时候直接指向了window，于是alert的是The Window。
+// 另一种理解方式：return function(){return this.name;}匿名函数没调用对象就指向global
+// 第二个alert：返回的函数里面返回that.name，但是这里的that在getNameFunc有定义，因此getNameFunc就没有被释放，然后存在在作用域中，于是可以通过作用域链向上查找that，先找到的是object作用域，于是alert的是My Object。
+
+// 第二个alert体现的就是闭包的作用，能够保持作用域链的引用，可以在全局环境下访问到函数的内部作用域。
+```
+
 ### 4、闭包的优缺点
 
 #### 1、优点
@@ -226,3 +273,23 @@ console.log(testParams3); //testParams3 is not defined
 * 2、使用 WeakMap 或 WeakSet：这些是 JavaScript 中的弱引用集合，不会阻止垃圾回收器对其所引用的对象进行回收，可以用来存储闭包中的外部变量，避免内存泄漏。
 * 3、避免创建不必要的闭包：尽量减少闭包的使用，特别是在不需要保持状态或上下文的情况下。
 * 4、注意循环引用：闭包中的变量可能形成循环引用，导致内存无法正确释放，要特别注意避免这种情况
+
+## 深拷贝&浅拷贝&Console
+
+**浅拷贝**是创建一个新对象，这个对象有着原始对象属性值的拷贝。如果属性是基本类型，拷贝的就是基本类型的值，如果属性是引用类型，拷贝的是内存地址 。如果不进行深拷贝，其中一个对象改变了对象的值，就会影响到另一个对象的值。如：`Object.assign(obj1, obj2)`
+**深拷贝**是将一个对象从内存中完整的拷贝一份出来,从堆内存中开辟一个新的区域存放新对象,且修改新对象不会影响原对象。如：`JSON.parse(JSON.stringify(obj))`
+
+<https://developer.mozilla.org/zh-CN/docs/Web/API/console/log_static#%E8%BE%93%E5%87%BA%E5%AF%B9%E8%B1%A1>
+不要使用 console.log(obj)，而应该使用 console.log(JSON.parse(JSON.stringify(obj)))。
+这样可以确保你所看到的 obj 的值是当前输出的值。否则，大多数浏览器会提供一个随着值的变化而不断更新的实时视图。这可能不是你想要的。
+
+```js
+function testConsol() {
+  let obj1 = { a: 1 }
+  let obj2 = { b: { data: 1 } }
+  Object.assign(obj1, obj2)
+  console.log('obj1', obj1); // {"a": 1,"b": 10}
+  console.log('obj1', JSON.parse(JSON.stringify(obj1))); //{"a": 1,"b": {"data": 1}}
+  obj1.b = 10
+}
+```

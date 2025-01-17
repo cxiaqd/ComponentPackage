@@ -220,10 +220,10 @@ function countStr2(str, target) {
 // base64加密与解密
 const str = "Hello, World!";
 const encodedStr = btoa(str);
-console.log(encodedStr);
+// console.log(encodedStr);
 
 const decodedStr = atob(encodedStr);
-console.log(decodedStr); // 输出：Hello, World!
+// console.log(decodedStr); // 输出：Hello, World!
 
 
 // 判断数据类型方法 
@@ -240,7 +240,18 @@ const name1 = getQueryParameter('name'); // "John"
 const sex = getQueryParameter('sex'); // "John"
 const age = getQueryParameter('age'); // "30"
 
-console.log(name1, sex, age);
+// console.log(name1, sex, age);
+
+var name = "The Window";
+var object = {
+  name: "My Object",
+  getNameFunc: function () {
+    return function () {
+      return this.name;
+    };
+  }
+};
+// object.getNameFunc()()
 
 // console.log(countStr('22abcfh ab cabc', 'abc')) // 2
 // console.log(countStr2('22abcfh ab cabc11', 'abc')) // 2

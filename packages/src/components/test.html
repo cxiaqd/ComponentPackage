@@ -27,6 +27,17 @@
     我是14px=14.rem
     <div class="innerside">我是12px=1.2rem</div>
   </div>
+  <script>
+    function testConsol() {
+      let obj1 = { a: 1 }
+      let obj2 = { b: { data: 1 } }
+      Object.assign(obj1, obj2)
+      console.log('obj1', obj1);
+      console.log('obj1', JSON.parse(JSON.stringify(obj1)));
+      obj1.b = 10
+    }
+    testConsol()
+  </script>
 </body>
 
 </html>
