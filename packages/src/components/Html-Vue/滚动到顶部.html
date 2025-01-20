@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  a {
+    display: block;
+  }
+
+  #top {
+    height: 2000px;
+    background-color: #999
+  }
+
+  #backtop {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    background-color: #fff;
+    z-index: 9;
+  }
+</style>
+
+<body>
+  <div id="top">
+    这里是页面顶部
+  </div>
+  <div id="backtop">
+    <a href="#top">回到顶部-锚点</a>
+    <a href="javascript:scrollTo(0, 0)">回到顶部-scrollTo函数</a>
+    <a onclick="byScrollTop()">回到顶部-scrollTop函数</a>
+    <a onclick="byScrollBy()">回到顶部-scrollBy函数</a>
+    <a onclick="scrollToTop()">回到顶部-定时器动画版</a>
+  </div>
+  <script>
+    window.onscroll = function () {
+      var currentHeight =
+        document.documentElement.scrollTop ||
+        window.pageYOffset ||
+        document.body.scrollTop;
+      console.log(currentHeight, "currentHeight");
+      if (currentHeight > 300) {
+        document.getElementById('backtop').style.display = 'block'
+      } else {
+        document.getElementById('backtop').style.display = 'none'
+      }
+    }
+
+    function byScrollTop() {
+      document.documentElement.scrollTop = 0;
+      window.pageYOffset = 0; // 兼容ios
+      document.body.scrollTop = 0; // 兼容低版本ie
+    }
+
+    function byScrollBy() {
+      var topHeight =
+        document.documentElement.scrollTop ||
+        window.pageYOffset ||
+        document.body.scrollTop;
+      scrollBy(0, -topHeight);
+    }
+
+    function scrollToTop() {
+      var topHeight =
+        document.documentElement.scrollTop ||
+        window.pageYOffset ||
+        document.body.scrollTop;
+      var speed = topHeight / 10 > 100 ? topHeight / 10 : 100;
+      scrollBy(0, -speed);
+      // 模拟鼠标向上滚动事件
+      scrolldelay = setTimeout('scrollToTop()', 50);
+      // 清除滚动事件，避免无法向下移动
+      if (topHeight === 0) {
+        clearTimeout(scrolldelay);
+        scrolldelay = null;
+      }
+    }
+  </script>
+</body>
+
+</html>

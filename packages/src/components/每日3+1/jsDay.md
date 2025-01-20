@@ -293,3 +293,116 @@ function testConsol() {
   obj1.b = 10
 }
 ```
+
+## 返回到顶部有哪些方法
+
+### 动态显示滚动按钮
+
+“回到顶部”按钮并不是一直显示的，而是滚动到一定值才会出现的，因此应该在window.onscroll里定义一个判断事件控制其是否显示。
+
+```js
+window.onscroll = function () {
+  var currentHeight =
+    document.documentElement.scrollTop ||
+    window.pageYOffset ||
+    document.body.scrollTop;
+  // 页面滚动超过300px就显示
+  if (currentHeight > 300) {
+    document.getElementById('backtop').style.display = 'block'
+  } else {
+    document.getElementById('backtop').style.display = 'none'
+  }
+}
+```
+
+### 直接回到顶部
+
+#### 锚点
+
+最简单的方法。给顶部的div一个id，点击直接回到这个div元素，但是URL上会出现#top.
+
+```html
+<div id="top"></div>
+......
+<a href="#top">回到顶部</a>
+```
+
+#### scrollTo函数
+
+控制滚动条回到指定位置，第一个参数是距离页面左端的距离，第二个参数是距离页面顶部的距离。
+`<a href="javascript:scrollTo(0, 0)">回到顶部</a>`
+
+#### scrollTop函数
+
+控制滚动条垂直偏移
+
+```js
+<a onclick="byScrollTop()">回到顶部</a>
+......
+function byScrollTop() {
+  document.documentElement.scrollTop = 0;
+  window.pageYOffset = 0; // 兼容ios
+  document.body.scrollTop = 0; // 兼容低版本ie
+}
+```
+
+#### scrollBy函数
+
+该方法可把内容滚动指定的像素。第一个参数只想右滚动的像素，第二个参数指向下滚动的参数，负数可使方向相反。
+
+```js
+<a onclick="byScrollBy()">回到顶部</a>
+......
+function byScrollBy() {
+  var topHeight =
+    document.documentElement.scrollTop ||
+    window.pageYOffset ||
+    document.body.scrollTop;
+  scrollBy(0, -topHeight);
+}
+```
+
+### 间接回到顶部
+
+#### 定时器实现滚动动画
+
+通过定时器实现固定速度的自动滚动动画效果。但是这样会有个问题，就是当页面内容十分多的时候，这个时候离顶部已经有很长一段距离了。如果还是一个固定速度的话，可能会长达10秒钟，这对用户体验来说是不友好的。
+
+```js
+<a onclick="scrollToTop()">回到顶部</a>
+......
+function scrollToTop() {
+  var topHeight =
+    document.documentElement.scrollTop ||
+    window.pageYOffset ||
+    document.body.scrollTop;
+  scrollBy(0, -100);
+  // 模拟鼠标向上滚动事件
+  scrolldelay = setTimeout('scrollToTop()', 50);
+  // 清除滚动事件，避免无法向下移动
+  if (topHeight === 0) {
+    clearTimeout(scrolldelay);
+    scrolldelay = null;
+  }
+}
+```
+
+定时器实现滚动动画-改良版
+基于上面这个问题，我们可以设置一个速度的最小值，让滚动速度从快到慢，但也不至于过慢。
+```js
+function scrollToTop() {
+  var topHeight =
+    document.documentElement.scrollTop ||
+    window.pageYOffset ||
+    document.body.scrollTop;
+  var speed = topHeight / 10 > 100 ? topHeight / 10 : 100;
+  scrollBy(0, -speed);
+  // 模拟鼠标向上滚动事件
+  scrolldelay = setTimeout('scrollToTop()', 50);
+  // 清除滚动事件，避免无法向下移动
+  if (topHeight === 0) {
+    clearTimeout(scrolldelay);
+    scrolldelay = null;
+  }
+}
+```
