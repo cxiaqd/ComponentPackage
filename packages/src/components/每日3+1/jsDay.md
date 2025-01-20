@@ -389,6 +389,7 @@ function scrollToTop() {
 
 定时器实现滚动动画-改良版
 基于上面这个问题，我们可以设置一个速度的最小值，让滚动速度从快到慢，但也不至于过慢。
+
 ```js
 function scrollToTop() {
   var topHeight =
@@ -406,3 +407,162 @@ function scrollToTop() {
   }
 }
 ```
+
+### 常用的几种设计模式
+
+<https://cloud.tencent.com/developer/article/1627336>
+<https://blog.csdn.net/qq_32442973/article/details/119757216>
+设计模式是对软件设计开发过程中反复出现的某类问题的通用解决方案。设计模式更多的是指导思想和方法论，而不是现成的代码，当然每种设计模式都有每种语言中的具体实现方式。学习设计模式更多的是理解各种模式的内在思想和解决的问题，毕竟这是前人无数经验总结成的最佳实践，而代码实现则是对加深理解的辅助。
+设计模式可分为三大类：
+
+* 1、**结构型模式（Structural Patterns）**：通过识别系统中组件间的关系来简化系统的设计。
+* 2、**创建型模式（Creational Patterns）**：处理对象的创建，根据实际情况使用合适的方式创建对象。常规的对象创建方式可能会导致设计上的问题，或增加设计的复杂度。创建型模式通过以某种方式控制对象的创建来解决问题。
+* 3、**行为型模式（Behavuoral Patterns）**：用于识别对象之间常见的交互模式并加以实现，如此，增加了这些交互的灵活性。
+
+#### 创建型模式
+
+顾名思义，这些模式都是用来创建实例对象的。
+<img src="../../assets/mdImages/patterns001.jpeg" alt="创建型模式" title="创建型模式">
+
+```js
+// 汽车构造函数
+function SuzukiCar(color) {
+  this.color = color;
+  this.brand = 'Suzuki';
+}
+ 
+// 汽车构造函数
+function HondaCar(color) {
+  this.color = color;
+  this.brand = 'Honda';
+}
+ 
+// 汽车构造函数
+function BMWCar(color) {
+  this.color = color;
+  this.brand = 'BMW';
+}
+ 
+// 汽车品牌枚举
+const BRANDS = {
+  suzuki: 1,
+  honda: 2,
+  bmw: 3
+}
+ 
+/**
+ * 汽车工厂
+ */
+function CarFactory() {
+  this.create = (brand, color)=> {
+    switch (brand) {
+      case BRANDS.suzuki:
+        return new SuzukiCar(color);
+      case BRANDS.honda:
+        return new HondaCar(color);
+      case BRANDS.bmw:
+        return new BMWCar(color);
+      default:
+        break;
+    }
+  }
+}
+```
+
+使用工厂
+
+```js
+const carFactory = new CarFactory();
+const cars = [];
+ 
+cars.push(carFactory.create(BRANDS.suzuki, 'brown'));
+cars.push(carFactory.create(BRANDS.honda, 'grey'));
+cars.push(carFactory.create(BRANDS.bmw, 'red'));
+ 
+function sayHello() {
+  console.log(`Hello, I am a ${this.color} ${this.brand} car`);
+}
+ 
+for (const car of cars) {
+  sayHello.call(car);
+}
+```
+
+输出结果
+
+```js
+Hello, I am a brown Suzuki car
+Hello, I am a grey Honda car
+Hello, I am a red BMW car
+```
+
+#### 单列模式
+
+实际应用场景：<https://segmentfault.com/a/1190000013864944>
+
+单：指的是一个；例：指的是创建的实例。
+单例：指的是创建的总是同一个实例。也就是使用类创建的实列始终是相同的。
+
+```js
+class Person{
+  constructor(){}
+}
+ 
+let p1 = new Person();
+let p2 = new Person();
+ 
+console.log(p1===p2) //false
+```
+
+上面这段代码，定义了一个Person类，通过这个类创建了两个实例，我们可以看到最终这**两个实例是不相等**的。也就是说，通过同一个类得到的实例不是同一个(这本就是理所应当)，**但是如果我们想始终得到的是同一个实例，那么这就是单例模式**。那么下面就该介绍如何实现单例模式了：
+想要实现单列模式，需要注意两点：
+
+* 1、需要使用return。使用new的时候如果没有手动设置return，那么会默认返回this。但是，我们这里要使得每次返回的实例相同，也就是需要手动控制创建的对象，因此这里需要使用return。
+* 2、我们需要每次return的是同一个对象。也就是说实际上在第一次实例的时候，需要把这个实例保存起来。在下一个实例的时候，直接return这个保存的实例。
+
+```js
+const Person = (function(){
+  let instance = null;
+  return class{
+    constructor(){
+      if(!instance){
+        //第一次创建实例，那么需要把实例保存
+        instance = this;
+      }else{
+        return instance;
+      }
+    }
+  }
+})()
+let p3 = new Person();
+let p4 = new Person();
+console.log(p3===p4)  //true
+```
+
+从上面的代码中，我们可以看到在闭包中，使用instance变量来保存创建的实例，每次返回的都是第一次创建的实例。这样的话就实现了无论创建多少次，创建的都是同一个实例，这就是单例模式。
+
+#### 原型模式
+
+<https://juejin.cn/post/6968822899981418527>
+原型模式是用于创建对象的一种模式，我们不需要知道这个对象的具体类型，而是直接找到一个对象，通过克隆来创建一个一模一样的对象，在js中我们可以使用**Object.create**方法来实现克隆。通俗点讲就是创建一个共享的原型，并通过拷贝这些原型创建新的对象。
+
+举例：假如我们在一个游戏的兵工厂里批量生产机器人，每个机器人都有默认的血量100和等级1。现在我们的间谍在敌方工厂中窃取到一些核心技术并运用到我方机器人中，每个默认的参数变成血量200和等级2。
+用代码表示如下：
+
+```js
+var Machine = function(){
+    this.blood = 100;
+    this.level = 1;
+}
+
+var machine = new Machine();
+machine.blood = 200;
+machine.level = 2;
+
+var cloneMachine = Object.create(machine);
+
+console.log(cloneMachine);
+```
+
+这样，我们每次调用 Object.create(machine) 就相当于生产出一个战争机器人，并且生产出来的机器人都是升级后的机器人
+我们也可以看到，通过调用Object.create方法，就可以快捷地创建一个新的对象，他是通过克隆的方式创建对象的。
