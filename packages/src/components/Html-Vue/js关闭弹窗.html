@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="wrap">
+    <input type="button" value="点击" id="btn">
+    <div id="inner">
+      我是弹窗
+      <span>span</span>
+    </div>
+  </div>
+  <script>
+    // 公用方法
+    function isParent(obj, parentObj) {
+      while (obj != undefined && obj != null && obj.tagName.toUpperCase() != 'BODY') {
+        if (obj == parentObj) {
+          return true;
+        }
+        obj = obj.parentNode;
+      }
+      return false;
+    }
+
+
+    function stropCancel(e) {
+      var ev = e || window.event;
+      if (ev && ev.stopPropagation) {
+        ev.stopPropagation()
+      } else {
+        ev.cancelable = true
+      }
+    }
+    let btn = document.getElementById('btn')
+    let inner = document.getElementById('inner')
+    let wrap = document.getElementById('wrap')
+    // 方法1： 普通的阻止冒泡
+    // btn.addEventListener('click', function (e) {
+    //   stropCancel(e)
+    //   inner.style.display = 'block';
+    // }, false)
+
+    // inner.addEventListener('click', function (e) {
+    //   console.log('弹窗');
+    //   stropCancel(e)
+    // }, false)
+
+    // wrap.addEventListener('click', function () {
+    //   inner.style.display = 'none';
+    // }, false)
+
+
+    // 方法2：
+    btn.addEventListener('click', function (e) {
+      stropCancel(e)
+      inner.style.display = 'block';
+    }, false);
+
+    document.addEventListener('mouseup', function (e) {
+      var objTarget = inner;
+      if (objTarget != e.target && !isParent(e.target, objTarget)) {
+        inner.style.display = 'none';
+      }
+    }, false);
+  </script>
+</body>
+
+</html>
