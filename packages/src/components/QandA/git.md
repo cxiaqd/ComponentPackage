@@ -26,3 +26,6 @@
 # git commit
 
     git commit -m 'xxxxxx':将所有暂存区文件提交到
+
+# git merge
+https://segmentfault.com/a/1190000040941132
