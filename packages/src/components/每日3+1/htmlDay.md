@@ -436,7 +436,7 @@ margin边界叠加，也称为外边距重叠，是CSS中的一个现象，发�
 
 ### 优点
 
-* 结构化数据展示：表格最主要的优点是能够以清晰的行列结构展示数据，方便用户理解和分析数据之间的关系。 尤其适用于包含大量数值或需要进行比较的数* 据。
+* 结构化数据展示：表格最主要的优点是能够以清晰的行列结构展示数据，方便用户理解和分析数据之间的关系。 尤其适用于包含大量数值或需要进行比较的数据。
 * 语义化：`<table>` 元素本身就带有语义，这有助于屏幕阅读器等辅助技术理解表格内容，提升网页的可访问性。
 * 内置排序和筛选：虽然需要 JavaScript 实现，但表格结构天然支持排序和筛选功能，方便用户对数据进行操作。
 * 跨浏览器兼容性好：表格元素是 HTML 的基础元素，拥有良好的跨浏览器兼容性，开发者无需担心兼容性问题。
@@ -453,3 +453,75 @@ margin边界叠加，也称为外边距重叠，是CSS中的一个现象，发�
 ### 总结
 
 表格在展示结构化数据方面非常有效，但在响应式设计和复杂布局方面存在一些局限性。 开发者需要根据实际情况选择是否使用表格，并采取相应的优化措施来提升用户体验。 如果数据并非结构化的，或者需要复杂的布局，应该考虑使用其他更合适的 HTML 元素，例如 <div> 和 CSS Grid 或 Flexbox 布局。
+
+## 怎样在页面上实现一个圆形的可点击区域
+
+### 一、通过map加area
+
+<img>标签中的usermap属性将图像定义为客户端图像时。图像映射指的是带有可点击区域的图像。usermap属性与<map>元素的name或id属性相关联。
+这里通过usermap映射到<map>的circle形<area>。
+<area>标签类似<img>，是无法有子元素或其他子内容的。
+
+* shape表示点击热点区域的形状，支持矩形react，圆形circle及多边形poly。
+* 表示点击热点区域形状的坐标。圆形circle支持3个数值，前两个值为圆心坐标，第三个值为圆的半径大小。
+* href和<a>元素的href是一样的东西，直接跳转地址，或者锚点等。也同样支持target属性和rel属性。也就是说<area>可以看成是半个<a>元素。
+
+```html
+<img src="images/lanlvseImg.png" usemap="#Map" />  
+<map name="Map" id="Map">
+ <area shape="circle" coords="100,100,50" href="http://www.baidu.com" target="_blank"/>
+</map>
+```
+
+### 二、border-radius
+
+设置div的border-radius:50%。
+
+```css
+<div id="circle"></div>
+#circle{
+ background:red;
+ width:100px;
+ height:100px;
+ border-radius:50%;
+}
+```
+
+### 三、js实现，获取鼠标点击位置坐标，判断其到圆点的距离是否不大于圆的半径，来判断点击位置是否在圆内
+
+两点之间的距离计算公式：`|AB|=Math.abs(Math.sqrt(Math.pow(X2-X1), 2) + Math.pow(Y2-Y1, 2)))` Math.abs()求绝对值，Math.pow(底数,指数)，Math.sqrt()求平方根
+
+```js
+// 获取目标元素
+var box = document.getElementById('box');
+ 
+// 对目标元素target的圆形区域进行一个点击事件绑定
+function bindClickOnCircleArea(target, callback) {
+  target.onclick = function (e) {
+    e = e || window.event;
+ 
+    // target中心点的坐标
+    var x1 = 100;
+    var y1 = 100;
+ 
+    // 事件源坐标
+    var x2 = e.offsetX;
+    var y2 = e.offsetY;
+ 
+    // 校验是否在圆形点击区，在的话就执行callback回调
+    // 计算事件触发点与target中心的位置
+    var len = Math.abs(Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)));
+    // 通过半径进行校验
+    if (len <= 100) {
+      callback();
+    } else {
+      alert('在外面');
+    }
+  }
+}
+ 
+// 执行
+bindClickOnCircleArea(box, function () {
+  alert('找到了');
+});
+```

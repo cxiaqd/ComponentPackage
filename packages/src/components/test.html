@@ -7,61 +7,95 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
-    html {
-      font-size: 62.5%;
-      /* 公式16px*62.5%=10px */
+    .case-gait {
+      text-align: center;
+      position: absolute;
+      left: 100px;
+      bottom: 140px;
+      background: rgba(1, 14, 2, 0.8);
+      width: 120px;
+      line-height: 24px;
+      color: #fff;
+      font-size: 12px;
     }
 
-    .outside {
-      font-size: 1.4rem
+    .case-gait::after {
+      content: '';
+      position: absolute;
+      top: -4px;
+      left: 0;
+      border: 4px solid #2b4250;
+      border-top-width: 2px;
+      border-bottom-width: 2px;
+      border-left-color: transparent;
+      border-top-color: transparent;
     }
 
-    .innerside {
-      font-size: 1.2rem
-    }
-    .margin70{
-      width: 200px;
-      height: 160px;
+    .father {
+      padding: 0;
+      width: 56px !important;
+      border-radius: 8px;
+      margin-bottom: 40px;
+      height: 320px;
+      margin-left: 10px !important;
       background-color: aqua;
-      margin-top: 70px;
-      /* border: 1px solid red; */
-      /* float: left; */
-      /* position: absolute; */
-      /* padding: 1px; */
+      overflow: hidden;
     }
-    .margin30{
-      width: 80px;
-      height: 60px;
+
+    .children {
+      margin-top: 15px;
+      display: block;
+      width: 56px;
+      height: 56px;
       background-color: antiquewhite;
-      margin-top: 30px;
     }
   </style>
 </head>
 
-<body oncopy="alert('对不起，禁止复制！');return false;">
-  <div class="outside">
-    我是14px=14.rem
-    <div class="innerside">我是12px=1.2rem</div>
-    <i>i标签的是使用</i>
-    <em>em标签的使用</em>
-    <b>b标签</b>
-    <strong>strong</strong>
-    <div class="margin70">
-      <div>123456789</div>
-      <!-- <span>123456789</span> -->
-      <div class="margin30"></div>
-    </div>
+<body>
+  <!-- <div class="folder-gait case-gait">步态</div> -->
+  <div class="father">
+    <div class="children"></div>
   </div>
+  <img src="../assets/logo.png" usemap="#Map" />
+  <map name="Map" id="Map">
+    <area shape="circle" coords="100,100,50" href="http://www.baidu.com" target="_blank" />
+  </map>
+  <div id="box" style="width: 360px;height:160px;background-color:#2b4250"></div>
   <script>
-    function testConsol() {
-      let obj1 = { a: 1 }
-      let obj2 = { b: { data: 1 } }
-      Object.assign(obj1, obj2)
-      console.log('obj1', obj1);
-      console.log('obj1', JSON.parse(JSON.stringify(obj1)));
-      obj1.b = 10
+    // 获取目标元素
+    var box = document.getElementById('box');
+
+    // 对目标元素target的圆形区域进行一个点击事件绑定
+    function bindClickOnCircleArea(target, callback) {
+      target.onclick = function (e) {
+        e = e || window.event;
+
+        // target中心点的坐标
+        var x1 = 100;
+        var y1 = 100;
+
+        // 事件源坐标
+        var x2 = e.offsetX;
+        var y2 = e.offsetY;
+
+        // 校验是否在圆形点击区，在的话就执行callback回调
+        // 计算事件触发点与target中心的位置
+        var len = Math.abs(Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)));
+        console.log(len);
+        // 通过半径进行校验
+        if (len <= 100) {
+          callback();
+        } else {
+          console.log('在外面');
+        }
+      }
     }
-    testConsol()
+
+    // 执行
+    bindClickOnCircleArea(box, function () {
+      console.log('找到了');
+    });
   </script>
 </body>
 
