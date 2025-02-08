@@ -624,6 +624,7 @@ use strict指令是Javascript的一种编译指示，用于在脚本或函数级
 * 例子: id, value, checked, selected, style 等。
 
 **关键区别总结**
+
 |特性|属性|
 |----|---|
 |HTML|DOM|
@@ -649,3 +650,7 @@ console.log(input.value); // 输出 "新值" (当前值已改变)
 
 **总结**
 attribute反映HTML代码中的初始状态，而property反映DOM元素的当前状态。 通过JavaScript操作DOM时，主要是在处理properties。
+
+## 15/18位身份证号码验证的正则表达式
+
+<https://blog.csdn.net/Cavendixe/article/details/129581874>
