@@ -604,3 +604,48 @@ use strict指令是Javascript的一种编译指示，用于在脚本或函数级
 * 调试可能更复杂：对于不熟悉严格模式的开发者来说，一开始调试可能会更复杂，因为一些以前被忽略的错误现在会被抛出。然而一旦熟悉了严格模式的规则，调试反而会变得更容易，因为错误能够被更早的发现和定位。
 
 总的来说，严格模式的优点远大于缺点。它可以帮助开发者编写更健壮、更易于维护和安全的JavaScript代码。强烈建议在新的JavaScript项目中使用严格模式。
+
+## attribute和property的区别
+
+### Attribute特性
+
+* 定义：HTML元素起始标签内的键值对，属于HTML文档的一部分。你可以直接在HTML代码中看到他们。
+* 数据类型：始终是字符串。即使你设置了一个数字类型的attribute，它也会被转为字符串。
+* 作用：主要适用于配置HTML元素的初始状态和行为。浏览器解析HTML时会读取attributes并将其用于创建DOM节点。
+* 访问方式：通过element.getAttribute()获取，通过element.setAttrbuite()设置，通过element.removeAttribute()移除。
+* 例子：id,class,src,type,value,disabled,style等
+
+### property属性
+
+* 定义: 表示 DOM 元素在 JavaScript 中的动态状态。它们是 JavaScript 对象的属性，可以通过 JavaScript 访问和修改。
+* 数据类型: 可以是任何 JavaScript 数据类型，例如字符串、数字、布尔值、对象等。
+* 作用: 反映了元素的当前状态，并可以通过 JavaScript 进行动态修改。修改 property 可能会影响元素的显示和行为，但不会改变 HTML 代码本身。
+* 访问方式: 直接通过 element.propertyName 访问和设置。例如 element.id, element.value, element.checked 等。
+* 例子: id, value, checked, selected, style 等。
+
+**关键区别总结**
+|特性|属性|
+|----|---|
+|HTML|DOM|
+|字符串类型|任何类型|
+|初始状态|当前状态|
+|getAttribute()/setSttribute()|element.propertyName|
+|影响DOM初始化|影响DOM运行时状态|
+
+**value属性的特殊情况**
+value属性是一个容易混淆的例子。`<input>`元素的value attribute表示初始值，而value property表示当前值。
+
+`<input type="text" id="myInput" value="初始值">`
+
+```js
+const input = document.getElementById('myInput');
+console.log(input.getAttribute('value')); // 输出 "初始值"
+console.log(input.value); // 输出 "初始值"
+
+input.value = "新值";
+console.log(input.getAttribute('value')); // 仍然输出 "初始值" (HTML 不变)
+console.log(input.value); // 输出 "新值" (当前值已改变)
+```
+
+**总结**
+attribute反映HTML代码中的初始状态，而property反映DOM元素的当前状态。 通过JavaScript操作DOM时，主要是在处理properties。
