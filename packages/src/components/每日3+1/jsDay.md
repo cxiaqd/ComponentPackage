@@ -654,3 +654,34 @@ attribute反映HTML代码中的初始状态，而property反映DOM元素的当�
 ## 15/18位身份证号码验证的正则表达式
 
 <https://blog.csdn.net/Cavendixe/article/details/129581874>
+
+## 写一个方法验证是否为中文
+
+```js
+function isChinese(str) {
+    const chineseRegex = /[\u4e00-\u9fa5]/; // 匹配中文字符的正则表达式
+    return chineseRegex.test(str);
+}
+
+// 示例用法
+console.log(isChinese("你好")); // 输出: true
+console.log(isChinese("Hello")); // 输出: false
+console.log(isChinese("你好，World!")); // 输出: true
+```
+
+这里isChinese函数接受一个字符串参数，并使用正则表达式来匹配中文字符。如果字符串中包含至少一个中文字符，test方法将返回true，否则返回false。请注意，这个正则表达式只匹配基本的汉字字符。如果需要匹配更广泛的中文字符集，包括扩展的汉字、标点符号、特殊字符等，需要使用更复杂的正则表达式。
+另外，如果你想要验证字符串是否完全由中文字符组成，而不包含任何其他字符，需要修改一下上述中的正则表达式，并使用^和$来分别匹配字符串的开头和结尾；
+
+```js
+function isAllChinese(str) {
+    const chineseRegex = /^[\u4e00-\u9fa5]+$/; // 匹配完全由中文字符组成的字符串的正则表达式
+    return chineseRegex.test(str);
+}
+
+// 示例用法
+console.log(isAllChinese("你好")); // 输出: true
+console.log(isAllChinese("Hello")); // 输出: false
+console.log(isAllChinese("你好，World!")); // 输出: false
+```
+
+这里isAllChinese函数阿静只返回true，如果字符串完全有中文字符组成。
