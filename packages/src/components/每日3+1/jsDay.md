@@ -685,3 +685,71 @@ console.log(isAllChinese("你好，World!")); // 输出: false
 ```
 
 这里isAllChinese函数阿静只返回true，如果字符串完全有中文字符组成。
+
+## 你对new操作符的理解是什么？手动实现一个new方法
+
+new操作符在JavaScript中用于创建一个用户定义的对象类型的实列或具有构造函数的内置对象的实例。它本质上做了自检时：
+1、创建一个对象：new运算符首先创建一个空对象。
+2、设置圆形链：新对象的原型（`__proto__`）被设置为构造函数的prototype属性。这建立了新对象和构造函数的继承关系。
+3、执行构造函数：构造函数被调用，this关键字被绑定到新创建的对象上。构造函数内的代码可以初始化对象的属性和方法。
+4、返回新对象：如果构造函数没有显式返回一个对象，则new运算符返回新创建的对象；否则，返回构造函数显示返回的对象（前提是返回的是一个对象类型，如果是原始类型则忽略）。
+以下是手动实现new方法的代码：
+
+```js
+function myNew(constructor, ...args) {
+  // 1. 创建一个新对象
+  const obj = {};
+
+  // 2. 设置原型链
+  Object.setPrototypeOf(obj, constructor.prototype);  // or obj.__proto__ = constructor.prototype; (deprecated)
+
+  // 3. 执行构造函数
+  const result = constructor.apply(obj, args);
+
+  // 4. 返回新对象
+  return typeof result === 'object' && result !== null ? result : obj;
+}
+
+
+// 示例用法：
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+}
+
+Person.prototype.greet = function() {
+  console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+};
+
+const person1 = myNew(Person, "Alice", 30);
+const person2 = new Person("Bob", 25);
+
+person1.greet(); // Output: Hello, my name is Alice and I am 30 years old.
+person2.greet(); // Output: Hello, my name is Bob and I am 25 years old.
+
+
+// 测试构造函数返回对象的情况
+function SpecialObject(value) {
+  this.value = value;
+  return { custom: 'object' }; // 返回一个自定义对象
+}
+
+const specialObj = myNew(SpecialObject, 10);
+console.log(specialObj); // Output: { custom: 'object' }
+
+function SpecialObject2(value) {
+  this.value = value;
+  return 10; // 返回一个原始类型值，会被忽略
+}
+const specialObj2 = myNew(SpecialObject2, 20)
+console.log(specialObj2) // Output: SpecialObject2 { value: 20 }
+
+```
+
+关键点解释：
+
+* `Object.setPrototypeof()`方法用于设置对象的原型。这是比直接操作`__proto__`属性更推荐的做法，因为`__proto__`已被弃用。
+* `constructor.apply(obj,args)`使用apply方法调用函数，并将this绑定到新创建的对象obj，并将参数args传递给构造函数。
+* `typeof result === 'object' && result !== null`这个判断条件是为了处理构造函数显式返回对象的情况。只有当构造函数返回的是一个对象，并且不是null时，才会返回构造函数返回的对象。否则，返回我们创建的obj对象。这符合new运算符的规范。
+
+这个mynew函数模拟了new运算符的核心行为，可以用于理解new的工作原理。在实际开发中，直接使用new运算符即可。
