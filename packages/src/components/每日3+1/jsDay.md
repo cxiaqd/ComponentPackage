@@ -422,7 +422,7 @@ function scrollToTop() {
 #### 创建型模式
 
 顾名思义，这些模式都是用来创建实例对象的。
-<img src="../../assets/mdImages/patterns001.jpeg" alt="创建型模式" title="创建型模式">
+`<img src="../../assets/mdImages/patterns001.jpeg" alt="创建型模式" title="创建型模式">`
 
 ```js
 // 汽车构造函数
